@@ -1,5 +1,7 @@
 # Agent Demo Prompts.
 
+Designed version: https://mango-magic.github.io/mangopods-mcp/agent-prompts.html
+
 Copy these into Cursor, Claude, ChatGPT, or an internal agent once MangoPods MCP is connected.
 
 ## Pod Idea Generator.

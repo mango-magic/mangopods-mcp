@@ -7,9 +7,9 @@
   ·
   <a href="https://docs.google.com/forms/d/e/1FAIpQLSckGZ6LHc7MkKo8aSdLpC1REH-2IxNgN4kgV8uus97JBy6GvQ/viewform?usp=publish-editor">Join the waitlist</a>
   ·
-  <a href="docs/power-moves.md">Power moves</a>
+  <a href="https://mango-magic.github.io/mangopods-mcp/power-moves.html">Power moves</a>
   ·
-  <a href="docs/agent-demo-prompts.md">Agent prompts</a>
+  <a href="https://mango-magic.github.io/mangopods-mcp/agent-prompts.html">Agent prompts</a>
 </p>
 
 <p align="center">
@@ -117,7 +117,7 @@ The simple demo is savage:
 - Ask an internal agent to scan a meeting folder and build a searchable library of reusable proof, quotes, objections, and customer language.
 - Ask a client portal to estimate credits, reserve spend, render drafts, collect approval, publish, and report margin.
 
-See the bigger list in [Power Moves](docs/power-moves.md).
+See the bigger list in [Power Moves](https://mango-magic.github.io/mangopods-mcp/power-moves.html).
 
 ## The Waitlist Is For Builders Who Already See It.
 
@@ -136,6 +136,8 @@ Join here: https://docs.google.com/forms/d/e/1FAIpQLSckGZ6LHc7MkKo8aSdLpC1REH-2I
 
 - `index.html` - the full public developer portal and use-case atlas.
 - `assets/mangopods-github-hero.svg` - branded GitHub hero artwork.
+- `power-moves.html` - designed page for the commercial plays.
+- `agent-prompts.html` - designed page with copy-ready agent prompts.
 - `assets/mangomagic_wide_dark.svg` - MangoMagic logo.
 - `docs/power-moves.md` - high-value product and partner use cases.
 - `docs/agent-demo-prompts.md` - copy-paste prompts for vibe coding demos.
