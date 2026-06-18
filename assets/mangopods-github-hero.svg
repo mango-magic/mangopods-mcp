@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">MangoPods MCP vibe broadcasting system map</title>
+  <desc id="desc">A branded MangoMagic diagram showing one source asset becoming clips, podcasts, websites, social posts, outreach, publishing, reports, and reusable assets through the MangoPods MCP creative backend.</desc>
+  <rect width="1600" height="900" fill="#F6F0E2"/>
+  <rect x="64" y="56" width="1472" height="788" fill="#F6F0E2" stroke="#C9B98A" stroke-width="2"/>
+  <rect x="64" y="56" width="16" height="788" fill="#F1AB1C"/>
+
+  <text x="110" y="112" fill="#111527" font-family="Montserrat, Arial, sans-serif" font-size="20" font-weight="800" xml:space="preserve">M A N G O P O D S   M C P   ·   V I B E   B R O A D C A S T I N G</text>
+  <text x="110" y="202" fill="#111527" font-family="Georgia, 'Playfair Display', serif" font-size="88" font-style="italic">One agent command.</text>
+  <text x="110" y="292" fill="#111527" font-family="Georgia, 'Playfair Display', serif" font-size="88" font-style="italic">Every creative asset after it.</text>
+  <text x="112" y="345" fill="#1A1A1A" font-family="Georgia, 'Playfair Display', serif" font-size="28" font-style="italic">Podcasts, clips, captions, pages, campaigns, publishing, credits, approvals, and reporting from any app.</text>
+
+  <rect x="110" y="430" width="330" height="220" rx="8" fill="#FFFFFF" stroke="#C9B98A" stroke-width="2"/>
+  <text x="140" y="474" fill="#F1AB1C" font-family="Montserrat, Arial, sans-serif" font-size="15" font-weight="800" xml:space="preserve">S O U R C E   I N</text>
+  <text x="140" y="526" fill="#111527" font-family="Georgia, 'Playfair Display', serif" font-size="36" font-style="italic">Raw recording.</text>
+  <text x="140" y="574" fill="#1A1A1A" font-family="Georgia, 'Playfair Display', serif" font-size="22" font-style="italic">Meeting, podcast, webinar,</text>
+  <text x="140" y="608" fill="#1A1A1A" font-family="Georgia, 'Playfair Display', serif" font-size="22" font-style="italic">demo, folder, voice note.</text>
+
+  <rect x="520" y="384" width="420" height="308" rx="8" fill="#111527"/>
+  <rect x="520" y="384" width="12" height="308" fill="#F1AB1C"/>
+  <text x="558" y="432" fill="#F1AB1C" font-family="Montserrat, Arial, sans-serif" font-size="15" font-weight="800" xml:space="preserve">C R E A T I V E   B A C K E N D</text>
+  <text x="558" y="492" fill="#FFFFFF" font-family="Georgia, 'Playfair Display', serif" font-size="45" font-style="italic">MangoPods MCP.</text>
+  <text x="558" y="540" fill="#FFFFFF" font-family="Georgia, 'Playfair Display', serif" font-size="22" font-style="italic">Transcribe. Edit. Render.</text>
+  <text x="558" y="572" fill="#FFFFFF" font-family="Georgia, 'Playfair Display', serif" font-size="22" font-style="italic">Generate. Publish. Report.</text>
+  <line x1="558" y1="608" x2="892" y2="608" stroke="#C9B98A" stroke-width="2"/>
+  <text x="558" y="646" fill="#F1AB1C" font-family="Georgia, 'Playfair Display', serif" font-size="24" font-style="italic">The production layer</text>
+  <text x="558" y="676" fill="#F1AB1C" font-family="Georgia, 'Playfair Display', serif" font-size="24" font-style="italic">vibe coders should not rebuild.</text>
+
+  <g stroke="#F1AB1C" stroke-width="5" fill="none">
+    <path d="M 440 540 L 500 540"/>
+    <path d="M 500 540 L 480 523"/>
+    <path d="M 500 540 L 480 557"/>
+    <path d="M 940 540 L 1000 540"/>
+    <path d="M 1000 540 L 980 523"/>
+    <path d="M 1000 540 L 980 557"/>
+  </g>
+
+  <rect x="1016" y="356" width="408" height="360" rx="8" fill="#FFFFFF" stroke="#C9B98A" stroke-width="2"/>
+  <text x="1044" y="400" fill="#F1AB1C" font-family="Montserrat, Arial, sans-serif" font-size="15" font-weight="800" xml:space="preserve">B R O A D C A S T   O U T</text>
+  <g font-family="Georgia, 'Playfair Display', serif" font-style="italic" font-size="27" fill="#111527">
+    <text x="1044" y="454">12 short-form clips.</text>
+    <text x="1044" y="500">Podcast mix and chapters.</text>
+    <text x="1044" y="546">Landing page and SEO article.</text>
+    <text x="1044" y="592">Social pack and guest kit.</text>
+    <text x="1044" y="638">Email, outreach, and booking.</text>
+    <text x="1044" y="684">Analytics, spend, and next actions.</text>
+  </g>
+
+  <line x1="110" y1="735" x2="1424" y2="735" stroke="#C9B98A" stroke-width="2"/>
+  <g font-family="Montserrat, Arial, sans-serif" font-size="15" font-weight="800" fill="#111527">
+    <text x="112" y="785">153+ MCP TOOLS</text>
+    <text x="374" y="785">2,880 USE CASES</text>
+    <text x="646" y="785">CREDIT-BACKED JOBS</text>
+    <text x="970" y="785">PRIVATE BETA</text>
+    <text x="1202" y="785">WAITLIST OPEN</text>
+  </g>
+</svg>

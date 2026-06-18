@@ -1,45 +1,138 @@
-# MangoPods MCP
+<p align="center">
+  <img src="assets/mangomagic-logo-card.svg" alt="MangoMagic" width="620">
+</p>
 
-Vibe broadcasting for vibe coders.
+<p align="center">
+  <a href="https://mango-magic.github.io/mangopods-mcp/">Developer portal</a>
+  ·
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSckGZ6LHc7MkKo8aSdLpC1REH-2IxNgN4kgV8uus97JBy6GvQ/viewform?usp=publish-editor">Join the waitlist</a>
+  ·
+  <a href="docs/power-moves.md">Power moves</a>
+  ·
+  <a href="docs/agent-demo-prompts.md">Agent prompts</a>
+</p>
 
-MangoPods is the private MCP surface for the MangoMagic creative backend: podcast editing, video clipping, captions, website creation, campaign packaging, publishing, approvals, credits, and reporting from any agent-aware app.
+<p align="center">
+  <img src="assets/mangopods-github-hero.svg" alt="MangoPods MCP turns one source asset into the full creative broadcast." width="100%">
+</p>
 
-This repo is the public developer portal and waitlist page.
+# MangoPods MCP.
 
-- Live site: https://mango-magic.github.io/mangopods-mcp/
-- Waitlist: https://docs.google.com/forms/d/e/1FAIpQLSckGZ6LHc7MkKo8aSdLpC1REH-2IxNgN4kgV8uus97JBy6GvQ/viewform?usp=publish-editor
-- Status: private access, not public yet
+The creative backend vibe coders have been trying to hallucinate.
 
-## What MangoPods Unlocks
+MangoPods is a private MCP surface for the MangoMagic production engine. It lets agents turn a source asset into the whole broadcast: edited podcasts, vertical clips, captions, thumbnails, landing pages, articles, social packs, outreach, booking flows, approval queues, publishing, analytics, and credit-backed delivery.
 
-MangoPods lets builders connect their agents to a real creative operations backend instead of trying to duct tape together render queues, transcription, storage, social tools, website generation, approval gates, credit accounting, and reporting.
+This is not a video editing API.
 
-The core promise is simple:
+This is a creative operating system exposed through MCP.
 
-1. Bring one source asset: a recording, meeting, transcript, webinar, podcast, folder, product demo, or customer call.
-2. Ask an agent for the outcome: clips, edits, articles, website sections, launch pages, posts, guest outreach, booking flows, reports, or full campaigns.
-3. Let MangoPods handle media jobs, credits, brand kits, approvals, publishing, and delivery.
+## The Category.
 
-## The Big Moves
+Most AI apps can write a caption. MangoPods is for the thing after the caption:
 
-- Turn a raw podcast into a full episode launch pack.
-- Turn a webinar into clips, a landing page, an email sequence, and sales snippets.
-- Turn customer calls into proof libraries, quote assets, FAQ pages, and objection handling.
-- Turn a product demo into a website, social campaign, thumbnails, shorts, and launch copy.
-- Turn a creator backlog into weeks of scheduled clips and posts.
-- Turn agency operations into repeatable, credit-backed client workflows.
-- Turn any AI coding environment into a creative production cockpit.
+- the render that actually finishes
+- the site that actually ships
+- the clip pack with titles, captions, thumbnails, and exports
+- the approval queue before a client sees it
+- the credit estimate before expensive work starts
+- the published page, scheduled posts, guest kit, and report
+- the next action after analytics comes back
 
-## Repo Contents
+Agents should not have to rebuild media infrastructure, publishing pipes, brand systems, rights logic, or billing rails. They should ask for the outcome and get durable assets back.
 
-- `index.html` is the full developer portal and waitlist landing page.
-- `docs/waitlist-form.md` documents the live waitlist fields.
-- `scripts/create-google-form.gs` is a reusable Apps Script helper for recreating the simple Google Form.
+## One Recording Becomes A Broadcast.
 
-## Local Preview
+```mermaid
+flowchart LR
+  A["Raw source<br/>podcast, meeting, webinar, demo"] --> B["MangoPods MCP<br/>import, transcribe, edit, generate"]
+  B --> C["Media pack<br/>clips, captions, mix, thumbnails"]
+  B --> D["Website pack<br/>landing page, article, embeds, SEO"]
+  B --> E["Growth pack<br/>posts, emails, outreach, booking"]
+  B --> F["Ops pack<br/>approvals, credits, analytics, reports"]
+```
 
-Open `index.html` directly in a browser. The page is intentionally static so GitHub Pages can serve it without a build step.
+The simple demo is savage:
 
-## Ownership
+```json
+{
+  "tool": "recipe.run",
+  "arguments": {
+    "recipe": "episode_launch_pack",
+    "source": "raw-founder-interview.mov",
+    "brand_kit": "mangomagic",
+    "outputs": [
+      "full_podcast_mix",
+      "12_vertical_clips",
+      "caption_files",
+      "episode_page",
+      "linkedin_post_pack",
+      "guest_share_kit",
+      "spend_report"
+    ],
+    "approval_mode": "review_before_publish",
+    "credit_cap": 120
+  }
+}
+```
+
+## Things People Should Build With This.
+
+| If you are building | MangoPods becomes |
+| --- | --- |
+| A podcast app | the editing, clip, page, guest-kit, and publishing engine |
+| A website builder | the media-aware page generator that can ingest real source material |
+| A creator CRM | the machine that turns relationships into shows, clips, pages, and follow-up |
+| An agency portal | the credit-backed client production floor |
+| A sales tool | the call-to-proof, demo-to-page, webinar-to-pipeline engine |
+| A community app | the member story, event recap, newsletter, and highlight system |
+| An internal AI agent | the content ops backend for every team recording |
+| A vibe-coded startup | a production department hiding behind one MCP connection |
+
+## Power Moves.
+
+- Ask Cursor to turn a customer call into a proof page, three quote clips, and a sales follow-up pack.
+- Ask Claude to turn a 90-minute webinar into a launch page, 20 shorts, an email sequence, and a paid campaign brief.
+- Ask ChatGPT to generate a podcast episode, guest kit, LinkedIn carousel, article, thumbnail set, and booking CTA from one recording.
+- Ask an internal agent to scan a meeting folder and build a searchable library of reusable proof, quotes, objections, and customer language.
+- Ask a client portal to estimate credits, reserve spend, render drafts, collect approval, publish, and report margin.
+
+See the bigger list in [Power Moves](docs/power-moves.md).
+
+## The Waitlist Is For Builders Who Already See It.
+
+MangoPods is not public yet. Early access should go to people with real workflows:
+
+- vibe coders building products around agents
+- agencies packaging repeatable client outcomes
+- creators and studios with back catalogs
+- SaaS teams with webinars, demos, calls, and events
+- internal teams tired of losing value inside recordings
+- partner apps that want to resell creative work without building the factory
+
+Join here: https://docs.google.com/forms/d/e/1FAIpQLSckGZ6LHc7MkKo8aSdLpC1REH-2IxNgN4kgV8uus97JBy6GvQ/viewform?usp=publish-editor
+
+## What Is In This Repo.
+
+- `index.html` - the full public developer portal and use-case atlas.
+- `assets/mangopods-github-hero.svg` - branded GitHub hero artwork.
+- `assets/mangomagic_wide_dark.svg` - MangoMagic logo.
+- `docs/power-moves.md` - high-value product and partner use cases.
+- `docs/agent-demo-prompts.md` - copy-paste prompts for vibe coding demos.
+- `docs/waitlist-form.md` - live waitlist fields and routing notes.
+- `scripts/create-google-form.gs` - Apps Script helper for recreating the waitlist form.
+
+## Live Portal.
+
+The GitHub Pages site is the real artefact:
+
+https://mango-magic.github.io/mangopods-mcp/
+
+It includes the developer docs, tool catalogue, schemas, recipes, use-case atlas, and signup flow.
+
+## Private Beta.
+
+MangoPods is private. The public repo is an invitation, not an SDK release.
+
+If you understand why "one recording in, entire creative system out" changes the economics of software, you are exactly who this is for.
 
 Copyright MangoMagic / Many Mangoes. All rights reserved.

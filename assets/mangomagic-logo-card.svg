@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 260" role="img" aria-labelledby="title desc">
+  <title id="title">MangoMagic logo card</title>
+  <desc id="desc">The MangoMagic logo on a Navy card with a Mango Gold left rule.</desc>
+  <rect width="920" height="260" rx="8" fill="#111527"/>
+  <rect x="0" y="0" width="14" height="260" fill="#F1AB1C"/>
+  <rect x="28" y="28" width="864" height="204" rx="4" fill="none" stroke="#C9B98A" stroke-width="2"/>
+  <image href="mangomagic_wide_dark.svg" x="128" y="68" width="664" height="142" preserveAspectRatio="xMidYMid meet"/>
+</svg>
