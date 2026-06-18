@@ -2,10 +2,22 @@
 
 Copy these into Cursor, Claude, ChatGPT, or an internal agent once MangoPods MCP is connected.
 
+## Pod Idea Generator.
+
+```text
+Use MangoPods to generate five podcast episode ideas for founders selling to B2B marketing teams. For the best idea, create a carousel outline, teleprompter guide, show structure, opening hook, guest invite, LinkedIn post, and a targeted boost plan for job titles, industries, regions, and company sizes.
+```
+
 ## Podcast Launch.
 
 ```text
 Use MangoPods to turn this raw podcast recording into an episode launch pack. Estimate credits first. I want a polished audio mix, transcript, chapters, show notes, 10 vertical clips, captions, thumbnails, a guest share kit, LinkedIn posts, and an episode page draft. Do not publish without approval.
+```
+
+## LinkedIn Boost.
+
+```text
+Use MangoPods to take the strongest clip and LinkedIn post from this episode, forecast a paid boost, build an audience of founders and marketing leaders in Australia and the United States, cap spend, create two paid variants, and wait for approval before launch.
 ```
 
 ## Webinar Repurpose.
@@ -53,5 +65,5 @@ Use MangoPods in low-spend mode. Estimate every expensive action first, generate
 ## The Big Show-Off.
 
 ```text
-Use MangoPods to create the entire broadcast from one source asset: edited long-form video, podcast audio, 15 vertical clips, captions, thumbnails, article, landing page, email sequence, LinkedIn posts, guest share kit, booking CTA, analytics plan, approval board, and credit report. Make the first pass feel like a launch team did it overnight.
+Use MangoPods to create the entire broadcast from one idea or source asset: podcast concept, teleprompter guide, carousel, edited long-form video, podcast audio, 15 vertical clips, captions, thumbnails, article, landing page, email sequence, LinkedIn posts, targeted boost plan, guest share kit, booking CTA, analytics plan, approval board, and credit report. Make the first pass feel like a launch team did it overnight.
 ```

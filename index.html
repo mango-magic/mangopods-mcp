@@ -200,6 +200,36 @@
       margin-top: 32px;
     }
 
+    .hero-signal-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      max-width: 760px;
+      margin-top: 24px;
+    }
+
+    .hero-signal {
+      border-top: 1px solid var(--sand);
+      padding-top: 12px;
+      min-height: 118px;
+    }
+
+    .hero-signal strong {
+      display: block;
+      color: var(--navy);
+      font-style: normal;
+      font-size: 22px;
+      line-height: 1.05;
+    }
+
+    .hero-signal span {
+      display: block;
+      margin-top: 8px;
+      color: var(--charcoal);
+      font-size: 16px;
+      line-height: 1.35;
+    }
+
     .button {
       display: inline-flex;
       align-items: center;
@@ -1201,6 +1231,7 @@
       .recipe-grid,
       .tools-grid,
       .waitlist-grid,
+      .hero-signal-grid,
       .usecase-grid,
       .stats,
       .searchbar {
@@ -1260,17 +1291,35 @@
         <div>
           <span class="label">V I B E   B R O A D C A S T I N G   &middot;   M C P   F O R   V I B E   C O D E R S</span>
           <h1 id="hero-title">Vibe broadcasting for vibe coders.</h1>
-          <p>Connect your agent to MangoMagic and turn one source asset into the whole broadcast: edited podcasts, short clips, captions, websites, posts, guest outreach, booking flows, paid boosts, reports, and credit-backed delivery from any app.</p>
+          <p>Connect your agent to MangoMagic and turn one idea, podcast, meeting, or demo into the whole broadcast: pod ideas, carousels, teleprompter guides, edited episodes, clips, websites, LinkedIn posts, targeted demographic boosts, reports, and credit-backed delivery from any app.</p>
           <div class="hero-actions">
             <a class="button waitlist-link" href="#waitlist">Join the private waitlist</a>
             <a class="button secondary" href="#ship">See what you can ship</a>
+          </div>
+          <div class="hero-signal-grid" aria-label="First screen value">
+            <div class="hero-signal">
+              <strong>Ideas before uploads.</strong>
+              <span>Generate podcast angles, carousel concepts, teleprompter guides, hooks, scripts, and guest-ready briefs.</span>
+            </div>
+            <div class="hero-signal">
+              <strong>Assets after recordings.</strong>
+              <span>Upload a show, call, webinar, or demo and get clips, captions, pages, posts, emails, and share kits.</span>
+            </div>
+            <div class="hero-signal">
+              <strong>LinkedIn boosts built in.</strong>
+              <span>Turn finished posts and clips into targeted campaigns by role, industry, company size, region, and audience intent.</span>
+            </div>
+            <div class="hero-signal">
+              <strong>Spend stays visible.</strong>
+              <span>Estimate media jobs, reserve credits, cap boosts, approve drafts, publish, and report what actually moved.</span>
+            </div>
           </div>
         </div>
         <aside class="hero-panel" aria-label="Platform identity">
           <div>
             <span class="label">I D   B L O C K   &middot;   C R E A T I V E   B R O A D C A S T   P L A N E</span>
-            <h2>One agent command. Every creative asset after it.</h2>
-            <p>Agents do not need rendering farms, storage buckets, social APIs, calendar logic, or credit settlement. They ask for the broadcast outcome, watch jobs, and receive signed assets, pages, posts, approvals, and reports.</p>
+            <h2>One agent command. Content, audience, and boost after it.</h2>
+            <p>Agents do not need render farms, ad ops, storage buckets, social APIs, calendar logic, or credit settlement. They ask for the idea, asset, audience, budget, and review gate - MangoMagic runs the loop.</p>
           </div>
           <div class="stats">
             <div class="stat">
@@ -1282,8 +1331,8 @@
               <span class="stat-label">U S E   C A S E S</span>
             </div>
             <div class="stat">
-              <strong>1</strong>
-              <span class="stat-label">B R O A D C A S T   L O O P</span>
+              <strong>Ads</strong>
+              <span class="stat-label">L I N K E D I N   B O O S T S</span>
             </div>
           </div>
         </aside>
@@ -1291,20 +1340,20 @@
 
       <div class="promise-strip" aria-label="Vibe broadcasting promise">
         <div class="promise-item">
-          <strong>One source in.</strong>
-          <p>A recording, meeting, transcript, folder, voice memo, product demo, webinar, or customer call.</p>
+          <strong>Idea or source in.</strong>
+          <p>A prompt, recording, meeting, transcript, folder, voice memo, product demo, webinar, or customer call.</p>
         </div>
         <div class="promise-item">
-          <strong>Whole broadcast out.</strong>
-          <p>Clips, captions, pages, posts, emails, outreach, bookings, boosts, reports, and reusable assets.</p>
+          <strong>Whole content pack out.</strong>
+          <p>Pod ideas, carousels, scripts, teleprompter guides, clips, captions, pages, posts, emails, and share kits.</p>
+        </div>
+        <div class="promise-item">
+          <strong>LinkedIn audience ready.</strong>
+          <p>Boost high-performing clips and posts to specific demographics, roles, industries, regions, and account segments.</p>
         </div>
         <div class="promise-item">
           <strong>Credits stay visible.</strong>
-          <p>Estimate first, reserve with a cap, run the job, settle real usage, refund what was not used.</p>
-        </div>
-        <div class="promise-item">
-          <strong>Agents stay useful.</strong>
-          <p>The agent controls intent and review. MangoMagic handles media, storage, publishing, and job state.</p>
+          <p>Estimate creation and boost spend, reserve with a cap, approve the job, settle real usage, and report outcomes.</p>
         </div>
       </div>
 
@@ -1320,17 +1369,17 @@
         <div class="broadcast-grid">
           <article class="broadcast-card navy">
             <span class="label">T H E   C A T E G O R Y</span>
-            <h3>Vibe broadcasting means every recording becomes a distribution system.</h3>
-            <p>The agent does not just edit a file. It turns source material into a coordinated broadcast across media, web, social, email, booking, outreach, analytics, and follow-up.</p>
+            <h3>Vibe broadcasting means every idea or recording becomes a distribution system.</h3>
+            <p>The agent does not just edit a file. It can generate the podcast idea, package the creative, publish the assets, boost them on LinkedIn, and feed the results back into the next move.</p>
           </article>
           <article class="broadcast-card">
             <span class="label">T H E   F E E L I N G</span>
             <h3>The user asks for the outcome.</h3>
             <ul>
-              <li>“Turn this founder call into a launch pack.”</li>
-              <li>“Make 20 clips and a landing page from this webinar.”</li>
-              <li>“Create a guest invite flow and booking page for this show.”</li>
-              <li>“Sell a fixed creative job in my app and fulfil it with MangoMagic credits.”</li>
+              <li>"Turn this founder call into a launch pack."</li>
+              <li>"Make 20 clips and a landing page from this webinar."</li>
+              <li>"Create a guest invite flow and booking page for this show."</li>
+              <li>"Sell a fixed creative job in my app and fulfil it with MangoMagic credits."</li>
             </ul>
           </article>
         </div>
@@ -1390,7 +1439,7 @@
             <div>
               <span class="tag">Marketplace</span>
               <h3>White-label creative job.</h3>
-              <p>Sell “12 clips from your podcast” or “webinar recap page” inside another app with credit-backed fulfilment.</p>
+              <p>Sell "12 clips from your podcast" or "webinar recap page" inside another app with credit-backed fulfilment.</p>
             </div>
             <div class="prompt-box">Quote job, reserve credits, run recipe, open review board, deliver assets, settle usage.</div>
           </article>
@@ -1413,7 +1462,7 @@
           </article>
           <article class="audience-card">
             <h3>Creator SaaS.</h3>
-            <p>Add “generate clips”, “build page”, and “launch campaign” buttons without building render queues.</p>
+            <p>Add "generate clips", "build page", and "launch campaign" buttons without building render queues.</p>
           </article>
           <article class="audience-card">
             <h3>Podcast platforms.</h3>
@@ -2578,9 +2627,11 @@ Optimise for: strong hooks, clear captions, natural edits, and assets I can reus
       ["Reach", "reach.schedule_sequence", "reach:write", "Schedule sequences with limits, review gates, personalization, and stop conditions."],
       ["LinkedIn", "linkedin.connect", "linkedin:write", "Connect a LinkedIn account or company page through OAuth."],
       ["LinkedIn", "linkedin.publish_post", "linkedin:publish", "Publish or schedule a text post, clip, carousel, article, or campaign update."],
+      ["LinkedIn", "linkedin.build_target_audience", "ads:write", "Build a boost audience by role, seniority, industry, company size, region, interests, or account list."],
       ["LinkedIn", "linkedin.archive_reminder", "linkedin:write", "Create reminders to archive, repurpose, or boost high-performing posts."],
       ["Boosts", "boost.forecast", "ads:read", "Forecast paid boost spend, audience, reach, conversion, and credit impact."],
-      ["Boosts", "boost.create", "ads:write", "Launch a paid boost from an approved post, clip, landing page, or campaign asset."],
+      ["Boosts", "boost.create_audience", "ads:write", "Create reusable demographic, account, retargeting, and lookalike audiences for LinkedIn boosts."],
+      ["Boosts", "boost.create", "ads:write", "Launch a targeted paid boost from an approved post, clip, landing page, or campaign asset."],
       ["Analytics", "analytics.episode_report", "analytics:read", "Summarize performance for one episode across page views, plays, clips, posts, and leads."],
       ["Analytics", "analytics.channel_report", "analytics:read", "Compare channels, formats, topics, guests, hooks, captions, and publishing windows."],
       ["Analytics", "analytics.credit_report", "billing:read", "Explain credit spend by project, client, job type, workspace, and recipe."],
@@ -2900,6 +2951,8 @@ Optimise for: strong hooks, clear captions, natural edits, and assets I can reus
           "Generate LinkedIn posts for company, founder, guest, and sales rep accounts with distinct angles.",
           "Draft a post that turns a customer objection into a story and links to a booking page.",
           "Create employee advocacy copy that teammates can personalize without breaking brand rules.",
+          "Build a LinkedIn boost audience for job title, industry, seniority, company size, region, and account list.",
+          "Turn a founder clip into an organic post plus a paid variant for a specific buyer demographic.",
           "Detect a trending topic from recent conversations and draft a timely LinkedIn response.",
           "Schedule a month of LinkedIn content from a backlog of calls and episodes.",
           "Generate performance summaries that compare hook type, format, posting time, and guest influence."
@@ -3038,10 +3091,11 @@ Optimise for: strong hooks, clear captions, natural edits, and assets I can reus
         domain: "Paid boosts and ads",
         cases: [
           "Forecast paid boost performance before spending credits or ad budget.",
-          "Turn a high-performing organic post into a paid boost with audience, CTA, and landing page attached.",
+          "Turn a high-performing organic post into a paid LinkedIn boost with demographic targeting, CTA, and landing page attached.",
           "Generate paid creative variants from the best podcast clips and headlines.",
           "Create boost rules that stop spend when engagement falls below a threshold.",
-          "Build a campaign around a guest episode and retarget visitors who watched clips.",
+          "Build a campaign around a guest episode and retarget visitors who watched clips or visited the episode page.",
+          "Create separate boost audiences for founders, marketers, sales leaders, recruiters, investors, and enterprise buyers.",
           "Generate ad copy from customer interviews while preserving approved claims.",
           "Create a low-budget test plan for five clip hooks and one landing page.",
           "Analyze paid and organic lift from a boosted LinkedIn post.",

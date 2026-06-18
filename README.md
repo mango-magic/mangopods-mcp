@@ -20,7 +20,7 @@
 
 The creative backend vibe coders have been trying to hallucinate.
 
-MangoPods is a private MCP surface for the MangoMagic production engine. It lets agents turn a source asset into the whole broadcast: edited podcasts, vertical clips, captions, thumbnails, landing pages, articles, social packs, outreach, booking flows, approval queues, publishing, analytics, and credit-backed delivery.
+MangoPods is a private MCP surface for the MangoMagic production engine. It lets agents turn an idea or source asset into the whole broadcast: pod ideas, carousels, teleprompter guides, edited podcasts, vertical clips, captions, thumbnails, landing pages, articles, social packs, LinkedIn demographic boosts, outreach, booking flows, approval queues, publishing, analytics, and credit-backed delivery.
 
 This is not a video editing API.
 
@@ -33,21 +33,22 @@ Most AI apps can write a caption. MangoPods is for the thing after the caption:
 - the render that actually finishes
 - the site that actually ships
 - the clip pack with titles, captions, thumbnails, and exports
+- the pod idea generator that creates carousels, teleprompter guides, hooks, and briefs before anything is uploaded
 - the approval queue before a client sees it
 - the credit estimate before expensive work starts
-- the published page, scheduled posts, guest kit, and report
+- the published page, scheduled posts, LinkedIn boost audience, guest kit, and report
 - the next action after analytics comes back
 
 Agents should not have to rebuild media infrastructure, publishing pipes, brand systems, rights logic, or billing rails. They should ask for the outcome and get durable assets back.
 
-## One Recording Becomes A Broadcast.
+## One Idea Or Recording Becomes A Broadcast.
 
 ```mermaid
 flowchart LR
-  A["Raw source<br/>podcast, meeting, webinar, demo"] --> B["MangoPods MCP<br/>import, transcribe, edit, generate"]
+  A["Idea or raw source<br/>prompt, podcast, meeting, webinar, demo"] --> B["MangoPods MCP<br/>ideate, import, transcribe, edit, generate"]
   B --> C["Media pack<br/>clips, captions, mix, thumbnails"]
-  B --> D["Website pack<br/>landing page, article, embeds, SEO"]
-  B --> E["Growth pack<br/>posts, emails, outreach, booking"]
+  B --> D["Creator pack<br/>carousels, teleprompter guide, scripts"]
+  B --> E["Growth pack<br/>LinkedIn posts, boosts, outreach, booking"]
   B --> F["Ops pack<br/>approvals, credits, analytics, reports"]
 ```
 
@@ -64,11 +65,20 @@ The simple demo is savage:
       "full_podcast_mix",
       "12_vertical_clips",
       "caption_files",
+      "carousel_pack",
+      "teleprompter_guide",
       "episode_page",
       "linkedin_post_pack",
+      "linkedin_targeted_boost_plan",
       "guest_share_kit",
       "spend_report"
     ],
+    "audience": {
+      "platform": "linkedin",
+      "roles": ["founder", "head of marketing", "content lead"],
+      "regions": ["Australia", "United States"],
+      "company_size": "11-500"
+    },
     "approval_mode": "review_before_publish",
     "credit_cap": 120
   }
@@ -80,10 +90,12 @@ The simple demo is savage:
 | If you are building | MangoPods becomes |
 | --- | --- |
 | A podcast app | the editing, clip, page, guest-kit, and publishing engine |
+| A pod idea app | the generator for show angles, carousels, scripts, teleprompter guides, and clip briefs |
 | A website builder | the media-aware page generator that can ingest real source material |
 | A creator CRM | the machine that turns relationships into shows, clips, pages, and follow-up |
 | An agency portal | the credit-backed client production floor |
 | A sales tool | the call-to-proof, demo-to-page, webinar-to-pipeline engine |
+| A LinkedIn ads tool | the creative and demographic boost layer for posts, clips, pages, and campaigns |
 | A community app | the member story, event recap, newsletter, and highlight system |
 | An internal AI agent | the content ops backend for every team recording |
 | A vibe-coded startup | a production department hiding behind one MCP connection |
@@ -93,6 +105,7 @@ The simple demo is savage:
 - Ask Cursor to turn a customer call into a proof page, three quote clips, and a sales follow-up pack.
 - Ask Claude to turn a 90-minute webinar into a launch page, 20 shorts, an email sequence, and a paid campaign brief.
 - Ask ChatGPT to generate a podcast episode, guest kit, LinkedIn carousel, article, thumbnail set, and booking CTA from one recording.
+- Ask an agent to generate a new podcast idea, carousel, teleprompter guide, LinkedIn post, and targeted boost plan before a recording exists.
 - Ask an internal agent to scan a meeting folder and build a searchable library of reusable proof, quotes, objections, and customer language.
 - Ask a client portal to estimate credits, reserve spend, render drafts, collect approval, publish, and report margin.
 
