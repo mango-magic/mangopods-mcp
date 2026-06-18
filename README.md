@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <a href="https://mango-magic.github.io/mangopods-mcp/">Developer portal</a>
+  <a href="https://mangomagic.live/api">Developer portal</a>
   ·
   <a href="https://docs.google.com/forms/d/e/1FAIpQLSckGZ6LHc7MkKo8aSdLpC1REH-2IxNgN4kgV8uus97JBy6GvQ/viewform?usp=publish-editor">Join the waitlist</a>
   ·
@@ -146,11 +146,11 @@ Join here: https://docs.google.com/forms/d/e/1FAIpQLSckGZ6LHc7MkKo8aSdLpC1REH-2I
 
 ## Live Portal.
 
-The GitHub Pages site is the real artefact:
+The branded API front door is the URL builders should remember and share:
 
-https://mango-magic.github.io/mangopods-mcp/
+https://mangomagic.live/api
 
-It includes the developer docs, tool catalogue, schemas, recipes, use-case atlas, and signup flow.
+It is the public path for the developer docs, tool catalogue, schemas, recipes, use-case atlas, and signup flow. GitHub Pages remains the live docs mirror for deep pages during private beta.
 
 ## Private Beta.
 
