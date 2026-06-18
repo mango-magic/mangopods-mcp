@@ -1,0 +1,3704 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MangoMagic Vibe Broadcasting MCP</title>
+  <meta name="description" content="Developer docs for MangoMagic Vibe Broadcasting: an MCP creative backend for vibe coders building media, websites, campaigns, and credit-powered creative products.">
+  <meta property="og:title" content="MangoMagic Vibe Broadcasting MCP">
+  <meta property="og:description" content="Connect any agent to a credit-powered creative backend for clips, podcasts, websites, campaigns, approvals, and publishing.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="MangoMagic Vibe Broadcasting MCP">
+  <meta name="twitter:description" content="Vibe broadcasting for vibe coders: one source asset becomes the whole creative broadcast through MCP.">
+  <link rel="canonical" href="https://mango-magic.github.io/mangopods-mcp/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400;1,600;1,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #F1AB1C;
+      --navy: #111527;
+      --cream: #F6F0E2;
+      --charcoal: #1A1A1A;
+      --sand: #C9B98A;
+      --white: #FFFFFF;
+      --max: 1180px;
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--charcoal);
+      background: var(--cream);
+      font-family: "Playfair Display", Georgia, serif;
+      font-style: italic;
+      line-height: 1.55;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    code,
+    pre,
+    input,
+    button,
+    select,
+    .mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-style: normal;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    .label,
+    .nav a,
+    .pill,
+    .tag,
+    .stat-label,
+    .eyebrow,
+    .button,
+    .table th,
+    .tool-name,
+    .copy-button,
+    .filter-button,
+    .kicker,
+    .footer-label {
+      font-family: "Montserrat", Arial, sans-serif;
+      font-style: normal;
+      font-weight: 800;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .shell {
+      min-height: 100vh;
+    }
+
+    .topbar {
+      border-bottom: 1px solid var(--sand);
+      background: var(--cream);
+      position: sticky;
+      top: 0;
+      z-index: 30;
+    }
+
+    .topbar-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 14px 22px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 220px;
+      background: var(--navy);
+      border-left: 4px solid var(--gold);
+      border-radius: var(--radius);
+      padding: 8px 12px;
+    }
+
+    .brand img {
+      width: min(46vw, 230px);
+      height: auto;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border: 2px solid var(--navy);
+      display: grid;
+      place-items: center;
+      color: var(--navy);
+      background: var(--gold);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-weight: 800;
+      font-style: normal;
+      border-radius: 50%;
+      flex: 0 0 auto;
+    }
+
+    .nav {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      font-size: 11px;
+    }
+
+    .nav a {
+      border-bottom: 2px solid transparent;
+      padding: 6px 0;
+    }
+
+    .nav a:hover {
+      border-color: var(--gold);
+    }
+
+    .hero {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 74px 22px 44px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
+      gap: 48px;
+      align-items: end;
+    }
+
+    .hero h1,
+    .section-title,
+    .band h2 {
+      margin: 0;
+      color: var(--navy);
+      font-style: normal;
+      letter-spacing: 0;
+    }
+
+    .hero h1 {
+      font-size: clamp(48px, 8vw, 112px);
+      line-height: 0.92;
+      max-width: 840px;
+    }
+
+    .hero p {
+      font-size: clamp(20px, 2.1vw, 31px);
+      margin: 26px 0 0;
+      max-width: 760px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 11px 16px;
+      border: 2px solid var(--navy);
+      background: var(--navy);
+      color: var(--white);
+      border-radius: var(--radius);
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .button.secondary {
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    .hero-panel {
+      border-left: 8px solid var(--gold);
+      background: var(--navy);
+      color: var(--white);
+      padding: 28px;
+      min-height: 360px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .hero-panel .label,
+    .hero-panel .stat-label,
+    .hero-panel .kicker {
+      color: var(--gold);
+    }
+
+    .hero-panel h2 {
+      color: var(--white);
+      font-style: normal;
+      font-size: clamp(28px, 3vw, 48px);
+      line-height: 1;
+      margin: 10px 0 0;
+    }
+
+    .hero-panel p {
+      color: var(--white);
+      margin: 14px 0 0;
+      font-size: 18px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      border-top: 1px solid var(--sand);
+    }
+
+    .stat {
+      padding-top: 16px;
+      border-right: 1px solid var(--sand);
+      padding-right: 14px;
+    }
+
+    .stat:last-child {
+      border-right: 0;
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--white);
+      font-size: 34px;
+      line-height: 1;
+      font-style: normal;
+    }
+
+    .stat-label {
+      display: block;
+      font-size: 10px;
+      margin-top: 8px;
+    }
+
+    .section {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 64px 22px;
+      border-top: 1px solid var(--sand);
+    }
+
+    .promise-strip {
+      max-width: var(--max);
+      margin: 0 auto 22px;
+      padding: 0 22px 44px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+    }
+
+    .promise-item {
+      border-top: 1px solid var(--sand);
+      border-bottom: 1px solid var(--sand);
+      padding: 18px 16px;
+      min-height: 150px;
+    }
+
+    .promise-item strong {
+      display: block;
+      color: var(--navy);
+      font-style: normal;
+      font-size: 24px;
+      line-height: 1.05;
+      margin-bottom: 10px;
+    }
+
+    .promise-item p {
+      margin: 0;
+      font-size: 16px;
+    }
+
+    .broadcast-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .broadcast-card {
+      border: 1px solid var(--sand);
+      border-radius: var(--radius);
+      padding: 22px;
+      min-height: 260px;
+    }
+
+    .broadcast-card.navy {
+      background: var(--navy);
+      color: var(--white);
+      border-left: 8px solid var(--gold);
+    }
+
+    .broadcast-card.navy h3,
+    .broadcast-card.navy p,
+    .broadcast-card.navy li {
+      color: var(--white);
+    }
+
+    .broadcast-card h3 {
+      margin: 0;
+      color: var(--navy);
+      font-size: clamp(28px, 4vw, 54px);
+      line-height: 1;
+      font-style: normal;
+    }
+
+    .broadcast-card p,
+    .broadcast-card li {
+      font-size: 18px;
+    }
+
+    .broadcast-card ul {
+      margin: 18px 0 0;
+      padding-left: 20px;
+    }
+
+    .ship-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .ship-card {
+      border: 1px solid var(--sand);
+      border-radius: var(--radius);
+      padding: 20px;
+      min-height: 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .ship-card h3 {
+      margin: 0;
+      color: var(--navy);
+      font-size: 25px;
+      line-height: 1.05;
+      font-style: normal;
+    }
+
+    .ship-card p {
+      margin: 12px 0;
+      font-size: 16px;
+    }
+
+    .prompt-box {
+      border-top: 1px solid var(--sand);
+      padding-top: 12px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-style: normal;
+      font-size: 12px;
+      line-height: 1.45;
+      overflow-wrap: anywhere;
+    }
+
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .audience-card {
+      border-left: 6px solid var(--gold);
+      border-top: 1px solid var(--sand);
+      padding: 16px 16px 16px 18px;
+      min-height: 190px;
+    }
+
+    .audience-card h3 {
+      margin: 0;
+      color: var(--navy);
+      font-style: normal;
+      font-size: 22px;
+      line-height: 1.06;
+    }
+
+    .audience-card p {
+      margin: 10px 0 0;
+      font-size: 16px;
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .faq-card {
+      border-top: 1px solid var(--sand);
+      padding-top: 18px;
+    }
+
+    .faq-card h3 {
+      margin: 0;
+      color: var(--navy);
+      font-style: normal;
+      font-size: 24px;
+      line-height: 1.05;
+    }
+
+    .faq-card p {
+      margin: 10px 0 0;
+      font-size: 17px;
+    }
+
+    .waitlist-panel {
+      border: 1px solid var(--sand);
+      border-left: 8px solid var(--gold);
+      border-radius: var(--radius);
+      background: var(--navy);
+      color: var(--white);
+      padding: 26px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, 0.55fr);
+      gap: 24px;
+      align-items: end;
+    }
+
+    .waitlist-panel h3 {
+      margin: 0;
+      color: var(--white);
+      font-style: normal;
+      font-size: clamp(34px, 5vw, 72px);
+      line-height: 0.98;
+    }
+
+    .waitlist-panel p {
+      margin: 16px 0 0;
+      color: var(--white);
+      font-size: 21px;
+      max-width: 760px;
+    }
+
+    .waitlist-panel .label,
+    .waitlist-panel .tag {
+      color: var(--gold);
+    }
+
+    .waitlist-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: stretch;
+    }
+
+    .waitlist-actions .button {
+      width: 100%;
+      border-color: var(--gold);
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    .waitlist-note {
+      font-family: "Montserrat", Arial, sans-serif;
+      font-style: normal;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      color: var(--sand);
+    }
+
+    .waitlist-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .waitlist-card {
+      border-top: 1px solid var(--sand);
+      padding-top: 16px;
+      min-height: 150px;
+    }
+
+    .waitlist-card h3 {
+      margin: 0;
+      color: var(--navy);
+      font-style: normal;
+      font-size: 24px;
+      line-height: 1.05;
+    }
+
+    .waitlist-card p {
+      margin: 10px 0 0;
+      font-size: 17px;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(280px, 1fr);
+      gap: 38px;
+      align-items: end;
+      margin-bottom: 32px;
+    }
+
+    .section-title {
+      font-size: clamp(36px, 5vw, 76px);
+      line-height: 0.98;
+    }
+
+    .section-head p {
+      margin: 0;
+      font-size: 21px;
+    }
+
+    .label {
+      color: var(--navy);
+      font-size: 11px;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .grid.two {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid.four {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .card,
+    .tool-card,
+    .usecase-card,
+    .recipe,
+    .scope-card {
+      border: 1px solid var(--sand);
+      border-radius: var(--radius);
+      background: var(--cream);
+      padding: 20px;
+    }
+
+    .card h3,
+    .tool-card h3,
+    .usecase-card h3,
+    .recipe h3,
+    .scope-card h3 {
+      margin: 0;
+      color: var(--navy);
+      font-style: normal;
+      font-size: 24px;
+      line-height: 1.06;
+    }
+
+    .card p,
+    .tool-card p,
+    .usecase-card p,
+    .recipe p,
+    .scope-card p {
+      margin: 12px 0 0;
+      font-size: 17px;
+    }
+
+    .number {
+      width: 34px;
+      height: 34px;
+      border: 2px solid var(--navy);
+      background: var(--gold);
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      font-family: "Montserrat", Arial, sans-serif;
+      font-style: normal;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 18px;
+    }
+
+    .band {
+      background: var(--navy);
+      color: var(--white);
+      margin: 30px 0;
+    }
+
+    .band-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 62px 22px;
+    }
+
+    .band h2 {
+      color: var(--white);
+      font-size: clamp(34px, 5vw, 68px);
+      line-height: 1;
+    }
+
+    .band p,
+    .band li {
+      color: var(--white);
+      font-size: 20px;
+    }
+
+    .band .label,
+    .band .tag {
+      color: var(--gold);
+    }
+
+    .band .card {
+      color: var(--charcoal);
+      background: var(--cream);
+    }
+
+    .band .card h3,
+    .band .card code {
+      color: var(--navy);
+    }
+
+    .band .card p {
+      color: var(--charcoal);
+      font-size: 17px;
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 1px;
+      border: 1px solid var(--sand);
+      margin-top: 28px;
+    }
+
+    .flow-step {
+      padding: 18px;
+      border-right: 1px solid var(--sand);
+      min-height: 150px;
+    }
+
+    .flow-step:last-child {
+      border-right: 0;
+    }
+
+    .flow-step strong {
+      display: block;
+      color: var(--gold);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-style: normal;
+      font-size: 12px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .flow-step span {
+      display: block;
+      color: var(--white);
+      font-size: 18px;
+    }
+
+    .docs-grid {
+      display: grid;
+      grid-template-columns: 260px minmax(0, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .toc {
+      position: sticky;
+      top: 84px;
+      border: 1px solid var(--sand);
+      border-radius: var(--radius);
+      padding: 16px;
+      background: var(--cream);
+    }
+
+    .toc a {
+      display: block;
+      border-bottom: 1px solid var(--sand);
+      padding: 10px 0;
+      font-family: "Montserrat", Arial, sans-serif;
+      font-style: normal;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .toc a:last-child {
+      border-bottom: 0;
+    }
+
+    .doc-block {
+      border-top: 1px solid var(--sand);
+      padding: 36px 0;
+    }
+
+    .doc-block:first-child {
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .doc-block h3 {
+      margin: 0 0 14px;
+      color: var(--navy);
+      font-style: normal;
+      font-size: clamp(30px, 4vw, 50px);
+      line-height: 1;
+    }
+
+    .doc-block h4 {
+      margin: 28px 0 8px;
+      color: var(--navy);
+      font-style: normal;
+      font-size: 24px;
+    }
+
+    .doc-block p,
+    .doc-block li {
+      font-size: 18px;
+    }
+
+    .doc-block ul,
+    .doc-block ol {
+      padding-left: 22px;
+      margin: 14px 0 0;
+    }
+
+    .code-wrap {
+      position: relative;
+      margin: 16px 0 24px;
+      border: 1px solid var(--sand);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--navy);
+    }
+
+    pre {
+      margin: 0;
+      padding: 20px;
+      overflow: auto;
+      background: var(--navy);
+      color: var(--white);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .copy-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      border: 1px solid var(--gold);
+      background: var(--gold);
+      color: var(--navy);
+      border-radius: var(--radius);
+      padding: 7px 9px;
+      font-size: 10px;
+      cursor: pointer;
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+      border: 1px solid var(--sand);
+      font-style: normal;
+    }
+
+    .table th,
+    .table td {
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--sand);
+      padding: 12px;
+      font-size: 14px;
+    }
+
+    .table th {
+      color: var(--navy);
+      background: var(--gold);
+    }
+
+    .table td {
+      font-family: "Playfair Display", Georgia, serif;
+      font-style: italic;
+      font-size: 16px;
+    }
+
+    .pill-row,
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 18px 0;
+    }
+
+    .pill,
+    .tag,
+    .filter-button {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 6px 9px;
+      border: 1px solid var(--sand);
+      color: var(--navy);
+      border-radius: 999px;
+      font-size: 10px;
+      background: var(--cream);
+    }
+
+    .filter-button {
+      cursor: pointer;
+    }
+
+    .filter-button.active {
+      background: var(--navy);
+      color: var(--white);
+      border-color: var(--navy);
+    }
+
+    .searchbar {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 180px;
+      gap: 12px;
+      margin: 26px 0 18px;
+    }
+
+    .searchbar input,
+    .searchbar select {
+      width: 100%;
+      min-height: 48px;
+      border: 2px solid var(--navy);
+      border-radius: var(--radius);
+      background: var(--cream);
+      color: var(--charcoal);
+      padding: 0 14px;
+      font-size: 15px;
+    }
+
+    .usecase-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 18px;
+      border-bottom: 1px solid var(--sand);
+      padding-bottom: 18px;
+      margin-bottom: 16px;
+    }
+
+    .usecase-head strong {
+      color: var(--navy);
+      font-size: 44px;
+      line-height: 1;
+      font-style: normal;
+    }
+
+    .usecase-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .case-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-top: 18px;
+      border-top: 1px solid var(--sand);
+      padding-top: 18px;
+    }
+
+    .case-controls p {
+      margin: 0;
+      font-size: 17px;
+    }
+
+    .usecase-card {
+      min-height: 210px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .usecase-card h3 {
+      font-size: 20px;
+    }
+
+    .usecase-card p {
+      font-size: 15px;
+    }
+
+    .usecase-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: 18px;
+      align-items: center;
+    }
+
+    .usecase-id {
+      font-family: "Montserrat", Arial, sans-serif;
+      font-style: normal;
+      font-size: 10px;
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .tool-card {
+      min-height: 170px;
+    }
+
+    .tool-name {
+      display: block;
+      color: var(--navy);
+      font-size: 13px;
+      text-transform: none;
+      overflow-wrap: anywhere;
+    }
+
+    .tool-card p {
+      font-size: 15px;
+    }
+
+    .scope-card code {
+      display: inline-block;
+      margin-bottom: 8px;
+      color: var(--navy);
+      font-weight: 800;
+    }
+
+    .blueprint-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .blueprint {
+      border-top: 1px solid var(--sand);
+      padding-top: 18px;
+    }
+
+    .blueprint h3 {
+      margin: 0;
+      color: var(--navy);
+      font-style: normal;
+      font-size: 28px;
+      line-height: 1.05;
+    }
+
+    .blueprint p {
+      font-size: 18px;
+      margin: 10px 0 0;
+    }
+
+    .spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px 24px;
+      margin-top: 20px;
+    }
+
+    .spec-row {
+      display: grid;
+      grid-template-columns: 150px minmax(0, 1fr);
+      gap: 14px;
+      border-top: 1px solid var(--sand);
+      padding-top: 13px;
+    }
+
+    .spec-row span {
+      font-family: "Montserrat", Arial, sans-serif;
+      font-style: normal;
+      font-weight: 800;
+      color: var(--navy);
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+
+    .spec-row p {
+      margin: 0;
+      font-size: 17px;
+    }
+
+    .schema-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .schema {
+      border: 1px solid var(--sand);
+      border-radius: var(--radius);
+      padding: 18px;
+    }
+
+    .schema h4 {
+      margin: 0 0 10px;
+      color: var(--navy);
+      font-size: 22px;
+      font-style: normal;
+    }
+
+    .schema ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .schema li {
+      font-size: 15px;
+      margin: 5px 0;
+    }
+
+    .playbook-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .playbook-card {
+      border-left: 6px solid var(--gold);
+      border-top: 1px solid var(--sand);
+      padding: 16px 16px 16px 18px;
+      min-height: 180px;
+    }
+
+    .playbook-card h3 {
+      margin: 0;
+      color: var(--navy);
+      font-style: normal;
+      font-size: 22px;
+      line-height: 1.06;
+    }
+
+    .playbook-card p {
+      margin: 10px 0 0;
+      font-size: 16px;
+    }
+
+    .recipe-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .footer {
+      border-top: 1px solid var(--sand);
+      padding: 46px 22px;
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 22px;
+      align-items: end;
+    }
+
+    .footer h2 {
+      margin: 0;
+      color: var(--navy);
+      font-size: clamp(32px, 4vw, 60px);
+      line-height: 1;
+      font-style: normal;
+    }
+
+    .footer p {
+      margin: 12px 0 0;
+      max-width: 560px;
+      font-size: 18px;
+    }
+
+    .footer-label {
+      color: var(--navy);
+      font-size: 11px;
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .section-head,
+      .docs-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .toc {
+        position: static;
+      }
+
+      .grid,
+      .grid.two,
+      .grid.four,
+      .promise-strip,
+      .broadcast-grid,
+      .ship-grid,
+      .audience-grid,
+      .faq-grid,
+      .blueprint-grid,
+      .spec-grid,
+      .schema-grid,
+      .playbook-grid,
+      .recipe-grid,
+      .tools-grid,
+      .waitlist-grid,
+      .usecase-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .flow {
+        grid-template-columns: 1fr;
+      }
+
+      .waitlist-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .flow-step {
+        border-right: 0;
+        border-bottom: 1px solid var(--sand);
+      }
+
+      .flow-step:last-child {
+        border-bottom: 0;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .topbar-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav {
+        justify-content: flex-start;
+      }
+
+      .hero {
+        padding-top: 44px;
+      }
+
+      .grid,
+      .grid.two,
+      .grid.four,
+      .promise-strip,
+      .broadcast-grid,
+      .ship-grid,
+      .audience-grid,
+      .faq-grid,
+      .blueprint-grid,
+      .spec-grid,
+      .schema-grid,
+      .playbook-grid,
+      .recipe-grid,
+      .tools-grid,
+      .waitlist-grid,
+      .usecase-grid,
+      .stats,
+      .searchbar {
+        grid-template-columns: 1fr;
+      }
+
+      .spec-row {
+        grid-template-columns: 1fr;
+      }
+
+      .stat {
+        border-right: 0;
+        border-bottom: 1px solid var(--sand);
+        padding-bottom: 16px;
+      }
+
+      .stat:last-child {
+        border-bottom: 0;
+      }
+
+      .hero-panel {
+        min-height: auto;
+      }
+
+      .usecase-head,
+      .case-controls,
+      .footer {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="#top" aria-label="MangoMagic Vibe Broadcasting MCP home">
+          <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjM0NSAxOTQgNzMwMS4xNSAxNTUyIiByb2xlPSJpbWciIGFyaWEtbGFiZWw9Ik1hbmdvTWFnaWMiPgogIDx0aXRsZT5NYW5nb01hZ2ljPC90aXRsZT4KICA8IS0tIEljb24gLS0+CiAgPHBhdGggZmlsbD0iI0YxQUIxQyIgZD0iTTM3OSAyMjggTDM3OSAxNzEyIEwxNjU1IDk2OSBMMTEzNCA2NjUgQzEwOTUuMSA2NjAuNyAxMDU3LjggNjY2LjcgMTAyNiA2OTEgQzEwMTkuOCA2OTUuNyA5OTQuOCA3MTQuNCA5OTkgNzI0IEM5OTkuNCA3MjUgMTAyMi45IDc0My45IDEwMjUgNzQ2IEMxMDQyLjEgNzYzLjEgMTA1OC4xIDc4Mi42IDEwNjggODA1IEMxMTA2LjkgODkyLjUgMTA5MiA5OTMgMTA1MCAxMDc3IEM5OTIuMSAxMTkyLjkgODYwLjUgMTI5NC43IDczMiAxMzE1IEM2NzQuMiAxMzI0LjEgNjA1LjYgMTMzMS42IDU2MCAxMjg2IEM1MDcuOSAxMjMzLjkgNTYxLjEgMTE0OS42IDU4MiAxMDk2IEM1OTIuMyAxMDY5LjQgNTkzLjkgMTA0MS41IDYwMCAxMDE0IEM2MDIuMSAxMDA0LjcgNjA0LjUgOTk2LjcgNjA1IDk4NyBDNjA2LjQgOTYyLjcgNjA3IDkzOCA2MTEgOTE0IEM2MjMuNSA4MzguNyA2NjIuNSA3NTggNzI5IDcxNiBDNzc1LjMgNjg2LjggODI4LjYgNjc0IDg4MyA2ODAgQzkwMS40IDY4MiA5MjAgNjg0LjQgOTM3IDY5MiBDOTQzLjYgNjk0LjkgOTU2LjMgNzAyLjYgOTY0IDY5OSBDOTcyLjMgNjk1LjEgOTc2LjEgNjgwLjYgOTc5IDY3MyBDOTk1LjIgNjMxLjMgOTkwLjMgNjAwLjEgOTYzIDU2NSBaIi8+CiAgPCEtLSBXb3JkbWFyazogTWFuZ29NYWdpYyBpbiBNb250c2VycmF0IE1lZGl1bSwgb3V0bGluZWQgdG8gcGF0aHMgLS0+CiAgPGcgZmlsbD0iI0ZGRkZGRiI+CiAgICAgICAgPHBhdGggZD0iTTEwNSAwVjcwMEgxODdMNDc5IDIwOEw3NjcgNzAwSDg0OUw4NTAgMEg3NTRMNzUzIDUxMUw1MDAgODVINDU0TDIwMSA1MDdWMFoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE3ODcuNDAsMTI1My40OCkgc2NhbGUoMC44MDk5NCwtMC44MDk5NCkgdHJhbnNsYXRlKDAsMCkiLz4KICAgIDxwYXRoIGQ9Ik00MjAgMFY2OVEzOTYgMzQgMzUyLjAgMTQuMFEzMDggLTYgMjQ2IC02UTE1NiAtNiAxMDMuMCAzNy41UTUwIDgxIDUwIDE1MFE1MCAxOTMgNzAuNSAyMjguMFE5MSAyNjMgMTM3LjUgMjg0LjBRMTg0IDMwNSAyNjMgMzA1SDQxNVYzMjRRNDE1IDM4NSAzNzkuNSA0MTguNVEzNDQgNDUyIDI3MyA0NTJRMjI2IDQ1MiAxODEuMCA0MzYuNVExMzYgNDIxIDEwNSAzOTVMNjUgNDY3UTEwNiA1MDAgMTYzLjUgNTE3LjVRMjIxIDUzNSAyODQgNTM1UTM5MyA1MzUgNDUyLjAgNDgxLjVRNTExIDQyOCA1MTEgMzIwVjBaTTQxNSAxNjJWMjM2SDI2N1ExOTUgMjM2IDE3MC4wIDIxMi4wUTE0NSAxODggMTQ1IDE1NFExNDUgMTE0IDE3Ni4wIDkxLjBRMjA3IDY4IDI2MiA2OFEzMTYgNjggMzU2LjUgOTIuMFEzOTcgMTE2IDQxNSAxNjJaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNzg3LjQwLDEyNTMuNDgpIHNjYWxlKDAuODA5OTQsLTAuODA5OTQpIHRyYW5zbGF0ZSg5NTUsMCkiLz4KICAgIDxwYXRoIGQ9Ik05MSAwVjUzMEgxODNWNDUwUTIxMyA0OTEgMjYyLjAgNTEzLjBRMzExIDUzNSAzNzQgNTM1UTQzOCA1MzUgNDg4LjAgNTEwLjBRNTM4IDQ4NSA1NjYuMCA0MzQuMFE1OTQgMzgzIDU5NCAzMDVWMEg0OThWMjk0UTQ5OCAzNzIgNDYwLjUgNDEwLjVRNDIzIDQ0OSAzNTUgNDQ5UTI3OSA0NDkgMjMzLjAgNDA0LjBRMTg3IDM1OSAxODcgMjczVjBaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNzg3LjQwLDEyNTMuNDgpIHNjYWxlKDAuODA5OTQsLTAuODA5OTQpIHRyYW5zbGF0ZSgxNTUzLDApIi8+CiAgICA8cGF0aCBkPSJNMzIzIC0yMDBRMjUwIC0yMDAgMTgxLjUgLTE4MC4wUTExMyAtMTYwIDcwIC0xMjFMMTE2IC00N1ExNTMgLTc5IDIwNy4wIC05Ny41UTI2MSAtMTE2IDMyMCAtMTE2UTQxNCAtMTE2IDQ1OC4wIC03Mi4wUTUwMiAtMjggNTAyIDYyVjEwNFE0NjggNjMgNDE4LjUgNDIuNVEzNjkgMjIgMzExIDIyUTIzNSAyMiAxNzQuMCA1NC41UTExMyA4NyA3Ny41IDE0NS4wUTQyIDIwMyA0MiAyNzlRNDIgMzU2IDc3LjUgNDEzLjVRMTEzIDQ3MSAxNzQuMCA1MDMuMFEyMzUgNTM1IDMxMSA1MzVRMzcwIDUzNSA0MjEuMCA1MTMuNVE0NzIgNDkyIDUwNyA0NDlWNTMwSDU5OFY3MlE1OTggLTY4IDUyOC4wIC0xMzQuMFE0NTggLTIwMCAzMjMgLTIwMFpNMzIyIDEwNlEzNzUgMTA2IDQxNi4wIDEyOC4wUTQ1NyAxNTAgNDgwLjUgMTg5LjBRNTA0IDIyOCA1MDQgMjc5UTUwNCAzMzAgNDgwLjUgMzY5LjBRNDU3IDQwOCA0MTYuMCA0MjkuNVEzNzUgNDUxIDMyMiA0NTFRMjY4IDQ1MSAyMjcuMCA0MjkuNVExODYgNDA4IDE2Mi41IDM2OS4wUTEzOSAzMzAgMTM5IDI3OVExMzkgMjI4IDE2Mi41IDE4OS4wUTE4NiAxNTAgMjI3LjAgMTI4LjBRMjY4IDEwNiAzMjIgMTA2WiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTc4Ny40MCwxMjUzLjQ4KSBzY2FsZSgwLjgwOTk0LC0wLjgwOTk0KSB0cmFuc2xhdGUoMjIzNCwwKSIvPgogICAgPHBhdGggZD0iTTMxOCAtNlEyMzggLTYgMTc2LjAgMjkuMFExMTQgNjQgNzguMCAxMjUuMFE0MiAxODYgNDIgMjY1UTQyIDM0NCA3OC4wIDQwNS4wUTExNCA0NjYgMTc2LjAgNTAwLjVRMjM4IDUzNSAzMTggNTM1UTM5NyA1MzUgNDU5LjUgNTAwLjVRNTIyIDQ2NiA1NTcuNSA0MDUuMFE1OTMgMzQ0IDU5MyAyNjVRNTkzIDE4NiA1NTcuNSAxMjUuMFE1MjIgNjQgNDU5LjUgMjkuMFEzOTcgLTYgMzE4IC02Wk0zMTggNzhRMzY5IDc4IDQwOS41IDEwMS41UTQ1MCAxMjUgNDczLjAgMTY3LjBRNDk2IDIwOSA0OTYgMjY1UTQ5NiAzMjEgNDczLjAgMzYzLjBRNDUwIDQwNSA0MDkuNSA0MjguMFEzNjkgNDUxIDMxOCA0NTFRMjY3IDQ1MSAyMjYuNSA0MjguMFExODYgNDA1IDE2Mi41IDM2My4wUTEzOSAzMjEgMTM5IDI2NVExMzkgMjA5IDE2Mi41IDE2Ny4wUTE4NiAxMjUgMjI2LjUgMTAxLjVRMjY3IDc4IDMxOCA3OFoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE3ODcuNDAsMTI1My40OCkgc2NhbGUoMC44MDk5NCwtMC44MDk5NCkgdHJhbnNsYXRlKDI5MjQsMCkiLz4KICAgIDxwYXRoIGQ9Ik0xMDUgMFY3MDBIMTg3TDQ3OSAyMDhMNzY3IDcwMEg4NDlMODUwIDBINzU0TDc1MyA1MTFMNTAwIDg1SDQ1NEwyMDEgNTA3VjBaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNzg3LjQwLDEyNTMuNDgpIHNjYWxlKDAuODA5OTQsLTAuODA5OTQpIHRyYW5zbGF0ZSgzNTU5LDApIi8+CiAgICA8cGF0aCBkPSJNNDIwIDBWNjlRMzk2IDM0IDM1Mi4wIDE0LjBRMzA4IC02IDI0NiAtNlExNTYgLTYgMTAzLjAgMzcuNVE1MCA4MSA1MCAxNTBRNTAgMTkzIDcwLjUgMjI4LjBROTEgMjYzIDEzNy41IDI4NC4wUTE4NCAzMDUgMjYzIDMwNUg0MTVWMzI0UTQxNSAzODUgMzc5LjUgNDE4LjVRMzQ0IDQ1MiAyNzMgNDUyUTIyNiA0NTIgMTgxLjAgNDM2LjVRMTM2IDQyMSAxMDUgMzk1TDY1IDQ2N1ExMDYgNTAwIDE2My41IDUxNy41UTIyMSA1MzUgMjg0IDUzNVEzOTMgNTM1IDQ1Mi4wIDQ4MS41UTUxMSA0MjggNTExIDMyMFYwWk00MTUgMTYyVjIzNkgyNjdRMTk1IDIzNiAxNzAuMCAyMTIuMFExNDUgMTg4IDE0NSAxNTRRMTQ1IDExNCAxNzYuMCA5MS4wUTIwNyA2OCAyNjIgNjhRMzE2IDY4IDM1Ni41IDkyLjBRMzk3IDExNiA0MTUgMTYyWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTc4Ny40MCwxMjUzLjQ4KSBzY2FsZSgwLjgwOTk0LC0wLjgwOTk0KSB0cmFuc2xhdGUoNDUxNCwwKSIvPgogICAgPHBhdGggZD0iTTMyMyAtMjAwUTI1MCAtMjAwIDE4MS41IC0xODAuMFExMTMgLTE2MCA3MCAtMTIxTDExNiAtNDdRMTUzIC03OSAyMDcuMCAtOTcuNVEyNjEgLTExNiAzMjAgLTExNlE0MTQgLTExNiA0NTguMCAtNzIuMFE1MDIgLTI4IDUwMiA2MlYxMDRRNDY4IDYzIDQxOC41IDQyLjVRMzY5IDIyIDMxMSAyMlEyMzUgMjIgMTc0LjAgNTQuNVExMTMgODcgNzcuNSAxNDUuMFE0MiAyMDMgNDIgMjc5UTQyIDM1NiA3Ny41IDQxMy41UTExMyA0NzEgMTc0LjAgNTAzLjBRMjM1IDUzNSAzMTEgNTM1UTM3MCA1MzUgNDIxLjAgNTEzLjVRNDcyIDQ5MiA1MDcgNDQ5VjUzMEg1OThWNzJRNTk4IC02OCA1MjguMCAtMTM0LjBRNDU4IC0yMDAgMzIzIC0yMDBaTTMyMiAxMDZRMzc1IDEwNiA0MTYuMCAxMjguMFE0NTcgMTUwIDQ4MC41IDE4OS4wUTUwNCAyMjggNTA0IDI3OVE1MDQgMzMwIDQ4MC41IDM2OS4wUTQ1NyA0MDggNDE2LjAgNDI5LjVRMzc1IDQ1MSAzMjIgNDUxUTI2OCA0NTEgMjI3LjAgNDI5LjVRMTg2IDQwOCAxNjIuNSAzNjkuMFExMzkgMzMwIDEzOSAyNzlRMTM5IDIyOCAxNjIuNSAxODkuMFExODYgMTUwIDIyNy4wIDEyOC4wUTI2OCAxMDYgMzIyIDEwNloiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE3ODcuNDAsMTI1My40OCkgc2NhbGUoMC44MDk5NCwtMC44MDk5NCkgdHJhbnNsYXRlKDUxMTIsMCkiLz4KICAgIDxwYXRoIGQ9Ik05MSAwVjUzMEgxODdWMFpNMTM5IDYzMlExMTEgNjMyIDkyLjUgNjUwLjBRNzQgNjY4IDc0IDY5NFE3NCA3MjAgOTIuNSA3MzguNVExMTEgNzU3IDEzOSA3NTdRMTY3IDc1NyAxODUuNSA3MzkuNVEyMDQgNzIyIDIwNCA2OTZRMjA0IDY2OSAxODUuNSA2NTAuNVExNjcgNjMyIDEzOSA2MzJaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNzg3LjQwLDEyNTMuNDgpIHNjYWxlKDAuODA5OTQsLTAuODA5OTQpIHRyYW5zbGF0ZSg1ODAyLDApIi8+CiAgICA8cGF0aCBkPSJNMzIyIC02UTI0MCAtNiAxNzcuMCAyOS4wUTExNCA2NCA3OC4wIDEyNS4wUTQyIDE4NiA0MiAyNjVRNDIgMzQ0IDc4LjAgNDA1LjBRMTE0IDQ2NiAxNzcuMCA1MDAuNVEyNDAgNTM1IDMyMiA1MzVRMzkzIDUzNSA0NTAuMCA1MDYuNVE1MDcgNDc4IDUzOCA0MjJMNDY1IDM3NVE0MzkgNDE0IDQwMS41IDQzMi41UTM2NCA0NTEgMzIxIDQ1MVEyNjkgNDUxIDIyOC4wIDQyOC4wUTE4NyA0MDUgMTYzLjAgMzYzLjVRMTM5IDMyMiAxMzkgMjY1UTEzOSAyMDggMTYzLjAgMTY2LjBRMTg3IDEyNCAyMjguMCAxMDEuMFEyNjkgNzggMzIxIDc4UTM2NCA3OCA0MDEuNSA5Ni41UTQzOSAxMTUgNDY1IDE1NEw1MzggMTA4UTUwNyA1MyA0NTAuMCAyMy41UTM5MyAtNiAzMjIgLTZaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNzg3LjQwLDEyNTMuNDgpIHNjYWxlKDAuODA5OTQsLTAuODA5OTQpIHRyYW5zbGF0ZSg2MDgxLDApIi8+CiAgICA8cGF0aCBkPSJNNDM5IDI4NVY3MDBINDk4TDY4MyA0MTZMODY0IDcwMEg5MjNMOTI0IDI4NUg4NTVMODU0IDU3NUw2OTggMzM0SDY2NUw1MDggNTcwVjI4NVpNMTU1IDI4NVY2NDFINFY3MDBIMzc4VjY0MUgyMjdWMjg1WiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNzE5OS40NCw5NzAuMDApIHNjYWxlKDAuNDA0OTcsLTAuNDA0OTcpIi8+CiAgPC9nPgo8L3N2Zz4K" alt="MangoMagic 3.0" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+          <span class="brand-mark" style="display:none;">M</span>
+        </a>
+        <nav class="nav" aria-label="Primary">
+          <a href="#why">Why</a>
+          <a href="#ship">Ship</a>
+          <a href="#quickstart">Install</a>
+          <a href="#blueprints">Build</a>
+          <a href="#sdk">Monetise</a>
+          <a href="#usecases">Atlas</a>
+          <a href="#waitlist">Waitlist</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div>
+          <span class="label">V I B E   B R O A D C A S T I N G   &middot;   M C P   F O R   V I B E   C O D E R S</span>
+          <h1 id="hero-title">Vibe broadcasting for vibe coders.</h1>
+          <p>Connect your agent to MangoMagic and turn one source asset into the whole broadcast: edited podcasts, short clips, captions, websites, posts, guest outreach, booking flows, paid boosts, reports, and credit-backed delivery from any app.</p>
+          <div class="hero-actions">
+            <a class="button waitlist-link" href="#waitlist">Join the private waitlist</a>
+            <a class="button secondary" href="#ship">See what you can ship</a>
+          </div>
+        </div>
+        <aside class="hero-panel" aria-label="Platform identity">
+          <div>
+            <span class="label">I D   B L O C K   &middot;   C R E A T I V E   B R O A D C A S T   P L A N E</span>
+            <h2>One agent command. Every creative asset after it.</h2>
+            <p>Agents do not need rendering farms, storage buckets, social APIs, calendar logic, or credit settlement. They ask for the broadcast outcome, watch jobs, and receive signed assets, pages, posts, approvals, and reports.</p>
+          </div>
+          <div class="stats">
+            <div class="stat">
+              <strong id="toolCount">153+</strong>
+              <span class="stat-label">M C P   T O O L S</span>
+            </div>
+            <div class="stat">
+              <strong id="caseCount">2,880</strong>
+              <span class="stat-label">U S E   C A S E S</span>
+            </div>
+            <div class="stat">
+              <strong>1</strong>
+              <span class="stat-label">B R O A D C A S T   L O O P</span>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <div class="promise-strip" aria-label="Vibe broadcasting promise">
+        <div class="promise-item">
+          <strong>One source in.</strong>
+          <p>A recording, meeting, transcript, folder, voice memo, product demo, webinar, or customer call.</p>
+        </div>
+        <div class="promise-item">
+          <strong>Whole broadcast out.</strong>
+          <p>Clips, captions, pages, posts, emails, outreach, bookings, boosts, reports, and reusable assets.</p>
+        </div>
+        <div class="promise-item">
+          <strong>Credits stay visible.</strong>
+          <p>Estimate first, reserve with a cap, run the job, settle real usage, refund what was not used.</p>
+        </div>
+        <div class="promise-item">
+          <strong>Agents stay useful.</strong>
+          <p>The agent controls intent and review. MangoMagic handles media, storage, publishing, and job state.</p>
+        </div>
+      </div>
+
+      <section class="section" id="why">
+        <div class="section-head">
+          <div>
+            <span class="label">B U I L D E R   P R O M I S E   &middot;   W H A T   T H E Y   N E E D   F I R S T</span>
+            <h2 class="section-title">This is creative infrastructure with a vibe-coding interface.</h2>
+          </div>
+          <p>People do not arrive wanting 153 tools. They want to know whether their agent can create finished work, whether the money is controlled, and whether they can build a product around it.</p>
+        </div>
+
+        <div class="broadcast-grid">
+          <article class="broadcast-card navy">
+            <span class="label">T H E   C A T E G O R Y</span>
+            <h3>Vibe broadcasting means every recording becomes a distribution system.</h3>
+            <p>The agent does not just edit a file. It turns source material into a coordinated broadcast across media, web, social, email, booking, outreach, analytics, and follow-up.</p>
+          </article>
+          <article class="broadcast-card">
+            <span class="label">T H E   F E E L I N G</span>
+            <h3>The user asks for the outcome.</h3>
+            <ul>
+              <li>“Turn this founder call into a launch pack.”</li>
+              <li>“Make 20 clips and a landing page from this webinar.”</li>
+              <li>“Create a guest invite flow and booking page for this show.”</li>
+              <li>“Sell a fixed creative job in my app and fulfil it with MangoMagic credits.”</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="ship">
+        <div class="section-head">
+          <div>
+            <span class="label">S H I P   F I R S T   &middot;   T H E   B U I L D E R   M E N U</span>
+            <h2 class="section-title">Give people a first product, not a blank API.</h2>
+          </div>
+          <p>The best first integrations are narrow, valuable, and easy to demo. Each one can be a button in a SaaS app, a command in a coding agent, a packaged agency offer, or a marketplace product.</p>
+        </div>
+
+        <div class="ship-grid">
+          <article class="ship-card">
+            <div>
+              <span class="tag">Podcast</span>
+              <h3>Episode launch pack.</h3>
+              <p>Raw recording becomes full edit, transcript, show notes, episode page, clips, posts, and guest share kit.</p>
+            </div>
+            <div class="prompt-box">Run recipe: episode_launch_pack. Ask for approval before publish. Cap draft work at 120 credits.</div>
+          </article>
+          <article class="ship-card">
+            <div>
+              <span class="tag">Video</span>
+              <h3>Clip farm button.</h3>
+              <p>A folder of long-form media becomes ranked hooks, vertical clips, captions, thumbnails, and a review board.</p>
+            </div>
+            <div class="prompt-box">Run recipe: clip_farm_sprint. Create draft clips first. Final-render only approved winners.</div>
+          </article>
+          <article class="ship-card">
+            <div>
+              <span class="tag">Website</span>
+              <h3>Page from recording.</h3>
+              <p>A call, webinar, podcast, or demo becomes a landing page with proof, clips, FAQ, SEO, and booking CTA.</p>
+            </div>
+            <div class="prompt-box">Call website.generate. Use source transcript, brand kit, proof clips, and one conversion goal.</div>
+          </article>
+          <article class="ship-card">
+            <div>
+              <span class="tag">Growth</span>
+              <h3>Meeting to campaign.</h3>
+              <p>Meeting transcripts become posts, email, lead magnet ideas, follow-up pages, outreach copy, and sales tasks.</p>
+            </div>
+            <div class="prompt-box">Sync meetings, extract ideas, create campaign brief, estimate credits, then queue review.</div>
+          </article>
+          <article class="ship-card">
+            <div>
+              <span class="tag">Guests</span>
+              <h3>Guest booking flywheel.</h3>
+              <p>Find guests, qualify them, draft invites, create booking pages, prep the host, and ship share assets after publish.</p>
+            </div>
+            <div class="prompt-box">Run guest_growth_flywheel. Track guest shares, referral traffic, clips, leads, and bookings.</div>
+          </article>
+          <article class="ship-card">
+            <div>
+              <span class="tag">Marketplace</span>
+              <h3>White-label creative job.</h3>
+              <p>Sell “12 clips from your podcast” or “webinar recap page” inside another app with credit-backed fulfilment.</p>
+            </div>
+            <div class="prompt-box">Quote job, reserve credits, run recipe, open review board, deliver assets, settle usage.</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="audience">
+        <div class="section-head">
+          <div>
+            <span class="label">W H O   I T   I S   F O R   &middot;   S H O W   T H E   B U S I N E S S   M O D E L</span>
+            <h2 class="section-title">Different builders should see themselves immediately.</h2>
+          </div>
+          <p>A public docs page needs to name the buyer and the builder. The same MCP can power creator tools, agencies, internal teams, marketplaces, and solo operators.</p>
+        </div>
+
+        <div class="audience-grid">
+          <article class="audience-card">
+            <h3>Vibe coders.</h3>
+            <p>Connect a local agent and ship creative output without becoming a media infrastructure team.</p>
+          </article>
+          <article class="audience-card">
+            <h3>Creator SaaS.</h3>
+            <p>Add “generate clips”, “build page”, and “launch campaign” buttons without building render queues.</p>
+          </article>
+          <article class="audience-card">
+            <h3>Podcast platforms.</h3>
+            <p>Turn uploads into complete episode launches, guest share kits, pages, and analytics.</p>
+          </article>
+          <article class="audience-card">
+            <h3>Agencies.</h3>
+            <p>Productise services, control credits, collect approvals, and deliver assets with clean reporting.</p>
+          </article>
+          <article class="audience-card">
+            <h3>Communities.</h3>
+            <p>Turn calls, AMAs, workshops, and events into member content, recaps, clips, and resource hubs.</p>
+          </article>
+          <article class="audience-card">
+            <h3>Sales teams.</h3>
+            <p>Turn demos and customer calls into follow-up pages, objection clips, proof libraries, and deal rooms.</p>
+          </article>
+          <article class="audience-card">
+            <h3>Marketplaces.</h3>
+            <p>Sell fixed creative jobs and let MangoMagic handle quotes, credits, fulfilment, and delivery state.</p>
+          </article>
+          <article class="audience-card">
+            <h3>Internal ops.</h3>
+            <p>Batch process meetings, webinars, demos, and archives into searchable, reusable creative assets.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="power">
+        <div class="section-head">
+          <div>
+            <span class="label">S E C T I O N   0 1   &middot;   P O W E R   M O V E S</span>
+            <h2 class="section-title">The moves developers should notice first.</h2>
+          </div>
+          <p>These are the reasons a builder connects their AI editor, agent, internal tool, or no-code workflow to MangoPods instead of trying to reinvent media infrastructure from scratch.</p>
+        </div>
+        <div class="grid four">
+          <article class="card">
+            <span class="number">1</span>
+            <h3>Prompt-to-published episode.</h3>
+            <p>Send raw audio or video, get a mixed episode, transcript, show notes, clips, captions, landing page, and scheduled launch pack.</p>
+          </article>
+          <article class="card">
+            <span class="number">2</span>
+            <h3>Use MangoPods credits anywhere.</h3>
+            <p>Let your app meter, reserve, spend, settle, refund, and explain credits while MangoPods runs the expensive creative work.</p>
+          </article>
+          <article class="card">
+            <span class="number">3</span>
+            <h3>Ship edits from any AI workspace.</h3>
+            <p>Cursor, Claude Desktop, ChatGPT, internal agents, Zapier-style flows, and studio tools can all call the same MCP contract.</p>
+          </article>
+          <article class="card">
+            <span class="number">4</span>
+            <h3>Turn meetings into media.</h3>
+            <p>Import calls, extract ideas, draft guest invites, generate follow-up clips, and build the web page that captures demand.</p>
+          </article>
+          <article class="card">
+            <span class="number">5</span>
+            <h3>Control plane, not video pipe.</h3>
+            <p>Heavy files live in signed URLs and asset jobs. MCP carries intent, IDs, constraints, status, and final deliverables.</p>
+          </article>
+          <article class="card">
+            <span class="number">6</span>
+            <h3>Brand-safe output.</h3>
+            <p>Agents can read and apply brand kits, voice rules, intro packs, watermark rules, visual templates, and legal approvals.</p>
+          </article>
+          <article class="card">
+            <span class="number">7</span>
+            <h3>Composable creative recipes.</h3>
+            <p>Developers can chain small tools into reliable workflows like episode launch, clip farm, webinar recap, or landing page sprint.</p>
+          </article>
+          <article class="card">
+            <span class="number">8</span>
+            <h3>Async job superpowers.</h3>
+            <p>Every expensive operation becomes a trackable job with progress, webhooks, retry policy, cancellation, and audit events.</p>
+          </article>
+          <article class="card">
+            <span class="number">9</span>
+            <h3>Creative commerce layer.</h3>
+            <p>Partner apps can sell outcomes while MangoPods handles credit pricing, asset generation, usage records, and account limits.</p>
+          </article>
+          <article class="card">
+            <span class="number">10</span>
+            <h3>Audience growth loop.</h3>
+            <p>Move from one recording to posts, boosts, LinkedIn outreach, referral pages, booking links, and analytics that feed the next idea.</p>
+          </article>
+          <article class="card">
+            <span class="number">11</span>
+            <h3>Website creation from content.</h3>
+            <p>Turn episodes, calls, testimonials, courses, or founder notes into pages with copy, structure, media, CTAs, and publishing jobs.</p>
+          </article>
+          <article class="card">
+            <span class="number">12</span>
+            <h3>Agency operating system.</h3>
+            <p>Bulk import clients, produce creative packs, review drafts, approve spend, export assets, and prove ROI with one MCP workflow.</p>
+          </article>
+        </div>
+        <div class="doc-block">
+          <h3>Productised recipe shelf.</h3>
+          <p>Use these as packaged buttons, plan entitlements, marketplace products, agency line items, or agent shortcuts. Each recipe should declare required scopes, expected inputs, credit policy, approval gates, and output assets.</p>
+          <div id="recipeCatalog" class="recipe-grid" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="band" aria-labelledby="architecture-title">
+        <div class="band-inner">
+          <span class="label">S E C T I O N   0 2   &middot;   M E N T A L   M O D E L</span>
+          <h2 id="architecture-title">MCP is the remote control, MangoPods is the studio.</h2>
+          <p>The agent sends creative intent and constraints. MangoPods imports media, estimates credits, reserves spend, launches jobs, stores artifacts, publishes to connected channels, and reports back with durable IDs.</p>
+          <div class="flow" aria-label="MangoPods MCP flow">
+            <div class="flow-step">
+              <strong>1. Connect</strong>
+              <span>Developer app installs the remote MCP server and requests scopes.</span>
+            </div>
+            <div class="flow-step">
+              <strong>2. Prepare</strong>
+              <span>Agent creates a project, imports assets, reads brand kit, and estimates credits.</span>
+            </div>
+            <div class="flow-step">
+              <strong>3. Reserve</strong>
+              <span>MangoPods places a credit hold with idempotency and a maximum spend cap.</span>
+            </div>
+            <div class="flow-step">
+              <strong>4. Execute</strong>
+              <span>Async jobs edit, render, generate, publish, enrich, or analyze work.</span>
+            </div>
+            <div class="flow-step">
+              <strong>5. Settle</strong>
+              <span>Final assets, pages, posts, analytics, refunds, and audit logs are returned.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="quickstart">
+        <div class="section-head">
+          <div>
+            <span class="label">S E C T I O N   0 3   &middot;   D E V E L O P E R   Q U I C K S T A R T</span>
+            <h2 class="section-title">Get an agent editing in five minutes.</h2>
+          </div>
+          <p>This is the happy path for a developer who wants their app or coding assistant to call MangoPods tools immediately.</p>
+        </div>
+
+        <div class="docs-grid">
+          <aside class="toc" aria-label="Developer docs sections">
+            <a href="#install">Install</a>
+            <a href="#auth">Auth</a>
+            <a href="#credits">Credits</a>
+            <a href="#assets">Assets</a>
+            <a href="#jobs">Jobs</a>
+            <a href="#tools">Tools</a>
+            <a href="#resources">Resources</a>
+            <a href="#webhooks">Webhooks</a>
+            <a href="#errors">Errors</a>
+            <a href="#security">Security</a>
+          </aside>
+
+          <div>
+            <article class="doc-block" id="install">
+              <h3>Install the MCP server.</h3>
+              <p>Add MangoPods as a remote MCP server in the agent environment. Developers can use an API key for personal automation or OAuth for user-delegated access.</p>
+              <div class="code-wrap">
+                <button class="copy-button" type="button">Copy</button>
+<pre><code>{
+  "mcpServers": {
+    "mangopods": {
+      "url": "https://api.mangopods.com/mcp",
+      "headers": {
+        "Authorization": "Bearer ${MANGOPODS_API_KEY}",
+        "MangoPods-Workspace": "${MANGOPODS_WORKSPACE_ID}"
+      }
+    }
+  }
+}</code></pre>
+              </div>
+              <h4>First test call.</h4>
+              <div class="code-wrap">
+                <button class="copy-button" type="button">Copy</button>
+<pre><code>{
+  "tool": "workspace.get_profile",
+  "arguments": {}
+}</code></pre>
+              </div>
+            </article>
+
+            <article class="doc-block" id="auth">
+              <h3>Auth and scopes.</h3>
+              <p>MangoPods apps request the smallest scope set that can complete the job. Read scopes let agents inspect existing projects and assets. Write scopes can create, render, publish, spend credits, or manage team operations.</p>
+              <div class="grid two">
+                <div class="scope-card">
+                  <code>workspace:read</code>
+                  <h3>Workspace context.</h3>
+                  <p>Read profile, plan, connected channels, installed recipes, limits, and basic workspace settings.</p>
+                </div>
+                <div class="scope-card">
+                  <code>credits:spend</code>
+                  <h3>Credit operations.</h3>
+                  <p>Estimate, reserve, settle, refund, and report credit usage for a user-approved job.</p>
+                </div>
+                <div class="scope-card">
+                  <code>assets:write</code>
+                  <h3>Asset imports.</h3>
+                  <p>Create upload sessions, import URLs, tag files, generate signed URLs, and attach media to projects.</p>
+                </div>
+                <div class="scope-card">
+                  <code>media:edit</code>
+                  <h3>Creative editing.</h3>
+                  <p>Launch editing, transcription, captioning, clip extraction, rendering, repair, and remix jobs.</p>
+                </div>
+                <div class="scope-card">
+                  <code>website:write</code>
+                  <h3>Web publishing.</h3>
+                  <p>Generate pages, update sections, bind media, publish previews, and launch public pages.</p>
+                </div>
+                <div class="scope-card">
+                  <code>reach:write</code>
+                  <h3>Growth actions.</h3>
+                  <p>Create campaigns, draft messages, enrich leads, connect booking links, and schedule social posts.</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="doc-block" id="credits">
+              <h3>Credit lifecycle.</h3>
+              <p>Every meaningful job should start with an estimate. Agents can show the user expected spend, reserve a cap, execute the work, then settle or refund unused credits.</p>
+              <ol>
+                <li>Call <code>credits.estimate</code> with the tool family, input assets, quality tier, duration, language count, render target, and publishing destinations.</li>
+                <li>Call <code>credits.reserve</code> with a maximum cap, user confirmation, and idempotency key.</li>
+                <li>Pass <code>credit_hold_id</code> into the creative tool call.</li>
+                <li>Watch the job until complete, failed, cancelled, or awaiting approval.</li>
+                <li>Call <code>credits.settle</code>, or let MangoPods auto-settle once the job is complete.</li>
+              </ol>
+              <div class="code-wrap">
+                <button class="copy-button" type="button">Copy</button>
+<pre><code>{
+  "tool": "credits.estimate",
+  "arguments": {
+    "operation": "video.generate_clips",
+    "quality": "pro",
+    "source_asset_ids": ["asset_raw_interview_01"],
+    "outputs": [
+      {"type": "vertical_clip", "count": 12, "duration_seconds": 45},
+      {"type": "captions", "languages": ["en"]},
+      {"type": "thumbnail", "count": 12}
+    ]
+  }
+}</code></pre>
+              </div>
+            </article>
+
+            <article class="doc-block" id="assets">
+              <h3>Assets and media plane.</h3>
+              <p>MCP should not haul giant video files through the conversation. MangoPods uses an asset model: agents create upload sessions, import media from URLs, attach metadata, and receive signed URLs for download or preview.</p>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Object</th>
+                    <th>Meaning</th>
+                    <th>Typical fields</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>project</code></td>
+                    <td>A creative workspace for an episode, client job, campaign, page, recording, or content sprint.</td>
+                    <td><code>project_id</code>, name, owner, brand kit, status, due date.</td>
+                  </tr>
+                  <tr>
+                    <td><code>asset</code></td>
+                    <td>A durable file or generated artifact such as raw media, rendered clips, transcripts, covers, captions, or exports.</td>
+                    <td><code>asset_id</code>, type, mime, duration, dimensions, tags, signed URLs.</td>
+                  </tr>
+                  <tr>
+                    <td><code>job</code></td>
+                    <td>An async operation that edits, renders, imports, analyzes, publishes, enriches, or generates something.</td>
+                    <td><code>job_id</code>, state, progress, cost estimate, logs, result asset IDs.</td>
+                  </tr>
+                  <tr>
+                    <td><code>recipe</code></td>
+                    <td>A reusable multi-step workflow that agents can run with user-approved inputs.</td>
+                    <td><code>recipe_id</code>, version, steps, required scopes, credit policy.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </article>
+
+            <article class="doc-block" id="jobs">
+              <h3>Jobs and states.</h3>
+              <p>Creative operations are asynchronous by default. Short operations can return inline. Expensive work returns a job that can be watched, cancelled, retried, or resumed.</p>
+              <div class="pill-row">
+                <span class="pill">queued</span>
+                <span class="pill">running</span>
+                <span class="pill">awaiting_approval</span>
+                <span class="pill">succeeded</span>
+                <span class="pill">failed</span>
+                <span class="pill">cancelled</span>
+              </div>
+              <div class="code-wrap">
+                <button class="copy-button" type="button">Copy</button>
+<pre><code>{
+  "tool": "job.get",
+  "arguments": {
+    "job_id": "job_clipfarm_8uJ2",
+    "include_logs": true,
+    "include_outputs": true
+  }
+}</code></pre>
+              </div>
+            </article>
+
+            <article class="doc-block" id="resources">
+              <h3>Resources.</h3>
+              <p>Agents can read MCP resources before taking action. This keeps them from asking the user for information MangoPods already knows.</p>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Resource URI</th>
+                    <th>Use it for</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>mangopods://workspace/profile</code></td>
+                    <td>Plan, limits, connected apps, workspace identity, preferred defaults.</td>
+                  </tr>
+                  <tr>
+                    <td><code>mangopods://brand/kits</code></td>
+                    <td>Logo, colors, typography, voice, intro packs, safe words, approval rules.</td>
+                  </tr>
+                  <tr>
+                    <td><code>mangopods://projects/recent</code></td>
+                    <td>Recent episodes, campaigns, pages, meetings, imports, and render jobs.</td>
+                  </tr>
+                  <tr>
+                    <td><code>mangopods://recipes/catalog</code></td>
+                    <td>Reusable workflows such as episode launch, clip farm, lead magnet, webinar recap, and social sprint.</td>
+                  </tr>
+                  <tr>
+                    <td><code>mangopods://credits/rates</code></td>
+                    <td>Credit pricing, current balance, holds, refunds, and operation estimates.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </article>
+
+            <article class="doc-block" id="webhooks">
+              <h3>Webhooks.</h3>
+              <p>Use webhooks when your app needs to react outside the current agent session. Each event is signed and retryable.</p>
+              <div class="grid two">
+                <div class="card">
+                  <h3>Job events.</h3>
+                  <p><code>job.queued</code>, <code>job.running</code>, <code>job.awaiting_approval</code>, <code>job.succeeded</code>, <code>job.failed</code>, <code>job.cancelled</code>.</p>
+                </div>
+                <div class="card">
+                  <h3>Credit events.</h3>
+                  <p><code>credit.hold_created</code>, <code>credit.settled</code>, <code>credit.refunded</code>, <code>credit.limit_exceeded</code>.</p>
+                </div>
+                <div class="card">
+                  <h3>Publishing events.</h3>
+                  <p><code>post.scheduled</code>, <code>post.published</code>, <code>page.published</code>, <code>boost.created</code>, <code>booking.created</code>.</p>
+                </div>
+                <div class="card">
+                  <h3>Review events.</h3>
+                  <p><code>approval.requested</code>, <code>approval.accepted</code>, <code>approval.rejected</code>, <code>asset.comment_added</code>.</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="doc-block" id="errors">
+              <h3>Error model.</h3>
+              <p>Errors are designed for agents. Every failure includes a stable code, a human-readable explanation, retry guidance, and a suggested next tool.</p>
+              <div class="code-wrap">
+                <button class="copy-button" type="button">Copy</button>
+<pre><code>{
+  "error": {
+    "code": "credit_limit_exceeded",
+    "message": "This render needs 184 credits, but the approved cap is 120.",
+    "retryable": true,
+    "suggested_next_tool": "credits.estimate",
+    "safe_user_message": "The requested quality tier costs more than the approved budget. Try fewer clips, lower quality, or approve a higher cap."
+  }
+}</code></pre>
+              </div>
+            </article>
+
+            <article class="doc-block" id="security">
+              <h3>Security and reliability.</h3>
+              <ul>
+                <li>Use OAuth for user-facing products and API keys only for owned workspace automation.</li>
+                <li>Send an idempotency key for every spend, render, publish, booking, and import operation.</li>
+                <li>Prefer signed asset URLs with short lifetimes instead of sending raw media through chat history.</li>
+                <li>Use dry runs for destructive or expensive operations.</li>
+                <li>Request user confirmation for public publishing, paid boosts, high credit spend, and outreach campaigns.</li>
+                <li>Store webhook signing secrets outside the client and rotate them when a partner app is removed.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="blueprints">
+        <div class="section-head">
+          <div>
+            <span class="label">S E C T I O N   0 4   &middot;   I N T E G R A T I O N   B L U E P R I N T S</span>
+            <h2 class="section-title">Choose the product shape before choosing tools.</h2>
+          </div>
+          <p>The same MCP server can serve a solo vibe coder, a SaaS app, a creative agency, a marketplace, a no-code automation, or a private internal media engine. Pick the integration shape first, then compose tools around it.</p>
+        </div>
+        <div class="blueprint-grid">
+          <article class="blueprint">
+            <span class="label">B L U E P R I N T   0 1   &middot;   D E S K T O P   A G E N T</span>
+            <h3>Vibe coder in Cursor, Claude Desktop, or ChatGPT.</h3>
+            <p>The user connects MangoPods MCP, pastes a brief, points to a media file, approves credits, and asks the agent to produce a complete creative outcome.</p>
+            <div class="spec-grid">
+              <div class="spec-row"><span>Best for</span><p>Solo creators, founders, internal operators, and technical marketers.</p></div>
+              <div class="spec-row"><span>Scopes</span><p><code>workspace:read</code>, <code>assets:write</code>, <code>media:edit</code>, <code>credits:spend</code>.</p></div>
+              <div class="spec-row"><span>Guardrail</span><p>Always estimate and confirm before reserving credits or publishing publicly.</p></div>
+              <div class="spec-row"><span>Power move</span><p>Let the agent create a project and run <code>recipe.run</code> instead of issuing 30 tiny manual calls.</p></div>
+            </div>
+          </article>
+
+          <article class="blueprint">
+            <span class="label">B L U E P R I N T   0 2   &middot;   S A A S   E M B E D</span>
+            <h3>Your app sells creative outcomes.</h3>
+            <p>A partner product exposes buttons like Generate clips, Build episode page, Draft campaign, or Repair audio. MangoPods handles compute, storage, rendering, credit accounting, and job status.</p>
+            <div class="spec-grid">
+              <div class="spec-row"><span>Best for</span><p>Creator tools, CRM systems, podcast platforms, community apps, course platforms, and marketing products.</p></div>
+              <div class="spec-row"><span>Auth</span><p>OAuth with per-user scopes, workspace binding, and partner app identity.</p></div>
+              <div class="spec-row"><span>Billing</span><p>Map your product credits to MangoPods holds, then settle actual usage after job completion.</p></div>
+              <div class="spec-row"><span>Power move</span><p>Use webhooks to update your UI without keeping an agent session alive.</p></div>
+            </div>
+          </article>
+
+          <article class="blueprint">
+            <span class="label">B L U E P R I N T   0 3   &middot;   A G E N C Y   P O R T A L</span>
+            <h3>White-labelled creative operations.</h3>
+            <p>Agencies can create client workspaces, attach brand kits, import folders, run recipes, collect approvals, deliver exports, and show credit-backed margins.</p>
+            <div class="spec-grid">
+              <div class="spec-row"><span>Best for</span><p>Podcast agencies, video editors, founder-brand studios, paid social teams, and web design shops.</p></div>
+              <div class="spec-row"><span>Objects</span><p>Client workspace, project, brand kit, review board, asset pack, monthly report.</p></div>
+              <div class="spec-row"><span>Guardrail</span><p>Set per-client spend caps, approval roles, and publish permissions before bulk imports.</p></div>
+              <div class="spec-row"><span>Power move</span><p>Save every service as a recipe and measure gross margin by recipe type.</p></div>
+            </div>
+          </article>
+
+          <article class="blueprint">
+            <span class="label">B L U E P R I N T   0 4   &middot;   B A T C H   E N G I N E</span>
+            <h3>Back catalog and overnight work queues.</h3>
+            <p>Import a Drive folder, CSV, archive, or content library. MangoPods queues jobs, estimates spend, retries failures, creates assets, and leaves a morning review board.</p>
+            <div class="spec-grid">
+              <div class="spec-row"><span>Best for</span><p>Backfills, migrations, archive refreshes, social calendars, client onboarding, and historical analytics.</p></div>
+              <div class="spec-row"><span>Scopes</span><p><code>bulk:write</code>, <code>assets:write</code>, <code>recipes:write</code>, <code>analytics:read</code>.</p></div>
+              <div class="spec-row"><span>Guardrail</span><p>Require a batch budget, priority policy, and failure report destination.</p></div>
+              <div class="spec-row"><span>Power move</span><p>Run draft-quality outputs first, then final-render only approved winners.</p></div>
+            </div>
+          </article>
+
+          <article class="blueprint">
+            <span class="label">B L U E P R I N T   0 5   &middot;   M A R K E T P L A C E</span>
+            <h3>Sell MangoPods-powered jobs as products.</h3>
+            <p>Offer fixed creative products such as 12 clips, podcast launch pack, webinar recap page, local service page, UGC ad pack, or founder content sprint.</p>
+            <div class="spec-grid">
+              <div class="spec-row"><span>Best for</span><p>Service marketplaces, creator economies, freelancer platforms, and vertical SaaS products.</p></div>
+              <div class="spec-row"><span>Pricing</span><p>Your price can include MangoPods credits, your margin, review labour, rush fees, and platform fees.</p></div>
+              <div class="spec-row"><span>Guardrail</span><p>Expose only productised recipes and keep admin tools hidden from end users.</p></div>
+              <div class="spec-row"><span>Power move</span><p>Use <code>credits.estimate</code> to quote instantly and <code>job.get</code> to power fulfilment tracking.</p></div>
+            </div>
+          </article>
+
+          <article class="blueprint">
+            <span class="label">B L U E P R I N T   0 6   &middot;   N O - C O D E   R A I L S</span>
+            <h3>Zapier, n8n, Make, and internal automations.</h3>
+            <p>Trigger creative work from form submissions, Drive uploads, calendar events, CRM stage changes, newsletter sends, or meeting transcripts.</p>
+            <div class="spec-grid">
+              <div class="spec-row"><span>Best for</span><p>Ops teams that need creative output without asking an engineer to babysit every job.</p></div>
+              <div class="spec-row"><span>Pattern</span><p>Trigger, estimate, reserve, import asset, run recipe, wait for webhook, post result link.</p></div>
+              <div class="spec-row"><span>Guardrail</span><p>Use spend caps and safe defaults, because no-code automations love accidental loops.</p></div>
+              <div class="spec-row"><span>Power move</span><p>Turn a new customer call recording into a private recap page and sales follow-up automatically.</p></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="schemas">
+        <div class="section-head">
+          <div>
+            <span class="label">S E C T I O N   0 5   &middot;   O B J E C T   M O D E L   A N D   S C H E M A S</span>
+            <h2 class="section-title">The nouns agents should understand.</h2>
+          </div>
+          <p>Great MCPs give agents stable nouns. MangoPods should make projects, assets, jobs, credit holds, approvals, pages, campaigns, recipes, and reports feel boringly predictable.</p>
+        </div>
+
+        <div class="schema-grid">
+          <article class="schema">
+            <h4>Project.</h4>
+            <ul>
+              <li><code>project_id</code></li>
+              <li><code>workspace_id</code></li>
+              <li><code>brand_kit_id</code></li>
+              <li><code>goal</code></li>
+              <li><code>status</code></li>
+              <li><code>source_asset_ids</code></li>
+            </ul>
+          </article>
+          <article class="schema">
+            <h4>Asset.</h4>
+            <ul>
+              <li><code>asset_id</code></li>
+              <li><code>kind</code></li>
+              <li><code>mime_type</code></li>
+              <li><code>duration_seconds</code></li>
+              <li><code>dimensions</code></li>
+              <li><code>signed_url</code></li>
+            </ul>
+          </article>
+          <article class="schema">
+            <h4>Job.</h4>
+            <ul>
+              <li><code>job_id</code></li>
+              <li><code>tool_name</code></li>
+              <li><code>state</code></li>
+              <li><code>progress</code></li>
+              <li><code>credit_hold_id</code></li>
+              <li><code>output_asset_ids</code></li>
+            </ul>
+          </article>
+          <article class="schema">
+            <h4>Credit hold.</h4>
+            <ul>
+              <li><code>credit_hold_id</code></li>
+              <li><code>estimated_credits</code></li>
+              <li><code>approved_cap</code></li>
+              <li><code>settled_credits</code></li>
+              <li><code>refund_credits</code></li>
+              <li><code>idempotency_key</code></li>
+            </ul>
+          </article>
+          <article class="schema">
+            <h4>Approval.</h4>
+            <ul>
+              <li><code>approval_id</code></li>
+              <li><code>subject_type</code></li>
+              <li><code>review_url</code></li>
+              <li><code>required_role</code></li>
+              <li><code>decision</code></li>
+              <li><code>comments</code></li>
+            </ul>
+          </article>
+          <article class="schema">
+            <h4>Recipe.</h4>
+            <ul>
+              <li><code>recipe_id</code></li>
+              <li><code>version</code></li>
+              <li><code>inputs_schema</code></li>
+              <li><code>steps</code></li>
+              <li><code>required_scopes</code></li>
+              <li><code>credit_policy</code></li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="doc-block">
+          <h3>Canonical job response.</h3>
+          <p>Every long-running creative action should respond with the same shape so agents can write one watcher and reuse it everywhere.</p>
+          <div class="code-wrap">
+            <button class="copy-button" type="button">Copy</button>
+<pre><code>{
+  "job_id": "job_01HXMANGOCLIP",
+  "state": "running",
+  "progress": {
+    "percent": 42,
+    "stage": "caption_alignment",
+    "message": "Aligning captions and checking mobile safe zones."
+  },
+  "credit_hold": {
+    "credit_hold_id": "hold_9J3",
+    "approved_cap": 260,
+    "estimated_credits": 184
+  },
+  "inputs": {
+    "project_id": "proj_guest_launch",
+    "source_asset_ids": ["asset_raw_episode"]
+  },
+  "outputs": {
+    "asset_ids": [],
+    "preview_url": null
+  },
+  "next": {
+    "poll_after_seconds": 12,
+    "recommended_tool": "job.get"
+  }
+}</code></pre>
+          </div>
+        </div>
+
+        <div class="doc-block">
+          <h3>Tool schema pattern.</h3>
+          <p>Every MangoPods tool should declare the creative intent, required scopes, credit behaviour, async behaviour, approval behaviour, and output contract.</p>
+          <div class="code-wrap">
+            <button class="copy-button" type="button">Copy</button>
+<pre><code>{
+  "name": "video.generate_clips",
+  "description": "Generate short-form clips from a source asset using brand, captions, and platform targets.",
+  "required_scopes": ["assets:read", "media:edit", "credits:spend"],
+  "credit_policy": {
+    "requires_estimate": true,
+    "requires_hold": true,
+    "settlement": "on_job_success"
+  },
+  "input_schema": {
+    "type": "object",
+    "required": ["project_id", "source_asset_ids", "clip_count", "platforms"],
+    "properties": {
+      "project_id": {"type": "string"},
+      "source_asset_ids": {"type": "array", "items": {"type": "string"}},
+      "clip_count": {"type": "integer", "minimum": 1, "maximum": 100},
+      "platforms": {"type": "array", "items": {"enum": ["tiktok", "reels", "shorts", "linkedin", "youtube"]}},
+      "brand_kit_id": {"type": "string"},
+      "approval_required": {"type": "boolean", "default": true}
+    }
+  },
+  "returns": {
+    "type": "job",
+    "output_asset_kinds": ["vertical_video", "caption_file", "thumbnail", "social_copy"]
+  }
+}</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="skills">
+        <div class="section-head">
+          <div>
+            <span class="label">S E C T I O N   0 6   &middot;   A G E N T   S K I L L   P A C K S</span>
+            <h2 class="section-title">Teach agents how to spend credits intelligently.</h2>
+          </div>
+          <p>The MCP exposes tools. Skill packs teach agents when to use them, how to sequence them, when to ask for approval, and how to avoid waste.</p>
+        </div>
+
+        <div class="playbook-grid">
+          <article class="playbook-card">
+            <h3>Podcast producer.</h3>
+            <p>Imports raw recordings, repairs audio, creates an edit plan, generates the episode mix, extracts clips, builds show notes, and prepares guest share assets.</p>
+          </article>
+          <article class="playbook-card">
+            <h3>Clip director.</h3>
+            <p>Ranks hooks, chooses moments, selects aspect ratios, applies captions, generates thumbnails, and builds review boards before final render.</p>
+          </article>
+          <article class="playbook-card">
+            <h3>Landing page builder.</h3>
+            <p>Turns transcripts, clips, screenshots, proof, and offer notes into a published page with analytics, metadata, and conversion goals.</p>
+          </article>
+          <article class="playbook-card">
+            <h3>Growth operator.</h3>
+            <p>Builds calendars, social packs, outreach campaigns, referral pages, paid boost candidates, and follow-up reports from creative assets.</p>
+          </article>
+          <article class="playbook-card">
+            <h3>Agency fulfilment lead.</h3>
+            <p>Creates client projects, runs recipes, monitors budgets, collects approvals, delivers asset packs, and generates client reports.</p>
+          </article>
+          <article class="playbook-card">
+            <h3>Archive miner.</h3>
+            <p>Bulk imports old media, audits missing assets, creates transcripts, identifies evergreen moments, and refreshes a back catalog.</p>
+          </article>
+          <article class="playbook-card">
+            <h3>Compliance reviewer.</h3>
+            <p>Checks consent, claims, sensitive data, release forms, approval history, caption accuracy, and publish permissions before public actions.</p>
+          </article>
+          <article class="playbook-card">
+            <h3>Credit economist.</h3>
+            <p>Estimates spend, proposes cheaper draft paths, batches related work, explains credit usage, and recommends when to upgrade quality.</p>
+          </article>
+        </div>
+
+        <div class="doc-block">
+          <h3>Prompt pattern for maximum value.</h3>
+          <p>The best prompts tell the agent the business outcome, source material, quality bar, spend cap, review rules, and publishing target.</p>
+          <div class="code-wrap">
+            <button class="copy-button" type="button">Copy</button>
+<pre><code>Use MangoPods MCP to turn the attached raw recording into a full launch pack.
+Outcome: publish a credible founder podcast episode that drives booking calls.
+Source: asset_raw_founder_guest_01.
+Brand: use brand kit brand_manymangoes.
+Outputs: full episode mix, 12 vertical clips, show notes, LinkedIn posts, episode page, guest share kit.
+Spend: estimate first, keep draft work under 120 credits, ask before final renders over 300 credits.
+Approval: do not publish publicly until I approve the review board.
+Optimise for: strong hooks, clear captions, natural edits, and assets I can reuse for the next 30 days.</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="sdk">
+        <div class="section-head">
+          <div>
+            <span class="label">S E C T I O N   0 7   &middot;   S D K   P A T T E R N S   A N D   C O M M E R C I A L   R A I L S</span>
+            <h2 class="section-title">Build the wrapper once, monetise every recipe.</h2>
+          </div>
+          <p>Most partner apps should not let agents call expensive tools naked. Wrap MangoPods with estimate, reserve, run, watch, settle, report, and notify. That gives users confidence and gives developers margin control.</p>
+        </div>
+
+        <div class="grid two">
+          <article class="card">
+            <h3>Credit-safe TypeScript wrapper.</h3>
+            <p>A partner app can expose one function that handles estimate, cap, reserve, run, and return job ID.</p>
+            <div class="code-wrap">
+              <button class="copy-button" type="button">Copy</button>
+<pre><code>async function runMangoRecipe(client, input) {
+  const estimate = await client.call("credits.estimate", {
+    operation: "recipe.run",
+    recipe: input.recipe,
+    inputs: input.inputs
+  });
+
+  if (estimate.credits > input.maxCredits) {
+    return {
+      state: "needs_approval",
+      message: `Estimated ${estimate.credits} credits. Approved cap is ${input.maxCredits}.`,
+      estimate
+    };
+  }
+
+  const hold = await client.call("credits.reserve", {
+    estimate_id: estimate.estimate_id,
+    approved_cap: input.maxCredits,
+    idempotency_key: input.idempotencyKey
+  });
+
+  return client.call("recipe.run", {
+    recipe: input.recipe,
+    credit_hold_id: hold.credit_hold_id,
+    inputs: input.inputs,
+    approval_required: true
+  });
+}</code></pre>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Webhook-first fulfilment.</h3>
+            <p>Use signed webhooks to keep your UI current even when the user closes the agent or the render takes an hour.</p>
+            <div class="code-wrap">
+              <button class="copy-button" type="button">Copy</button>
+<pre><code>async function handleMangoWebhook(req, res) {
+  const signature = req.headers["mangopods-signature"];
+  const rawBody = await req.text();
+
+  verifyWebhookSignature({
+    rawBody,
+    signature,
+    secret: process.env.MANGOPODS_WEBHOOK_SECRET
+  });
+
+  const event = JSON.parse(rawBody);
+
+  if (event.type === "job.succeeded") {
+    await db.jobs.update(event.data.job_id, {
+      state: "succeeded",
+      outputAssetIds: event.data.output_asset_ids,
+      settledCredits: event.data.settled_credits
+    });
+  }
+
+  res.status(200).send("ok");
+}</code></pre>
+            </div>
+          </article>
+        </div>
+
+        <div class="doc-block">
+          <h3>Commercial models.</h3>
+          <p>Developers can let users bring their own MangoPods account, bundle credits inside a subscription, resell fixed jobs, or run an agency margin model. The important part is that every model maps back to a credit hold and a durable job.</p>
+          <div class="playbook-grid">
+            <article class="playbook-card">
+              <h3>Bring your own credits.</h3>
+              <p>User connects MangoPods through OAuth. Your app orchestrates the job, and MangoPods charges the user's workspace directly.</p>
+            </article>
+            <article class="playbook-card">
+              <h3>Bundled subscription.</h3>
+              <p>Your SaaS includes a monthly creative allowance. You manage internal entitlements and settle against MangoPods usage.</p>
+            </article>
+            <article class="playbook-card">
+              <h3>Fixed-price job.</h3>
+              <p>Sell products like 12 clips, one landing page, or one podcast launch pack with an estimated margin cushion.</p>
+            </article>
+            <article class="playbook-card">
+              <h3>Agency margin.</h3>
+              <p>Map each client project to a credit budget, human review time, rush fee, and monthly reporting line.</p>
+            </article>
+            <article class="playbook-card">
+              <h3>Usage pass-through.</h3>
+              <p>Show MangoPods credits as a transparent line item for power users who want exact cost attribution.</p>
+            </article>
+            <article class="playbook-card">
+              <h3>Revenue share.</h3>
+              <p>Partner marketplaces can share margin on completed jobs, refunds, rush fees, and recurring creative plans.</p>
+            </article>
+            <article class="playbook-card">
+              <h3>Enterprise pool.</h3>
+              <p>Large teams use shared credits with workspace, department, recipe, and user-level limits.</p>
+            </article>
+            <article class="playbook-card">
+              <h3>White-label bundles.</h3>
+              <p>Package MangoPods recipes behind your own product names while keeping audit and credit metadata intact.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="doc-block">
+          <h3>Launch checklist for partner apps.</h3>
+          <div class="spec-grid">
+            <div class="spec-row"><span>Auth</span><p>OAuth flow, workspace binding, refresh token handling, API key fallback for internal automation, and scope review.</p></div>
+            <div class="spec-row"><span>Credits</span><p>Estimate preview, approved cap, idempotency key, hold release, settlement, refunds, and user-facing usage history.</p></div>
+            <div class="spec-row"><span>Assets</span><p>Upload session, URL import, signed preview, retention policy, deletion flow, file size limits, and source provenance.</p></div>
+            <div class="spec-row"><span>Jobs</span><p>Status polling, webhook handling, retry policy, cancellation, failed job copy, and customer-safe fulfilment state.</p></div>
+            <div class="spec-row"><span>Approvals</span><p>Review boards, publish locks, high-spend gates, legal checks, guest consent, client comments, and decision history.</p></div>
+            <div class="spec-row"><span>Support</span><p>Audit log, job trace, credit trace, user message, suggested next action, support impersonation, and incident report.</p></div>
+            <div class="spec-row"><span>UX</span><p>Show what the user gets, how long it takes, what it costs, when approval is needed, and where final assets arrive.</p></div>
+            <div class="spec-row"><span>Pricing</span><p>Define margin, draft quality, final render quality, rush fees, batch discounts, and refund rules before launch.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="tools">
+        <div class="section-head">
+          <div>
+            <span class="label">S E C T I O N   0 8   &middot;   T O O L   C A T A L O G U E</span>
+            <h2 class="section-title">The MCP surface area.</h2>
+          </div>
+          <p>The catalogue is intentionally outcome-shaped. Agents ask for the creative result, MangoPods chooses the internal implementation and returns durable artifacts.</p>
+        </div>
+        <div class="searchbar">
+          <input id="toolSearch" type="search" placeholder="Search tools by name, scope, or outcome">
+          <select id="toolGroup">
+            <option value="all">All groups</option>
+          </select>
+        </div>
+        <div id="toolGrid" class="tools-grid" aria-live="polite"></div>
+      </section>
+
+      <section class="section" id="usecases">
+        <div class="section-head">
+          <div>
+            <span class="label">S E C T I O N   0 9   &middot;   U S E   C A S E   A T L A S</span>
+            <h2 class="section-title">Hundreds of ways to make the MCP earn its keep.</h2>
+          </div>
+          <p>This atlas is written for vibe coders, agencies, creators, SaaS teams, studio operators, and internal tool builders who want to wire MangoPods into their workflow and let credits do the heavy lifting.</p>
+        </div>
+        <div class="usecase-head">
+          <div>
+            <strong id="visibleCaseCount">2,880</strong>
+            <span class="label">S C E N A R I O S   M A T C H E D</span>
+          </div>
+          <div class="filters" id="laneFilters"></div>
+        </div>
+        <div class="searchbar">
+          <input id="usecaseSearch" type="search" placeholder="Search use cases like clips, podcast, website, LinkedIn, booking, captions">
+          <select id="domainSelect">
+            <option value="all">All domains</option>
+          </select>
+        </div>
+        <div id="usecaseGrid" class="usecase-grid" aria-live="polite"></div>
+        <div class="case-controls">
+          <p id="caseDisplayNote">Showing the first 240 matched scenarios.</p>
+          <button class="button secondary" id="loadMoreCases" type="button">Load more use cases</button>
+        </div>
+      </section>
+
+      <section class="section" id="recipes">
+        <div class="section-head">
+          <div>
+            <span class="label">S E C T I O N   1 0   &middot;   R E C I P E S</span>
+            <h2 class="section-title">Agent workflows that compound value.</h2>
+          </div>
+          <p>Recipes are prebuilt orchestration patterns. Developers can run them as-is, fork them, or expose them as buttons inside their own apps.</p>
+        </div>
+        <div class="grid two">
+          <article class="recipe">
+            <span class="tag">P O D C A S T</span>
+            <h3>Episode launch in a box.</h3>
+            <p>Import recording, transcribe, clean audio, detect highlights, render the full episode, generate show notes, create clips, publish the article page, schedule social posts, and send the guest a share kit.</p>
+            <div class="code-wrap">
+              <button class="copy-button" type="button">Copy</button>
+<pre><code>{
+  "tool": "recipe.run",
+  "arguments": {
+    "recipe": "episode_launch_pack",
+    "project_id": "proj_founder_interview",
+    "inputs": {
+      "raw_media_asset_id": "asset_interview_raw",
+      "brand_kit_id": "brand_mangopods",
+      "clip_count": 12,
+      "publish_page": true,
+      "schedule_social": true
+    }
+  }
+}</code></pre>
+            </div>
+          </article>
+          <article class="recipe">
+            <span class="tag">V I D E O</span>
+            <h3>Clip farm sprint.</h3>
+            <p>Take a folder of webinars, calls, podcasts, and screen recordings. Extract hooks, rank moments, generate vertical clips, caption them, create thumbnails, and queue a review board.</p>
+            <div class="code-wrap">
+              <button class="copy-button" type="button">Copy</button>
+<pre><code>{
+  "tool": "recipe.run",
+  "arguments": {
+    "recipe": "clip_farm_sprint",
+    "inputs": {
+      "source_folder_url": "https://drive.example.com/folder/client-q3",
+      "clips_per_source": 8,
+      "formats": ["9:16", "1:1", "16:9"],
+      "quality": "draft"
+    }
+  }
+}</code></pre>
+            </div>
+          </article>
+          <article class="recipe">
+            <span class="tag">W E B S I T E</span>
+            <h3>Content-to-website builder.</h3>
+            <p>Transform source material into a real web experience: page map, landing copy, hero asset, proof sections, episode embeds, booking CTA, analytics tags, and publishable preview.</p>
+            <div class="code-wrap">
+              <button class="copy-button" type="button">Copy</button>
+<pre><code>{
+  "tool": "website.generate",
+  "arguments": {
+    "source_asset_ids": ["asset_transcript", "asset_best_clips"],
+    "goal": "book strategy calls for a new podcast production offer",
+    "brand_kit_id": "brand_agency",
+    "sections": ["hero", "proof", "episodes", "offer", "booking"]
+  }
+}</code></pre>
+            </div>
+          </article>
+          <article class="recipe">
+            <span class="tag">G R O W T H</span>
+            <h3>Guest-to-growth flywheel.</h3>
+            <p>Find guests, qualify fit, generate invite copy, create booking links, prep the host, record, edit, publish, send share kits, and track which guest audiences convert.</p>
+            <div class="code-wrap">
+              <button class="copy-button" type="button">Copy</button>
+<pre><code>{
+  "tool": "recipe.run",
+  "arguments": {
+    "recipe": "guest_growth_flywheel",
+    "inputs": {
+      "topic": "AI operations for small teams",
+      "guest_persona": "founders with 10k to 100k followers",
+      "monthly_episode_target": 8,
+      "outreach_channel": "linkedin"
+    }
+  }
+}</code></pre>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="band" id="max">
+        <div class="band-inner">
+          <span class="label">S E C T I O N   1 1   &middot;   M A X   V A L U E   P L A Y B O O K</span>
+          <h2>How developers squeeze the most out of MangoPods MCP.</h2>
+          <div class="grid four" style="margin-top:28px;">
+            <article class="card">
+              <h3>Ask for outcomes.</h3>
+              <p>Use tools like <code>recipe.run</code>, <code>video.generate_clips</code>, and <code>website.generate</code> instead of micromanaging every low-level edit.</p>
+            </article>
+            <article class="card">
+              <h3>Estimate before spending.</h3>
+              <p>Let users see cost, quality, and tradeoffs before a render or campaign burns credits.</p>
+            </article>
+            <article class="card">
+              <h3>Use draft tiers.</h3>
+              <p>Generate rough cuts, review boards, and copy drafts first. Spend final-render credits after approval.</p>
+            </article>
+            <article class="card">
+              <h3>Pin brand kits.</h3>
+              <p>Attach brand and voice context to every project so agents stop asking the same style questions.</p>
+            </article>
+            <article class="card">
+              <h3>Batch imports.</h3>
+              <p>Use bulk tools for folders, archives, back catalogs, and client libraries. One import can become months of output.</p>
+            </article>
+            <article class="card">
+              <h3>Watch jobs, not chats.</h3>
+              <p>Use <code>job.get</code> and webhooks for long jobs. Keep chat sessions light and resilient.</p>
+            </article>
+            <article class="card">
+              <h3>Package recipes.</h3>
+              <p>Turn repeated workflows into named recipes with scope requirements, defaults, and spend limits.</p>
+            </article>
+            <article class="card">
+              <h3>Close the loop.</h3>
+              <p>Feed analytics back into the next edit, next title, next guest list, next boost, and next website section.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="waitlist">
+        <div class="section-head">
+          <div>
+            <span class="label">W A I T L I S T   &middot;   P R I V A T E   A C C E S S</span>
+            <h2 class="section-title">Get early access before MangoPods goes public.</h2>
+          </div>
+          <p>MangoPods is still private. The waitlist is for vibe coders, agencies, studios, creator tools, AI app builders, and internal teams who want a credit-backed creative backend behind their own agent workflows.</p>
+        </div>
+
+        <div class="waitlist-panel">
+          <div>
+            <span class="label">B U I L D E R   S I G N A L</span>
+            <h3>Tell us who you are. We will prioritize the people ready to ship.</h3>
+            <p>The form asks for name, email, and LinkedIn only. No essay gate. No fake enterprise maze. Just enough to route serious builders toward the first MCP access cohorts.</p>
+          </div>
+          <div class="waitlist-actions">
+            <a class="button waitlist-link" href="https://docs.google.com/forms/d/e/1FAIpQLSckGZ6LHc7MkKo8aSdLpC1REH-2IxNgN4kgV8uus97JBy6GvQ/viewform?usp=publish-editor">Join the waitlist</a>
+            <span class="waitlist-note">Name, email, LinkedIn. That is it.</span>
+          </div>
+        </div>
+
+        <div class="waitlist-grid" aria-label="Waitlist routing">
+          <article class="waitlist-card">
+            <h3>For vibe coders</h3>
+            <p>Connect Cursor, Claude, ChatGPT, or your own agent to a media and website backend that can actually render, publish, remix, and report.</p>
+          </article>
+          <article class="waitlist-card">
+            <h3>For teams with demand</h3>
+            <p>Bring real workflows: podcast ops, webinar repurposing, client launch packs, AI website creation, creator monetisation, or internal content systems.</p>
+          </article>
+          <article class="waitlist-card">
+            <h3>For partners</h3>
+            <p>Explore credit resale, bundled workflows, white-label studios, client workspaces, approval queues, and margin-aware creative automation.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="faq">
+        <div class="section-head">
+          <div>
+            <span class="label">F A Q   &middot;   T H E   Q U E S T I O N S   B U I L D E R S   A S K</span>
+            <h2 class="section-title">Answer the trust questions before they ask.</h2>
+          </div>
+          <p>A vibe coder will try the page if the category is exciting. They will connect credits only if the money, files, publishing, and ownership model feel obvious.</p>
+        </div>
+
+        <div class="faq-grid">
+          <article class="faq-card">
+            <h3>Is this just a video editing API?</h3>
+            <p>No. Video editing is one lane. The bigger idea is vibe broadcasting: source material becomes media, pages, posts, emails, booking flows, outreach, reports, and reusable assets.</p>
+          </article>
+          <article class="faq-card">
+            <h3>Do giant files move through MCP?</h3>
+            <p>No. MCP carries intent, IDs, constraints, approvals, and job state. Heavy media moves through signed upload sessions, imports, and asset URLs.</p>
+          </article>
+          <article class="faq-card">
+            <h3>How do credits stay under control?</h3>
+            <p>Every expensive job can estimate first, reserve with a cap, run asynchronously, settle actual usage, and refund unused credits.</p>
+          </article>
+          <article class="faq-card">
+            <h3>Can my users bring their own MangoMagic credits?</h3>
+            <p>Yes. Partner apps can use OAuth so users spend from their own workspace. Apps can also bundle credits, resell fixed jobs, or run agency margin models.</p>
+          </article>
+          <article class="faq-card">
+            <h3>Can it publish without review?</h3>
+            <p>Only when the workspace allows it. Public publishing, paid boosts, high credit spend, customer quotes, and private meeting reuse should support approval gates.</p>
+          </article>
+          <article class="faq-card">
+            <h3>What should a developer build first?</h3>
+            <p>Start with one narrow button: generate clips from a recording, build a page from a webinar, or create an episode launch pack. Prove value before exposing the whole toolbox.</p>
+          </article>
+          <article class="faq-card">
+            <h3>Can agencies white-label this?</h3>
+            <p>Yes. Agencies can create client workspaces, attach brand kits, run recipes, collect approvals, deliver assets, and report credit-backed margins.</p>
+          </article>
+          <article class="faq-card">
+            <h3>What happens when a job fails?</h3>
+            <p>The job returns a stable error code, logs, retry guidance, suggested next tool, and credit behaviour. The user sees a useful next step, not a dead end.</p>
+          </article>
+          <article class="faq-card">
+            <h3>How does this fit Cursor, Claude, ChatGPT, or internal agents?</h3>
+            <p>They connect to the same remote MCP server. The agent can read workspace context, estimate spend, import assets, run recipes, watch jobs, and return deliverables.</p>
+          </article>
+          <article class="faq-card">
+            <h3>Why would users pay for this?</h3>
+            <p>Because it turns expensive creative operations into outcomes they can request from any app: clips, pages, campaigns, launch packs, proof libraries, and reporting.</p>
+          </article>
+          <article class="faq-card">
+            <h3>What makes it safe for private meetings?</h3>
+            <p>Private meeting reuse can require consent, redaction, review queues, publish locks, retention rules, and audit trails before any public asset is created.</p>
+          </article>
+          <article class="faq-card">
+            <h3>What is the best public demo?</h3>
+            <p>Upload one messy recording. Ask an agent for a launch pack. Show the estimate, approval, running job, rendered clips, page, posts, and settled credits.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div>
+        <span class="footer-label">M A N G O M A G I C   M C P   &middot;   V I B E   B R O A D C A S T I N G   D O C S</span>
+        <h2>Ship the broadcast, not just the edit.</h2>
+        <p>Give vibe coders a real creative backend: media, credits, publishing, audience growth, approvals, and operational muscle behind one agent-friendly interface.</p>
+      </div>
+      <a class="button secondary waitlist-link" href="https://docs.google.com/forms/d/e/1FAIpQLSckGZ6LHc7MkKo8aSdLpC1REH-2IxNgN4kgV8uus97JBy6GvQ/viewform?usp=publish-editor">Join waitlist</a>
+    </footer>
+  </div>
+
+  <script>
+    const WAITLIST_URL = "https://docs.google.com/forms/d/e/1FAIpQLSckGZ6LHc7MkKo8aSdLpC1REH-2IxNgN4kgV8uus97JBy6GvQ/viewform?usp=publish-editor";
+
+    const toolCatalog = [
+      ["Workspace", "workspace.get_profile", "workspace:read", "Read plan, limits, connected apps, defaults, and workspace identity."],
+      ["Workspace", "workspace.list_projects", "project:read", "List recent projects, episodes, pages, campaigns, meetings, and imports."],
+      ["Project", "project.create", "project:write", "Create a durable project for an episode, client, campaign, web page, or content sprint."],
+      ["Project", "project.update", "project:write", "Update project goals, status, owner, brand kit, due date, and tags."],
+      ["Project", "project.archive", "project:write", "Archive completed projects while preserving assets and audit history."],
+      ["Brand", "brand.get_kit", "brand:read", "Read logos, colors, voice rules, intro packs, safe words, and review preferences."],
+      ["Brand", "brand.create_kit", "brand:write", "Create a brand kit from files, URLs, examples, or a written style description."],
+      ["Brand", "brand.apply_kit", "brand:write", "Apply a brand kit to clips, captions, covers, pages, posts, and campaign assets."],
+      ["Credits", "credits.get_balance", "billing:read", "Read available credits, pending holds, plan allowances, and recent spend."],
+      ["Credits", "credits.estimate", "billing:read", "Estimate credit cost before a render, generation, import, publishing, or enrichment job."],
+      ["Credits", "credits.reserve", "credits:spend", "Reserve credits with a maximum cap and idempotency key."],
+      ["Credits", "credits.settle", "credits:spend", "Finalize a credit hold, charge actual usage, and refund unused balance."],
+      ["Assets", "asset.create_upload_session", "assets:write", "Create a signed upload session for raw audio, video, images, docs, zips, or folders."],
+      ["Assets", "asset.import_from_url", "assets:write", "Import files from Drive, Dropbox, S3, YouTube exports, public URLs, or signed links."],
+      ["Assets", "asset.get_signed_url", "assets:read", "Generate temporary preview or download URLs for project assets."],
+      ["Assets", "asset.list", "assets:read", "List source files, generated artifacts, transcripts, renders, captions, covers, and exports."],
+      ["Assets", "asset.tag", "assets:write", "Attach tags such as guest name, campaign, format, status, rights, or approval state."],
+      ["Media", "media.probe", "assets:read", "Inspect codecs, duration, resolution, audio channels, loudness, silence, language, and scenes."],
+      ["Audio", "audio.transcribe", "media:edit", "Transcribe audio or video with speakers, timestamps, chapters, highlights, and glossary terms."],
+      ["Audio", "audio.diarize", "media:edit", "Separate speakers, identify host and guest, and fix transcript attribution."],
+      ["Audio", "audio.repair", "media:edit", "Reduce noise, remove hum, fix clipping, normalize loudness, and improve speech clarity."],
+      ["Audio", "audio.remove_filler_words", "media:edit", "Remove filler words, false starts, long pauses, and repeated phrases from spoken content."],
+      ["Audio", "audio.generate_episode_mix", "media:edit", "Create a podcast-ready mix with intro, outro, music bed, chapter marks, and export formats."],
+      ["Video", "video.detect_scenes", "media:edit", "Detect scenes, speakers, screen shares, slides, camera changes, silence, and action moments."],
+      ["Video", "video.detect_highlights", "media:edit", "Rank high-retention moments with hooks, payoff, controversy, story, and quotability signals."],
+      ["Video", "video.edit_from_prompt", "media:edit", "Apply a natural language edit brief to produce a draft cut or final edit."],
+      ["Video", "video.generate_clips", "media:edit", "Generate short-form clips in chosen aspect ratios with captions, hooks, titles, and thumbnails."],
+      ["Video", "video.render", "render:create", "Render a source timeline or generated edit into final deliverable formats."],
+      ["Captions", "captions.generate", "media:edit", "Create captions with speaker-aware punctuation, styling, safe zones, and editable files."],
+      ["Captions", "captions.translate", "media:edit", "Translate captions, transcripts, show notes, and social copy into target languages."],
+      ["Captions", "captions.burn_in", "render:create", "Burn captions into a video with brand-safe styling and platform-safe positioning."],
+      ["Images", "image.generate_thumbnail", "content:generate", "Generate thumbnails for clips, podcasts, webinars, videos, or landing page heroes."],
+      ["Images", "image.generate_cover", "content:generate", "Generate podcast covers, episode art, lead magnet covers, and campaign visuals."],
+      ["Content", "content.show_notes", "content:generate", "Generate show notes, timestamps, quotes, resources, guest bio, and episode summary."],
+      ["Content", "content.article", "content:generate", "Turn a transcript or recording into a long-form article, recap, guide, or SEO page."],
+      ["Content", "content.social_pack", "content:generate", "Create platform-specific posts, hooks, captions, hashtags, carousels, and quote graphics."],
+      ["Content", "content.newsletter", "content:generate", "Create a newsletter from recordings, posts, links, clips, and audience goals."],
+      ["Content", "content.title_variants", "content:generate", "Generate title, hook, CTA, subject line, and headline variants for testing."],
+      ["Website", "website.generate", "website:write", "Generate a page or microsite from source content, assets, brand kit, and conversion goal."],
+      ["Website", "website.update_section", "website:write", "Edit a hero, proof block, pricing section, episode embed, FAQ, CTA, or booking section."],
+      ["Website", "website.publish", "website:write", "Publish a preview or production page with analytics and SEO metadata."],
+      ["Booking", "booking.create_link", "booking:write", "Create a booking link for guests, consult calls, webinar sessions, or office hours."],
+      ["Booking", "booking.list_availability", "booking:read", "Read available times, event types, overrides, buffers, and booking rules."],
+      ["Guests", "guest.find", "guest:read", "Find likely podcast guests, collaborators, customers, partners, or experts."],
+      ["Guests", "guest.qualify", "guest:write", "Score guest fit by audience, topic, authority, freshness, availability, and growth potential."],
+      ["Reach", "reach.create_campaign", "reach:write", "Create a multi-step campaign for guests, leads, referrals, launches, or promotions."],
+      ["Reach", "reach.enrich_leads", "reach:write", "Enrich leads with profile, company, topic, social, and campaign relevance data."],
+      ["Reach", "reach.draft_messages", "reach:write", "Draft personalized outreach, follow-ups, guest invites, and share-kit messages."],
+      ["Reach", "reach.schedule_sequence", "reach:write", "Schedule sequences with limits, review gates, personalization, and stop conditions."],
+      ["LinkedIn", "linkedin.connect", "linkedin:write", "Connect a LinkedIn account or company page through OAuth."],
+      ["LinkedIn", "linkedin.publish_post", "linkedin:publish", "Publish or schedule a text post, clip, carousel, article, or campaign update."],
+      ["LinkedIn", "linkedin.archive_reminder", "linkedin:write", "Create reminders to archive, repurpose, or boost high-performing posts."],
+      ["Boosts", "boost.forecast", "ads:read", "Forecast paid boost spend, audience, reach, conversion, and credit impact."],
+      ["Boosts", "boost.create", "ads:write", "Launch a paid boost from an approved post, clip, landing page, or campaign asset."],
+      ["Analytics", "analytics.episode_report", "analytics:read", "Summarize performance for one episode across page views, plays, clips, posts, and leads."],
+      ["Analytics", "analytics.channel_report", "analytics:read", "Compare channels, formats, topics, guests, hooks, captions, and publishing windows."],
+      ["Analytics", "analytics.credit_report", "billing:read", "Explain credit spend by project, client, job type, workspace, and recipe."],
+      ["Fireflies", "fireflies.connect", "meetings:write", "Connect Fireflies or a meeting source for transcript and recording imports."],
+      ["Fireflies", "fireflies.sync_meetings", "meetings:write", "Sync meetings, attendees, recordings, transcripts, action items, and follow-up candidates."],
+      ["Meetings", "meeting.generate_ideas", "meetings:read", "Turn meetings into podcast ideas, posts, clips, FAQs, sales material, and website copy."],
+      ["Gold", "gold.get_resource", "gold:read", "Read coaching resources, lessons, next steps, and progress material."],
+      ["Gold", "gold.coach", "gold:write", "Run a coaching session using user goals, progress, content, and MangoPods context."],
+      ["Bulk", "bulk_import.enqueue", "bulk:write", "Queue large back catalogs, client folders, Drive folders, CSVs, or archived exports."],
+      ["Bulk", "bulk_import.status", "bulk:read", "Check progress and failures for bulk import jobs."],
+      ["Jobs", "job.get", "jobs:read", "Read job status, progress, logs, outputs, errors, and next recommended action."],
+      ["Jobs", "job.cancel", "jobs:write", "Cancel queued or running jobs and release or refund credit holds."],
+      ["Webhooks", "webhook.create", "webhooks:write", "Register a signed webhook endpoint for job, credit, publish, approval, or asset events."],
+      ["Webhooks", "webhook.test", "webhooks:write", "Send a signed test event to verify delivery and signature handling."],
+      ["Admin", "admin.list_users", "admin:read", "List workspace users, roles, status, usage, and access levels."],
+      ["Admin", "admin.impersonate_start", "admin:write", "Start a controlled support impersonation session with audit logging."],
+      ["Audit", "audit.list_events", "audit:read", "Read audit events for spend, publish, import, edit, admin, and integration activity."],
+      ["Errors", "errors.explain", "jobs:read", "Explain a failed operation and recommend a safe retry or lower-cost fallback."],
+      ["Recipes", "recipe.run", "recipes:write", "Run a packaged workflow that chains tools, assets, approvals, and credit policy."],
+      ["Recipes", "recipe.save", "recipes:write", "Save a workflow as a reusable recipe with versioning, defaults, scopes, and spend limits."]
+    ];
+
+    const supplementalToolCatalog = [
+      ["Timeline", "timeline.create", "media:edit", "Create an editable timeline from one or more source assets, transcript ranges, and edit instructions."],
+      ["Timeline", "timeline.insert_segment", "media:edit", "Insert intro, outro, ad read, correction, B-roll, or CTA segments into an existing timeline."],
+      ["Timeline", "timeline.remove_range", "media:edit", "Remove a timestamp range from a timeline and ripple the edit safely."],
+      ["Timeline", "timeline.export_edl", "media:read", "Export edit decisions for Premiere, Resolve, Final Cut, or another external editor."],
+      ["Timeline", "timeline.compare_versions", "media:read", "Compare draft cuts, approved cuts, and final renders with notes and changed ranges."],
+      ["Review", "review_board.create", "review:write", "Create a review board with clips, transcripts, pages, comments, statuses, and approval buttons."],
+      ["Review", "review_board.add_item", "review:write", "Add a clip, page, transcript, image, or social draft to an existing review board."],
+      ["Review", "review_board.request_approval", "review:write", "Request approval from a user, client, guest, legal reviewer, or workspace role."],
+      ["Review", "approval.decide", "review:write", "Approve, reject, or request changes on an asset, page, post, render, campaign, or credit spend."],
+      ["Review", "approval.list_pending", "review:read", "List pending approvals by project, assignee, due date, risk, and spend impact."],
+      ["Transcripts", "transcript.search", "assets:read", "Search transcripts for topics, claims, quotes, customer language, competitors, products, and objections."],
+      ["Transcripts", "transcript.redact", "media:edit", "Redact private names, emails, secrets, claims, or sensitive sections from transcripts and derived assets."],
+      ["Transcripts", "transcript.create_chapters", "content:generate", "Create chapter titles, timestamp summaries, and navigable sections from a transcript."],
+      ["Transcripts", "transcript.extract_quotes", "content:generate", "Extract quotable moments with speaker, timestamp, theme, and social-ready framing."],
+      ["Transcripts", "transcript.fact_check_queue", "review:write", "Flag claims that need human fact-checking before publishing or boosting."],
+      ["Video", "video.reframe", "media:edit", "Reframe landscape, square, or vertical video with speaker tracking and product safe zones."],
+      ["Video", "video.add_broll", "media:edit", "Generate or place B-roll suggestions based on transcript, product footage, or uploaded asset libraries."],
+      ["Video", "video.remove_silence", "media:edit", "Cut long pauses and silent sections while preserving context and breath."],
+      ["Video", "video.generate_audiogram", "media:edit", "Create audio-first video assets with waveform, captions, guest photo, and brand frame."],
+      ["Video", "video.create_trailer", "media:edit", "Create a trailer or teaser from the strongest moments in a source library."],
+      ["Audio", "audio.master", "media:edit", "Master audio for podcast, video, course, phone testimonial, radio, or social use."],
+      ["Audio", "audio.add_music_bed", "media:edit", "Add intro music, outro music, transition beds, stings, or mood-based background music."],
+      ["Audio", "audio.remove_crosstalk", "media:edit", "Reduce overlapping speech and identify ranges where the edit needs human judgement."],
+      ["Audio", "audio.voice_consistency", "media:edit", "Match recurring host voice tone, loudness, warmth, and presence across a series."],
+      ["Audio", "audio.export_stems", "media:read", "Export cleaned host, guest, music, SFX, and final mix stems for external editing."],
+      ["Images", "image.extract_frames", "assets:read", "Extract candidate frames from video for thumbnails, proofs, website visuals, or review."],
+      ["Images", "image.create_quote_card", "content:generate", "Create branded quote cards from transcript moments, speaker photos, and platform targets."],
+      ["Images", "image.create_carousel", "content:generate", "Create LinkedIn or Instagram carousel slides from an episode, framework, article, or webinar."],
+      ["Images", "image.resize_pack", "content:generate", "Create platform-ready image sizes for posts, ads, pages, emails, and thumbnails."],
+      ["Images", "image.alt_text", "content:generate", "Generate alt text for thumbnails, quote cards, slides, screenshots, charts, and web visuals."],
+      ["Website", "website.generate_map", "website:write", "Create a sitemap, section plan, component list, and conversion path before page generation."],
+      ["Website", "website.generate_copy", "website:write", "Generate landing page copy from transcripts, proof assets, offer notes, and audience goals."],
+      ["Website", "website.generate_sections", "website:write", "Generate structured page sections such as hero, proof, offer, FAQ, clips, pricing, and booking."],
+      ["Website", "website.attach_asset", "website:write", "Attach clips, covers, quote cards, forms, downloads, or transcripts to a page section."],
+      ["Website", "website.preview", "website:read", "Create or fetch a shareable preview URL for review before publishing."],
+      ["Website", "website.seo_brief", "website:write", "Generate SEO title, meta description, schema, internal links, and search intent notes."],
+      ["Publishing", "publish.schedule", "publish:write", "Schedule approved posts, pages, emails, clips, newsletters, or campaign assets."],
+      ["Publishing", "publish.cancel", "publish:write", "Cancel scheduled publishing and release linked approvals or credit holds."],
+      ["Publishing", "publish.crosspost", "publish:write", "Crosspost approved assets to multiple connected destinations with platform-specific copy."],
+      ["Publishing", "publish.status", "publish:read", "Check publish status, destination errors, tracking URLs, and scheduled times."],
+      ["Publishing", "publish.rollback", "publish:write", "Unpublish or revert a page, post, or asset when a correction is required."],
+      ["Email", "email.generate_sequence", "email:write", "Generate launch, nurture, referral, guest, newsletter, or reactivation email sequences."],
+      ["Email", "email.preview", "email:read", "Preview transactional, campaign, newsletter, or guest-share emails with variables resolved."],
+      ["Email", "email.send_test", "email:write", "Send a test email to reviewers before campaign activation."],
+      ["Email", "email.suppression_check", "email:read", "Check unsubscribe, suppression, bounce, and send eligibility before outreach."],
+      ["Email", "email.share_episode", "email:write", "Send an episode, clip pack, or page to a guest, lead, customer, or internal team."],
+      ["Booking", "booking.create_event_type", "booking:write", "Create event types with duration, questions, buffers, hosts, reminders, and confirmation copy."],
+      ["Booking", "booking.create_override", "booking:write", "Create temporary availability, blackout windows, or campaign-specific booking rules."],
+      ["Booking", "booking.generate_prep_page", "booking:write", "Generate guest or customer prep pages with instructions, examples, and recording consent."],
+      ["Booking", "booking.analytics", "booking:read", "Analyze bookings by page, campaign, guest, topic, source, no-show rate, and conversion path."],
+      ["Guests", "guest.generate_invite", "guest:write", "Generate a personalised guest invite with topic angle, show context, and booking CTA."],
+      ["Guests", "guest.generate_prep_brief", "guest:write", "Generate a host prep brief with guest background, angles, questions, and share hooks."],
+      ["Guests", "guest.create_share_kit", "guest:write", "Create guest share kits with copy, clips, quote cards, links, and suggested posting schedule."],
+      ["Guests", "guest.follow_up", "guest:write", "Create post-episode follow-up messages, referral asks, and collaboration next steps."],
+      ["Campaigns", "campaign.create_calendar", "campaign:write", "Create a multi-channel campaign calendar from source assets, deadlines, goals, and channel rules."],
+      ["Campaigns", "campaign.generate_brief", "campaign:write", "Generate a campaign brief with audience, offer, hooks, assets, CTAs, and measurement plan."],
+      ["Campaigns", "campaign.generate_variants", "campaign:write", "Generate creative variants for different personas, platforms, funnels, and tests."],
+      ["Campaigns", "campaign.report", "campaign:read", "Report campaign results across posts, pages, bookings, leads, boosts, referrals, and credits."],
+      ["CRM", "crm.sync_contact", "crm:write", "Sync guest, lead, customer, partner, or referral contact data into a connected CRM."],
+      ["CRM", "crm.create_followup_task", "crm:write", "Create follow-up tasks from meetings, episode launches, campaign engagement, or booking behaviour."],
+      ["CRM", "crm.score_content_intent", "crm:read", "Score a lead or account based on content engagement, pages, clips, replies, and bookings."],
+      ["Localization", "localize.asset_pack", "localization:write", "Translate and localise captions, posts, pages, emails, thumbnails, and metadata as one asset pack."],
+      ["Localization", "localize.review_queue", "localization:write", "Create a language review queue for translators, legal reviewers, or regional marketers."],
+      ["Accessibility", "accessibility.audit_asset", "accessibility:read", "Audit captions, contrast, alt text, transcript quality, keyboard structure, and mobile readability."],
+      ["Accessibility", "accessibility.generate_descriptions", "accessibility:write", "Generate audio descriptions and text alternatives for visual content."],
+      ["Compliance", "compliance.check_claims", "compliance:read", "Check generated copy, clips, captions, and pages for risky claims or missing substantiation."],
+      ["Compliance", "compliance.verify_consent", "compliance:read", "Verify release forms, guest consent, customer permissions, and content usage rights."],
+      ["Compliance", "compliance.create_review_packet", "compliance:write", "Create a review packet with source timestamps, claims, generated copy, and approval trail."],
+      ["Reports", "report.create_client", "reports:write", "Create a client-facing report with delivered assets, outcomes, credit usage, and next recommendations."],
+      ["Reports", "report.create_ops_digest", "reports:write", "Create an operations digest of failed jobs, pending approvals, budget risks, and throughput."],
+      ["Reports", "report.create_content_roi", "reports:write", "Create a content ROI report across media, pages, posts, leads, bookings, referrals, and spend."],
+      ["Marketplace", "marketplace.quote_job", "marketplace:write", "Quote a packaged creative job with expected credits, margin, rush fee, and delivery window."],
+      ["Marketplace", "marketplace.fulfil_order", "marketplace:write", "Turn a marketplace order into a project, credit hold, recipe run, review board, and delivery pack."],
+      ["Marketplace", "marketplace.delivery_status", "marketplace:read", "Return customer-safe fulfilment status, assets, review links, and refund state."],
+      ["Admin", "admin.set_spend_limit", "admin:write", "Set workspace, user, client, recipe, or project credit spend limits."],
+      ["Admin", "admin.rotate_api_key", "admin:write", "Rotate partner API keys and invalidate old credentials with audit logging."],
+      ["Admin", "admin.create_workspace", "admin:write", "Create a client, team, or partner workspace with default roles and billing policy."],
+      ["Observability", "observability.ingest_log", "observability:write", "Ingest a partner app log event and connect it to MangoPods job and credit history."],
+      ["Observability", "observability.health_check", "observability:read", "Check integration health for webhooks, OAuth, storage, render queues, and publishing channels."]
+    ];
+
+    function allToolCatalog() {
+      return toolCatalog.concat(supplementalToolCatalog);
+    }
+
+    const recipeCatalog = [
+      ["Podcast", "episode_launch_pack", "Full episode mix, transcript, show notes, clips, page, social pack, guest share kit, and launch report."],
+      ["Podcast", "sponsor_safe_episode", "Create a sponsor-approved edit with ad markers, tracking links, disclaimers, and separate clean exports."],
+      ["Podcast", "season_trailer_builder", "Mine a season archive and generate a cinematic trailer, quote cards, launch posts, and website hero asset."],
+      ["Podcast", "guest_reactivation_pack", "Find strong past guest moments, create new clips, draft reunion invites, and schedule archive revival posts."],
+      ["Video", "clip_farm_sprint", "Bulk-generate short clips from a folder, rank hooks, add captions, create thumbnails, and open a review board."],
+      ["Video", "webinar_recap_engine", "Turn a webinar into recap video, chapters, Q and A article, lead magnet, social clips, and replay page."],
+      ["Video", "ugc_ad_pack", "Convert customer-submitted videos into moderated, captioned, approved ad variants with proof tags."],
+      ["Video", "course_microlearning_pack", "Split workshop recordings into short lessons, captions, summaries, quizzes, and private resource pages."],
+      ["Audio", "audio_rescue_job", "Repair rough audio, flag unrecoverable sections, master the final mix, and export before-after previews."],
+      ["Audio", "voice_memo_to_campaign", "Turn founder voice memos into posts, email, video script, landing copy, and a content calendar."],
+      ["Website", "offer_page_from_interview", "Build a landing page from founder interview, customer proof, clips, offer notes, and booking CTA."],
+      ["Website", "public_archive_backfill", "Create episode pages, SEO articles, transcripts, clips, covers, and related topic hubs for old content."],
+      ["Website", "event_replay_page", "Publish a replay page with chapters, clips, slides, speaker bios, resources, and follow-up CTA."],
+      ["Website", "customer_story_page", "Turn a customer interview into a case study page, testimonial clips, quote cards, and sales proof."],
+      ["Growth", "linkedin_thought_leadership_month", "Create 30 days of LinkedIn posts from transcripts, clips, founder notes, and recent analytics."],
+      ["Growth", "guest_growth_flywheel", "Find guests, qualify, invite, book, prep, record, publish, share, and report audience lift."],
+      ["Growth", "lead_magnet_from_webinar", "Generate a downloadable resource, landing page, email sequence, clips, and retargeting assets."],
+      ["Growth", "referral_boost_pack", "Create personalised referral pages, share copy, leaderboard updates, and follow-up sequences."],
+      ["Sales", "demo_to_deal_room", "Turn a product demo into a personalised follow-up page with clips, proof, objections, and booking next step."],
+      ["Sales", "objection_library_builder", "Mine calls and episodes for objections, create answer clips, one-pagers, and sales enablement snippets."],
+      ["Sales", "account_based_content_pack", "Generate account-specific pages, clips, outreach, and follow-up tasks from target account context."],
+      ["Agency", "new_client_content_sprint", "Create workspace, import assets, attach brand, estimate credits, run content recipes, and deliver a review board."],
+      ["Agency", "monthly_client_report", "Create a client report with delivered assets, performance, credit usage, blockers, and next-month plan."],
+      ["Agency", "brand_refresh_backfill", "Apply a new brand kit to old covers, clips, captions, pages, and social templates."],
+      ["Ops", "meeting_to_media_pipeline", "Sync meetings, extract ideas, create recaps, draft content, flag approvals, and route next tasks."],
+      ["Ops", "bulk_archive_audit", "Audit a folder or archive for missing transcripts, duplicate files, failed renders, and backfill opportunities."],
+      ["Ops", "approval_clean_room", "Collect legal, client, guest, and internal approvals before publish or high-spend actions."],
+      ["Ops", "credit_health_report", "Summarise holds, spend, refunds, forecasts, anomalies, and budget recommendations."],
+      ["Education", "cohort_resource_hub", "Create private lesson pages, clips, assignments, recap emails, and progress summaries for a cohort."],
+      ["Education", "coaching_call_to_next_steps", "Turn coaching sessions into summaries, action items, resources, accountability emails, and progress updates."],
+      ["Local", "local_service_page_pack", "Create local business service pages, testimonial clips, review request copy, and booking CTAs."],
+      ["Commerce", "product_launch_kit", "Create product page copy, demo clips, ads, email, thumbnails, FAQ, and launch calendar."],
+      ["PR", "media_kit_builder", "Generate founder bio, company facts, clips, headshots, press page, and journalist briefing notes."],
+      ["Developer", "partner_marketplace_order", "Quote, reserve credits, fulfil a packaged creative job, create review board, deliver assets, and settle usage."],
+      ["Developer", "drive_folder_watch_recipe", "Watch a folder, import new files, run selected recipes, and post review links back to the originating system."],
+      ["Developer", "webhook_driven_fulfilment", "Coordinate jobs, UI state, credit settlement, retries, and customer notifications from signed webhook events."]
+    ];
+
+    const useCaseDomains = [
+      {
+        lane: "Audio",
+        domain: "Podcast editing",
+        cases: [
+          "Turn a two-hour interview into a 38-minute polished episode with intro, outro, chapter markers, and loudness normalization.",
+          "Remove filler words, repeated phrases, long pauses, and host interruptions while preserving a natural conversation rhythm.",
+          "Create a guest-approved edit with sensitive sections removed and a clean transcript for final review.",
+          "Generate a short teaser, full episode mix, social captions, and a launch page from one uploaded recording.",
+          "Split a panel episode into topic chapters and produce a different intro for each audience segment.",
+          "Repair a remote recording with uneven microphones, background hum, and guest audio drift.",
+          "Produce a sponsor-safe version of an episode with ad markers, tracking links, and separate exports.",
+          "Cut a rough podcast recording into an internal private edit before deciding whether to publish.",
+          "Create a branded audio trailer for a new podcast season using clips from five past episodes.",
+          "Generate host notes, title options, and next guest suggestions after the final edit is rendered."
+        ]
+      },
+      {
+        lane: "Audio",
+        domain: "Remote interviews",
+        cases: [
+          "Import a Zoom recording, detect speakers, remove dead air, and create the first usable interview draft.",
+          "Identify the best guest quotes and turn them into audiograms, quote cards, and LinkedIn post drafts.",
+          "Generate a pre-interview research brief, recording checklist, and post-interview share kit for the guest.",
+          "Create a clean local backup mix from separate host and guest tracks after a remote call.",
+          "Detect crosstalk, interruptions, and low-quality answers that should be recut or rerecorded.",
+          "Extract every question the host asked and build a reusable interview template from the pattern.",
+          "Convert a casual customer interview into a case study page, testimonial clips, and sales snippets.",
+          "Create a private client review link where the guest can approve or reject timestamped moments.",
+          "Generate a guest landing page with bio, headshot, episode embed, clips, and booking CTA.",
+          "Build a follow-up sequence that thanks the guest and gives them copy to share the episode."
+        ]
+      },
+      {
+        lane: "Audio",
+        domain: "Audio repair",
+        cases: [
+          "Rescue an episode recorded near construction noise by reducing rumble, hum, and background distractions.",
+          "Normalize loudness across host, guest, ads, intro music, and outro music for platform-ready delivery.",
+          "Remove mouth clicks, breathing spikes, table bumps, chair noise, and keyboard clacks from a voice track.",
+          "Fix clipped speech where possible and flag unrecoverable sections for rerecording.",
+          "Generate a before-and-after preview so a user can approve repair settings before spending final credits.",
+          "Clean a phone-recorded testimonial and convert it into a usable social proof asset.",
+          "Repair a webinar recording where the host microphone drops out and the screen audio remains.",
+          "Create a transcript confidence report that flags audio sections likely to contain errors.",
+          "Export separate repaired stems for an editor who wants to continue in a desktop DAW.",
+          "Apply a workspace voice profile so recurring hosts sound consistent across episodes."
+        ]
+      },
+      {
+        lane: "Audio",
+        domain: "Transcript intelligence",
+        cases: [
+          "Generate speaker-labeled transcripts with timestamps, chapters, quotes, summaries, and glossary terms.",
+          "Turn a transcript into FAQ sections, objection handling, sales enablement snippets, and article outlines.",
+          "Detect claims that need fact-checking before public release and route them to an approval queue.",
+          "Find every mention of a product, competitor, customer, topic, or CTA across a back catalog.",
+          "Extract reusable stories from transcripts and tag them by theme, emotion, and audience.",
+          "Generate a knowledge base article from a support call transcript and attach the source recording.",
+          "Create a topic map across all podcast episodes to identify content gaps and repeated themes.",
+          "Find high-energy moments in transcripts using laughter, interruption, pacing, and sentiment signals.",
+          "Translate transcripts while preserving speaker names, quotes, and timestamps.",
+          "Build a founder voice model from transcript patterns, repeated phrasing, and preferred story arcs."
+        ]
+      },
+      {
+        lane: "Video",
+        domain: "Video editing",
+        cases: [
+          "Edit a raw talking-head recording into a polished YouTube video with cuts, captions, zooms, and B-roll prompts.",
+          "Create a product demo from screen recording, webcam, script notes, and brand motion rules.",
+          "Remove mistakes, silence, false starts, and accidental private information from a training video.",
+          "Generate a clean draft cut with chapters and review comments for a human editor to finish.",
+          "Turn a webinar replay into a concise 12-minute recap with slides, speaker shots, and CTAs.",
+          "Create aspect-ratio variants for YouTube, TikTok, Reels, Shorts, LinkedIn, and a website hero embed.",
+          "Apply a brand kit with intro bumper, lower thirds, watermark, captions, and end screen.",
+          "Detect where a slide changes and align the presenter camera with the right moment.",
+          "Generate a final render plus editable project metadata so another tool can continue the edit.",
+          "Replace outdated CTA sections in a library of videos while leaving the core training content intact."
+        ]
+      },
+      {
+        lane: "Video",
+        domain: "Short-form clips",
+        cases: [
+          "Pull 20 vertical clips from a long interview and rank them by hook strength and share potential.",
+          "Generate clip titles, opening captions, thumbnail frames, and platform-specific descriptions.",
+          "Create a week of TikTok, Reels, Shorts, and LinkedIn clips from one podcast episode.",
+          "Detect punchy moments where a guest tells a story, makes a claim, or disagrees with the host.",
+          "Create a clip review board where a team can approve, reject, or request changes.",
+          "Generate several edits of the same clip with different hooks for testing.",
+          "Turn internal training recordings into short enablement videos for sales teams.",
+          "Cut customer calls into anonymized product insight clips for leadership review.",
+          "Create a daily clip pipeline from a folder of creator recordings.",
+          "Generate safe-zone captions and reframed speaker tracking for mobile-first platforms."
+        ]
+      },
+      {
+        lane: "Video",
+        domain: "Captions and subtitles",
+        cases: [
+          "Generate branded captions for a vertical clip with speaker-aware punctuation and safe-zone positioning.",
+          "Translate a podcast clip into five languages and export SRT, VTT, burned-in, and editable formats.",
+          "Create karaoke-style captions for high-energy social clips and clean captions for professional pages.",
+          "Detect caption lines that cover faces, products, UI, or legal disclaimers and reposition them.",
+          "Generate accessible captions for a webinar replay with descriptions for important on-screen context.",
+          "Create subtitles for silent autoplay website embeds and LinkedIn feed videos.",
+          "Repair captions from a bad transcript by comparing audio timing against the source video.",
+          "Generate transcript snippets that link directly to clip timestamps.",
+          "Apply different caption styles for founder content, customer stories, and product demos.",
+          "Create a review workflow where legal approves subtitle translations before publishing."
+        ]
+      },
+      {
+        lane: "Video",
+        domain: "Thumbnails and cover art",
+        cases: [
+          "Generate YouTube thumbnails from a podcast guest moment with brand colors, strong expression, and readable text.",
+          "Create episode art in multiple formats for podcast platforms, websites, newsletters, and social posts.",
+          "Generate thumbnail variants for A/B testing across different hooks and emotional angles.",
+          "Extract the best frame from a clip and turn it into a branded still image.",
+          "Create a full season cover set with consistent layout and different guest or topic cues.",
+          "Generate lead magnet covers from webinar titles, guest names, and visual brand rules.",
+          "Create product demo thumbnails that show the actual screen state and core outcome.",
+          "Build a thumbnail library for a creator channel and tag images by format, topic, and performance.",
+          "Refresh old episode covers with a new brand kit while preserving the archive identity.",
+          "Generate high-contrast mobile-safe thumbnails for paid boosts and organic feeds."
+        ]
+      },
+      {
+        lane: "Growth",
+        domain: "Show notes and articles",
+        cases: [
+          "Generate show notes with summary, chapters, resources, guest bio, quotes, and timestamped links.",
+          "Turn a podcast transcript into a polished article with SEO title, meta description, and internal links.",
+          "Create a guest-facing episode page that makes sharing easy and gives listeners a booking CTA.",
+          "Generate a technical recap from a founder interview and preserve accurate terminology.",
+          "Create a skimmable article for executives from a long webinar recording.",
+          "Build an evergreen guide from a series of related episodes and link every source clip.",
+          "Generate quote banks, pullout stats, and social snippets from the same source material.",
+          "Create newsletter-ready summaries for every episode in a season.",
+          "Generate a search-friendly FAQ from episode questions and audience objections.",
+          "Rewrite show notes for different personas such as buyer, candidate, investor, and creator."
+        ]
+      },
+      {
+        lane: "Growth",
+        domain: "Social repurposing",
+        cases: [
+          "Turn a single podcast into 30 posts across LinkedIn, X, Instagram, TikTok, YouTube, and email.",
+          "Create a social pack with clips, quote cards, carousels, hooks, captions, hashtags, and CTAs.",
+          "Generate a launch calendar for a new episode with teaser, launch day, follow-up, and evergreen posts.",
+          "Create platform-specific rewrites that keep the same idea but fit different feed behavior.",
+          "Generate posts for the host, guest, company page, and team members from the same episode.",
+          "Create social snippets that avoid restricted phrases and match an approved brand voice.",
+          "Repurpose a webinar into an educational carousel, founder post, clip thread, and invite post.",
+          "Create a paid and organic variant of each post with different CTA and tracking parameters.",
+          "Generate social copy for a backlog of old episodes and schedule a revival campaign.",
+          "Analyze which posts worked and generate the next round based on hook patterns."
+        ]
+      },
+      {
+        lane: "Growth",
+        domain: "LinkedIn publishing",
+        cases: [
+          "Publish a founder post with a clip, caption, and first comment from an approved episode moment.",
+          "Schedule a guest share post and send the guest an editable version before launch.",
+          "Create a LinkedIn carousel from a podcast framework, workshop, or customer interview.",
+          "Archive high-performing posts and remind the user when they should be repurposed.",
+          "Generate LinkedIn posts for company, founder, guest, and sales rep accounts with distinct angles.",
+          "Draft a post that turns a customer objection into a story and links to a booking page.",
+          "Create employee advocacy copy that teammates can personalize without breaking brand rules.",
+          "Detect a trending topic from recent conversations and draft a timely LinkedIn response.",
+          "Schedule a month of LinkedIn content from a backlog of calls and episodes.",
+          "Generate performance summaries that compare hook type, format, posting time, and guest influence."
+        ]
+      },
+      {
+        lane: "Growth",
+        domain: "Newsletter creation",
+        cases: [
+          "Turn a podcast episode into a newsletter with intro, key takeaways, clips, quote, and CTA.",
+          "Create a weekly digest from episodes, meetings, blog posts, product updates, and event clips.",
+          "Generate subject line variants and preview text for different audience segments.",
+          "Build a founder letter from a messy voice memo and a few source links.",
+          "Create a customer education newsletter from product demos and support call insights.",
+          "Generate an investor update from meeting transcripts, metrics, milestones, and media assets.",
+          "Create a guest announcement email with share links, booking links, and related resources.",
+          "Repurpose webinar questions into a newsletter Q and A section.",
+          "Create newsletter snippets that drive readers to a generated landing page.",
+          "Analyze newsletter clicks and produce follow-up social posts based on the strongest topics."
+        ]
+      },
+      {
+        lane: "Web",
+        domain: "Website creation",
+        cases: [
+          "Generate a full website from a founder interview, offer notes, existing brand kit, and target persona.",
+          "Create a product landing page from a demo video, customer quotes, screenshots, and pricing notes.",
+          "Turn a podcast show into a public archive with episode pages, articles, clips, and guest profiles.",
+          "Generate a personal brand site from transcripts, LinkedIn posts, bio, testimonials, and media clips.",
+          "Create a campaign microsite for a product launch with hero video, proof, features, FAQs, and booking CTA.",
+          "Generate a creator media kit with audience stats, best clips, sponsorship packages, and contact flow.",
+          "Create a client portal page with drafts, review links, approvals, and delivery status.",
+          "Build a resource hub from podcast episodes, webinars, courses, and meeting notes.",
+          "Generate SEO pages from recurring questions and attach source clips as proof.",
+          "Update website sections automatically when a new episode, case study, or product demo is published."
+        ]
+      },
+      {
+        lane: "Web",
+        domain: "Landing pages",
+        cases: [
+          "Create a lead magnet landing page from a webinar recording and a downloadable checklist.",
+          "Generate a booking page for podcast guests with show details, prep materials, and calendar availability.",
+          "Build a waitlist page for a new product using founder clips, problem framing, and early proof.",
+          "Create a campaign page for a paid boost with UTM tracking and conversion goals.",
+          "Generate a page that compares two offers using source material from sales calls.",
+          "Turn a customer success story into a landing page with video proof and CTA.",
+          "Create event registration pages from speaker bios, schedule, recordings, and sponsor assets.",
+          "Generate landing page variants for different buyer personas using the same proof library.",
+          "Create a creator sponsorship page with packages, clips, metrics, and inquiry form.",
+          "Publish a temporary page for a product announcement, then archive it after the campaign ends."
+        ]
+      },
+      {
+        lane: "Web",
+        domain: "Event pages",
+        cases: [
+          "Generate an event page from a planning call, speaker list, sponsor assets, and registration goals.",
+          "Create a speaker prep page with recording guidelines, agenda, bio collection, and calendar links.",
+          "Turn a completed event recording into a replay page with chapters, clips, slides, and follow-up CTA.",
+          "Generate sponsor recap pages that show attendance, clips, quotes, and engagement metrics.",
+          "Create private VIP pages for invite-only workshops with materials and session recordings.",
+          "Generate countdown social posts and email copy for the event landing page.",
+          "Create post-event thank-you pages with clips, resources, booking links, and next steps.",
+          "Build a virtual summit archive from multiple sessions, speaker bios, and transcript summaries.",
+          "Generate on-demand course pages from recurring live workshop recordings.",
+          "Update event pages automatically when speakers, schedule, or replay assets change."
+        ]
+      },
+      {
+        lane: "Ops",
+        domain: "Booking and scheduling",
+        cases: [
+          "Create a guest booking link with custom prep questions, buffer rules, and recording consent text.",
+          "Generate booking pages for different podcast formats such as solo, panel, customer story, and debate.",
+          "Read availability and suggest the three best interview times across host and guest time zones.",
+          "Attach booking links to outreach sequences and track which message drove the booking.",
+          "Create reschedule flows that preserve guest context and recording requirements.",
+          "Generate calendar invites with prep docs, release forms, recording links, and fallback instructions.",
+          "Create office-hour booking pages from course resources and coaching availability.",
+          "Build a team scheduling workflow for multi-host shows and rotating interviewers.",
+          "Create booking links for sales calls generated from episode pages or newsletter CTAs.",
+          "Analyze no-shows, conversion rates, and source performance across booking links."
+        ]
+      },
+      {
+        lane: "Growth",
+        domain: "Guest discovery",
+        cases: [
+          "Find guests who match a topic, audience size, expertise level, geography, and availability window.",
+          "Score guest fit using audience overlap, authority, freshness, content history, and likely share behavior.",
+          "Generate a ranked guest list from LinkedIn, CRM contacts, newsletter subscribers, and past episode mentions.",
+          "Create invite copy that references the guest's recent posts, talks, articles, or company news.",
+          "Find guests who can speak to a product launch theme and bring a relevant audience.",
+          "Identify past guests who should return because a topic is trending again.",
+          "Create a dream guest board with priority, warm intro path, topic angle, and next action.",
+          "Generate prep briefs for booked guests from public content and workspace context.",
+          "Detect guest conflicts, repeated topics, and audience fatigue before outreach begins.",
+          "Track which guests produce the most clips, shares, backlinks, leads, and bookings."
+        ]
+      },
+      {
+        lane: "Growth",
+        domain: "Lead generation",
+        cases: [
+          "Turn episode listeners into leads with generated landing pages, booking CTAs, and follow-up sequences.",
+          "Enrich leads who watched a clip or downloaded a resource and score them by fit.",
+          "Generate sales snippets from podcast answers that address common objections.",
+          "Create a lead magnet from a webinar recording and connect it to an email sequence.",
+          "Identify companies mentioned in transcripts and create account research briefs.",
+          "Generate outbound lead lists from podcast guest networks and topic communities.",
+          "Create personalized outreach using a relevant clip, quote, article, or page as the hook.",
+          "Detect buyer intent in meeting transcripts and create next-step tasks for sales.",
+          "Generate referral asks for guests, customers, and partners after an episode performs well.",
+          "Analyze which content assets drive the most qualified bookings and recommend the next campaign."
+        ]
+      },
+      {
+        lane: "Growth",
+        domain: "Outreach campaigns",
+        cases: [
+          "Create a guest outreach campaign with personalized invite messages and booking links.",
+          "Build a customer story campaign that asks happy users to record short testimonials.",
+          "Generate follow-up messages for leads who engaged with a clip but did not book.",
+          "Create a partner co-marketing campaign with shared assets, posts, and tracking links.",
+          "Draft a warm intro request using mutual context and a clear episode angle.",
+          "Create a sequence that asks past guests to share new clips from the archive.",
+          "Build a reactivation campaign for old leads using a fresh episode or article as the reason.",
+          "Generate outreach copy in different tones for founder, sales, community, and agency senders.",
+          "Create review gates so high-risk messages require approval before sending.",
+          "Track replies, bookings, shares, and content performance against campaign cost."
+        ]
+      },
+      {
+        lane: "Growth",
+        domain: "Paid boosts and ads",
+        cases: [
+          "Forecast paid boost performance before spending credits or ad budget.",
+          "Turn a high-performing organic post into a paid boost with audience, CTA, and landing page attached.",
+          "Generate paid creative variants from the best podcast clips and headlines.",
+          "Create boost rules that stop spend when engagement falls below a threshold.",
+          "Build a campaign around a guest episode and retarget visitors who watched clips.",
+          "Generate ad copy from customer interviews while preserving approved claims.",
+          "Create a low-budget test plan for five clip hooks and one landing page.",
+          "Analyze paid and organic lift from a boosted LinkedIn post.",
+          "Generate reporting for clients that explains spend, credits, reach, clicks, leads, and creative learnings.",
+          "Automatically suggest which episode moments deserve a paid boost based on early engagement."
+        ]
+      },
+      {
+        lane: "Ops",
+        domain: "Analytics and reporting",
+        cases: [
+          "Generate a weekly creator report across episodes, clips, posts, pages, bookings, and credit spend.",
+          "Compare episode topics by watch time, shares, leads, booking conversion, and guest amplification.",
+          "Explain why a campaign underperformed and suggest the next creative experiment.",
+          "Create a client-ready report with assets delivered, hours saved, credits used, and outcomes generated.",
+          "Track which guest types produce the most reach, clips, leads, and referrals.",
+          "Generate a content ROI dashboard for podcast, website, newsletter, and LinkedIn activity.",
+          "Detect a rising topic from analytics and recommend the next episode or landing page.",
+          "Create a spend report by client, workspace, user, job type, recipe, and month.",
+          "Analyze clip retention by hook, caption style, topic, speaker, and length.",
+          "Summarize operational bottlenecks across imports, approvals, failed renders, and delayed publishing."
+        ]
+      },
+      {
+        lane: "Ops",
+        domain: "Brand kits",
+        cases: [
+          "Create a brand kit from a website URL, logo files, previous videos, and sample social posts.",
+          "Apply a consistent intro, lower third, watermark, caption style, and outro to all future videos.",
+          "Generate voice rules from the best-performing founder posts and podcast transcripts.",
+          "Detect whether a generated page or caption violates brand tone or forbidden claims.",
+          "Create client-specific brand kits for an agency and attach them to every project.",
+          "Generate a visual system for episode covers, guest cards, quote graphics, and thumbnails.",
+          "Update a brand kit and bulk refresh old assets with the new style.",
+          "Create a brand approval workflow for legal, marketing, client reviewers, and publishing owners.",
+          "Generate a content style guide from existing high-performing assets.",
+          "Prevent agents from using off-brand phrases, colors, CTAs, or unsupported product claims."
+        ]
+      },
+      {
+        lane: "Ops",
+        domain: "Content calendars",
+        cases: [
+          "Generate a 90-day content calendar from episode cadence, launch dates, audience goals, and capacity.",
+          "Turn a backlog of recordings into a release schedule with clips, posts, newsletters, and pages.",
+          "Create a calendar that balances topics, guest types, formats, channels, and campaign priorities.",
+          "Suggest the best publishing windows based on past engagement and audience location.",
+          "Create a content calendar for a new podcast season with production deadlines and approval milestones.",
+          "Auto-fill gaps in the calendar with archive clips, quote cards, or evergreen posts.",
+          "Generate a launch calendar for a product release using podcasts, webinars, pages, and LinkedIn.",
+          "Create reminders when a clip, post, page, or guest asset is waiting for approval.",
+          "Analyze calendar fatigue and recommend when to pause, batch, or repurpose.",
+          "Export the content plan to calendar, project management, or team review tools."
+        ]
+      },
+      {
+        lane: "Ops",
+        domain: "Bulk media imports",
+        cases: [
+          "Import an entire Drive folder of podcast recordings, transcripts, guest headshots, and release forms.",
+          "Backfill old episodes with articles, clips, thumbnails, captions, and public pages.",
+          "Process a folder of webinars into summaries, clips, lead magnets, and replay pages.",
+          "Import client archives and organize assets by brand, campaign, date, speaker, and status.",
+          "Detect duplicate files, missing transcripts, broken links, and failed imports in a content archive.",
+          "Generate a back catalog audit that estimates credits required to refresh every asset.",
+          "Import a CSV of episode metadata and attach media files by naming convention.",
+          "Queue overnight rendering jobs with spend limits and priority rules.",
+          "Create a migration report after importing from another podcast or video platform.",
+          "Turn old internal recordings into a searchable knowledge and content library."
+        ]
+      },
+      {
+        lane: "Ops",
+        domain: "Fireflies and meeting capture",
+        cases: [
+          "Sync Fireflies meetings and turn product calls into content ideas and sales snippets.",
+          "Generate meeting summaries, action items, follow-up messages, and potential clips.",
+          "Find customer language from calls and reuse it in landing page copy.",
+          "Create a podcast idea deck from recurring questions in sales and support calls.",
+          "Turn internal team meetings into private knowledge base pages and training clips.",
+          "Detect moments in calls that should become public content after approval.",
+          "Generate customer story candidates from positive meeting transcripts.",
+          "Create follow-up assets after a strategy call such as recap page, video snippet, and next steps.",
+          "Track which meeting topics become content, leads, or product decisions.",
+          "Create an approval queue so private meeting material is reviewed before reuse."
+        ]
+      },
+      {
+        lane: "Growth",
+        domain: "Course and coaching content",
+        cases: [
+          "Turn coaching calls into private lesson summaries, action items, resources, and progress pages.",
+          "Generate course modules from a series of workshops and attach clips, transcripts, and worksheets.",
+          "Create a student progress report from watched resources, completed tasks, and coaching notes.",
+          "Turn a founder's messy idea dump into a structured lesson, worksheet, and landing page.",
+          "Generate coaching prompts that reference a user's past goals and recent content.",
+          "Create social proof clips from student success calls with approval tracking.",
+          "Build a course sales page from lesson recordings, testimonials, and offer notes.",
+          "Generate recap emails after live sessions with clips, assignments, and booking links.",
+          "Create private resource hubs for cohorts, clients, or VIP groups.",
+          "Analyze which course clips drive the most completion, bookings, and referrals."
+        ]
+      },
+      {
+        lane: "Growth",
+        domain: "Sales enablement",
+        cases: [
+          "Turn customer calls into objection-handling clips and sales one-pagers.",
+          "Generate personalized follow-up pages after demos with relevant clips and next steps.",
+          "Create battlecards from product conversations, competitor mentions, and founder interviews.",
+          "Generate a sales email that references the exact clip a prospect watched.",
+          "Create a product proof library tagged by pain point, industry, role, and deal stage.",
+          "Turn webinar Q and A into sales scripts, FAQ pages, and customer education snippets.",
+          "Generate account-specific landing pages from buyer research and content assets.",
+          "Create a handoff packet from marketing content to sales outreach.",
+          "Analyze which content assets are moving opportunities forward.",
+          "Generate sales coaching feedback from recorded calls and successful episode patterns."
+        ]
+      },
+      {
+        lane: "Ops",
+        domain: "Customer success libraries",
+        cases: [
+          "Turn onboarding calls into training clips, help articles, and customer-specific recap pages.",
+          "Generate a success hub for a customer with recordings, resources, milestones, and next actions.",
+          "Create support snippets from recurring questions found in meeting transcripts.",
+          "Turn customer wins into testimonial drafts, clips, case studies, and social proof assets.",
+          "Create a risk report when customer calls show confusion, frustration, or missed expectations.",
+          "Generate customer education newsletters from support themes and product updates.",
+          "Build a searchable customer story library tagged by industry, use case, and outcome.",
+          "Create private approval flows before customer quotes become public marketing material.",
+          "Generate renewal recap pages with usage, wins, assets, and proposed next steps.",
+          "Analyze which training videos reduce repeat support questions."
+        ]
+      },
+      {
+        lane: "Growth",
+        domain: "Founder and executive comms",
+        cases: [
+          "Turn a founder voice memo into a polished post, newsletter, video script, and landing page section.",
+          "Create a quarterly investor update from calls, metrics, product clips, and milestone notes.",
+          "Generate thought leadership posts from podcast appearances and internal strategy conversations.",
+          "Create a crisis communication draft from approved facts, legal constraints, and audience concerns.",
+          "Turn executive town halls into internal clips, summaries, and public-safe highlights.",
+          "Generate a speaking brief for a conference using recent content and audience goals.",
+          "Create a founder story page from interviews, archives, photos, and product milestones.",
+          "Generate a personal content calendar that balances authority, vulnerability, education, and proof.",
+          "Create a media response pack after a podcast appearance or industry event.",
+          "Analyze founder content performance and recommend sharper positioning."
+        ]
+      },
+      {
+        lane: "Growth",
+        domain: "Product marketing",
+        cases: [
+          "Turn a product demo into launch videos, landing copy, email sequences, and social proof snippets.",
+          "Generate feature pages from screen recordings, customer quotes, and product positioning notes.",
+          "Create a product update post with GIF-like clips, captions, screenshots, and CTA.",
+          "Turn beta user interviews into messaging tests and website section variants.",
+          "Generate a comparison page from sales objections and approved competitor positioning.",
+          "Create launch assets for different personas using one demo recording and several call transcripts.",
+          "Detect product claims that require legal review before publishing.",
+          "Generate a demo script from the best-performing customer stories and support questions.",
+          "Create a changelog video and article from release notes and screen recordings.",
+          "Analyze which product clips generate the most signups, demos, and support questions."
+        ]
+      },
+      {
+        lane: "Web",
+        domain: "E-commerce content",
+        cases: [
+          "Turn product videos into short ads, product page clips, thumbnails, and email blocks.",
+          "Generate product landing pages from photos, demos, reviews, founder story, and offer notes.",
+          "Create social proof videos from customer reviews and user-generated clips.",
+          "Generate comparison pages for product bundles, use cases, and customer segments.",
+          "Create a launch kit for a new product with page copy, clips, captions, and posts.",
+          "Turn influencer recordings into approved clips and campaign assets.",
+          "Generate product FAQ pages from support calls and buyer objections.",
+          "Create retargeting assets from the highest-converting product moments.",
+          "Refresh old product pages with new visuals, clips, and updated positioning.",
+          "Analyze which creative variants drive clicks, adds to cart, and purchases."
+        ]
+      },
+      {
+        lane: "Web",
+        domain: "Local business marketing",
+        cases: [
+          "Generate a local service page from owner interviews, customer testimonials, and before-after media.",
+          "Turn customer review videos into short clips, website proof sections, and social posts.",
+          "Create booking pages for consultations, classes, services, or events.",
+          "Generate neighborhood-specific landing pages from one service description and local proof.",
+          "Create seasonal campaign assets from short phone videos and offer notes.",
+          "Turn workshop recordings into educational clips and follow-up pages.",
+          "Generate a reputation pack with review request messages, testimonial pages, and social proof.",
+          "Create a simple content calendar for a business that only has one recording day per month.",
+          "Generate ads from customer stories while preserving local compliance language.",
+          "Analyze which pages, clips, and calls create appointments."
+        ]
+      },
+      {
+        lane: "Ops",
+        domain: "Agency operations",
+        cases: [
+          "Create a client project, import assets, attach brand kit, estimate credits, and launch a content sprint.",
+          "Generate client review boards with clips, captions, thumbnails, pages, comments, and approval states.",
+          "Run bulk back catalog refreshes for multiple clients with per-client spend limits.",
+          "Create monthly reports that show delivered assets, credit usage, performance, and next recommendations.",
+          "Generate white-labeled portals where clients can request edits, approve clips, and download files.",
+          "Create repeatable agency recipes for podcast launch, webinar recap, social pack, and landing page build.",
+          "Detect stalled approvals, failed jobs, over-budget projects, and missing source files.",
+          "Generate scope-of-work drafts from a client's requested creative outcomes.",
+          "Create team permissions so freelancers can edit without seeing billing or admin data.",
+          "Analyze which client services produce the best margins and outcomes."
+        ]
+      },
+      {
+        lane: "Ops",
+        domain: "Team and admin workflows",
+        cases: [
+          "List users, roles, projects, spend, connected integrations, and recent audit events for a workspace.",
+          "Generate a workspace health report covering failed jobs, stale assets, credit holds, and overdue approvals.",
+          "Create support impersonation sessions with reason, time limit, and audit trail.",
+          "Detect users with expensive jobs and suggest plan, permission, or spend-limit changes.",
+          "Create onboarding checklists for new team members based on their role and first project.",
+          "Generate a cleanup plan for archived projects, duplicate assets, and old signed links.",
+          "Create admin alerts for credit spikes, publish failures, webhook errors, or integration disconnects.",
+          "Build a weekly ops digest for agency owners, creators, or internal marketing teams.",
+          "Generate policy recommendations for approvals, publishing, boosts, and external sharing.",
+          "Analyze team throughput across import, draft, review, publish, and report stages."
+        ]
+      },
+      {
+        lane: "Developer",
+        domain: "Localization",
+        cases: [
+          "Translate captions, transcripts, show notes, pages, and social posts into multiple languages.",
+          "Generate localized landing pages while preserving brand voice, product claims, and CTA structure.",
+          "Create subtitles that fit local reading speed and safe-zone rules.",
+          "Generate market-specific titles and hooks for the same video clip.",
+          "Create review queues for translators, legal reviewers, and regional marketers.",
+          "Detect idioms, jokes, references, and claims that may not translate cleanly.",
+          "Generate localized email and social copy from one approved campaign brief.",
+          "Create multilingual podcast pages with language-specific assets and metadata.",
+          "Analyze regional performance and recommend where to spend localization credits next.",
+          "Export translated assets in formats needed by websites, video platforms, and social tools."
+        ]
+      },
+      {
+        lane: "Developer",
+        domain: "Accessibility",
+        cases: [
+          "Generate captions, transcripts, alt text, summaries, and keyboard-friendly page structure for every published asset.",
+          "Create audio descriptions for important on-screen product actions in a demo video.",
+          "Detect low-contrast thumbnail text, caption overlap, and unreadable mobile layouts.",
+          "Generate accessible transcript pages with chapter navigation and speaker labels.",
+          "Create text alternatives for charts, slides, screenshots, and product UI shown in videos.",
+          "Export captions in SRT, VTT, plain text, burned-in, and platform-specific formats.",
+          "Generate a compliance report for a public video library before launch.",
+          "Flag profanity, sensitive topics, or risky phrases when a workspace requires content controls.",
+          "Create accessible social copy that does not rely on image-only information.",
+          "Analyze which accessibility improvements also improved completion and engagement."
+        ]
+      },
+      {
+        lane: "Developer",
+        domain: "Compliance and approvals",
+        cases: [
+          "Route public publishing, paid boosts, and high-spend renders through approval before execution.",
+          "Detect claims, testimonials, health language, financial promises, or private data that need review.",
+          "Create audit logs for who approved an edit, page, post, campaign, or credit spend.",
+          "Generate redacted versions of transcripts and clips for broader team access.",
+          "Create legal review packets with source timestamps, generated copy, and proposed claims.",
+          "Block publishing when required consent forms or release files are missing.",
+          "Generate public-safe excerpts from private meetings after approval.",
+          "Create workspace rules that prevent agents from publishing to specific channels.",
+          "Detect when a guest quote has been edited too aggressively and needs confirmation.",
+          "Export compliance reports for agencies, enterprise teams, or regulated creators."
+        ]
+      },
+      {
+        lane: "Developer",
+        domain: "Developer automation",
+        cases: [
+          "Build a button in your app that sends a user's raw file to MangoPods and returns edited clips.",
+          "Create a Slack command that estimates credits for a media job before launching it.",
+          "Run a nightly batch that imports recordings, generates drafts, and posts review links in a project tool.",
+          "Build an internal portal where teams can generate landing pages from approved source assets.",
+          "Use webhooks to update your database when MangoPods renders, publishes, refunds, or fails a job.",
+          "Create an agent that watches a Drive folder and turns new files into a content pack.",
+          "Build a marketplace product that resells MangoPods creative jobs with your own markup.",
+          "Create custom recipes for clients and expose them through your own UI.",
+          "Use idempotency keys to make retries safe when network calls or agents crash halfway through.",
+          "Generate developer support logs that explain tool calls, credit holds, job states, and errors."
+        ]
+      },
+      {
+        lane: "Developer",
+        domain: "Data enrichment",
+        cases: [
+          "Enrich guest profiles with social links, company context, audience, past content, and topic relevance.",
+          "Attach structured metadata to every asset so agents can find it later.",
+          "Generate topic tags, persona tags, funnel stages, and campaign labels from transcripts.",
+          "Create lead enrichment records from visitors who engaged with episode pages or clips.",
+          "Build a searchable index of all content moments, quotes, examples, and customer stories.",
+          "Detect duplicate contacts, guests, companies, topics, and imported assets.",
+          "Generate structured JSON from messy meeting notes for CRM or project systems.",
+          "Enrich episode pages with related clips, guests, articles, and booking CTAs.",
+          "Create audience segments based on content engagement, referrals, and booking behavior.",
+          "Analyze metadata gaps that prevent good recommendations or automation."
+        ]
+      },
+      {
+        lane: "Ops",
+        domain: "Crisis and rescue workflows",
+        cases: [
+          "Recover a failed render by explaining the failure, suggesting a lower-cost retry, and preserving the credit hold.",
+          "Generate a replacement post when a scheduled asset is rejected minutes before launch.",
+          "Create a cleanup plan when a public page accidentally exposes private meeting content.",
+          "Detect broken links, expired signed URLs, missing thumbnails, and failed embeds across published pages.",
+          "Generate a backup launch pack when a guest misses the sharing deadline.",
+          "Create an emergency edit that removes a sensitive section from clips, pages, posts, and transcripts.",
+          "Analyze a credit spike and identify which job, user, recipe, or asset caused it.",
+          "Regenerate captions after a transcription error is found in a published video.",
+          "Create a temporary holding page while a campaign page is being reviewed.",
+          "Build a postmortem after an import, render, publish, webhook, or billing incident."
+        ]
+      },
+      {
+        lane: "Growth",
+        domain: "Community and referrals",
+        cases: [
+          "Create referral pages for podcast guests, customers, fans, and partners with personalized share assets.",
+          "Generate leaderboard updates from referral activity and turn them into social posts.",
+          "Create community spotlight clips from member calls and events.",
+          "Generate invite copy that helps members bring the right people into a community.",
+          "Turn community questions into episodes, articles, clips, and resource pages.",
+          "Create weekly community digests from meetings, posts, clips, and member wins.",
+          "Generate referral follow-up messages after a guest shares an episode.",
+          "Create member onboarding pages from recorded walkthroughs and recurring questions.",
+          "Analyze which guests, members, or partners produce the highest referral quality.",
+          "Build co-branded pages for partner campaigns and community challenges."
+        ]
+      },
+      {
+        lane: "Web",
+        domain: "Public archives",
+        cases: [
+          "Create a public episode archive with filters, transcripts, clips, articles, and guest pages.",
+          "Generate a searchable video library from webinars, demos, podcasts, and office hours.",
+          "Backfill old episodes with SEO pages and social share assets.",
+          "Create an internal archive for sales and support teams with approved snippets.",
+          "Generate topic hubs from related clips, transcripts, and posts.",
+          "Create a speaker archive for an event series with sessions and highlights.",
+          "Generate redirects and metadata when moving from an old content platform.",
+          "Create archive pages that show the newest clip, top quote, and best CTA for each episode.",
+          "Analyze archive gaps such as missing captions, broken pages, and outdated CTAs.",
+          "Refresh archive visuals after a rebrand without changing source episode records."
+        ]
+      },
+      {
+        lane: "Video",
+        domain: "Recording studio workflows",
+        cases: [
+          "Create a recording project with host prep, guest prep, capture checklist, and fallback instructions.",
+          "Generate a teleprompter script from a content brief and previous host style.",
+          "Turn a recorded intro into reusable bumpers for future episodes and clips.",
+          "Detect recording issues such as silent microphones, bad framing, low light, and missing screen share.",
+          "Create a post-recording checklist that launches transcription, editing, clips, and review board.",
+          "Generate recording profiles for solo episode, guest interview, tutorial, webinar, and testimonial.",
+          "Create a studio dashboard that shows upcoming recordings and required assets.",
+          "Generate host coaching notes after reviewing pacing, interruptions, clarity, and follow-up questions.",
+          "Create backup audio and video assets with clear naming, tags, and retention rules.",
+          "Analyze which recording formats create the most reusable content."
+        ]
+      },
+      {
+        lane: "Growth",
+        domain: "Idea generation",
+        cases: [
+          "Generate podcast episode ideas from recent meetings, audience questions, product launches, and trends.",
+          "Create a content idea deck with topic, hook, guest fit, format, and expected business value.",
+          "Turn support tickets into video ideas, articles, FAQs, and sales enablement content.",
+          "Generate contrarian takes from transcript themes and industry news.",
+          "Create idea clusters for a full podcast season with guest targets and launch timing.",
+          "Analyze the content archive to find topics that deserve follow-up episodes.",
+          "Generate campaign ideas from a single product milestone and a target audience.",
+          "Create a daily prompt queue for a founder who records short voice memos.",
+          "Score ideas by ease, credit cost, expected reach, lead potential, and strategic fit.",
+          "Turn a messy brainstorm into a prioritized production plan with asset requirements."
+        ]
+      },
+      {
+        lane: "Developer",
+        domain: "White-label marketplaces",
+        cases: [
+          "Sell video editing inside your app while MangoPods handles render jobs, credits, and storage.",
+          "Offer podcast launch packs to customers with your own UI and MangoPods MCP behind the scenes.",
+          "Create a per-client pricing layer that maps your product credits to MangoPods credits.",
+          "Build a creator marketplace where users request clips, pages, thumbnails, and campaign packs.",
+          "Expose safe recipes to end users while hiding admin-only tools and billing controls.",
+          "Create branded review portals using MangoPods assets and your own customer accounts.",
+          "Generate fulfillment reports that prove what was delivered and what credits were consumed.",
+          "Route high-cost jobs to manual approval before your app confirms the order.",
+          "Create usage-based invoices from credit reports and job metadata.",
+          "Build a partner dashboard that shows job volume, revenue, failures, refunds, and margin."
+        ]
+      },
+      {
+        lane: "Ops",
+        domain: "Education and internal training",
+        cases: [
+          "Turn training calls into searchable lessons, short clips, transcripts, and quizzes.",
+          "Generate onboarding modules from founder recordings and product demos.",
+          "Create role-specific learning paths for sales, support, marketing, and operations.",
+          "Turn internal town halls into recap pages, clips, and action-item summaries.",
+          "Generate microlearning videos from long workshops with captions and knowledge checks.",
+          "Create private pages for sensitive internal training with access rules and audit logs.",
+          "Generate manager coaching notes from recorded practice sessions.",
+          "Create a content library from all training assets and tag by skill, team, and product area.",
+          "Analyze which training clips are watched, skipped, shared, or followed by support reduction.",
+          "Refresh old training pages when product features or positioning change."
+        ]
+      },
+      {
+        lane: "Growth",
+        domain: "PR and media",
+        cases: [
+          "Generate a media kit from founder interviews, product clips, headshots, bios, and company facts.",
+          "Create press-ready clips from podcast appearances and public talks.",
+          "Generate a launch announcement page with assets, quotes, FAQs, and media contact CTA.",
+          "Create journalist briefing notes from transcripts, product demos, and customer stories.",
+          "Turn a speaking engagement into posts, clips, newsletter copy, and an event recap page.",
+          "Generate spokesperson prep from likely questions and approved talking points.",
+          "Create crisis response content with approval gates and source-of-truth facts.",
+          "Build a press archive with interviews, clips, articles, and speaker profiles.",
+          "Generate social posts for media coverage without overstating claims.",
+          "Analyze which PR assets drive referral traffic, backlinks, leads, and bookings."
+        ]
+      },
+      {
+        lane: "Video",
+        domain: "User-generated content",
+        cases: [
+          "Import customer videos and turn them into approved testimonial clips with captions and legal notes.",
+          "Create a moderation queue for UGC before it appears on a public page.",
+          "Generate product story edits from several short customer phone videos.",
+          "Create paid ad variants from UGC clips with different hooks and CTAs.",
+          "Detect low-quality audio or video and suggest repair before editing.",
+          "Generate release-request messages when usage rights are missing.",
+          "Create a UGC landing page that showcases real customers and routes to product pages.",
+          "Tag UGC by product, persona, outcome, emotion, and proof type.",
+          "Generate social posts for the creator, brand, and customer around the same clip.",
+          "Analyze which UGC styles produce the strongest trust and conversion signals."
+        ]
+      }
+    ];
+
+    const expansionModes = [
+      {
+        mode: "Creator",
+        code: "CREATOR",
+        apply: (summary) => summary
+      },
+      {
+        mode: "Agency",
+        code: "AGENCY",
+        apply: (summary, domain) => `${summary} Package it as a repeatable ${domain.domain.toLowerCase()} client deliverable with review board, approval status, delivery links, and credit-backed margin.`
+      },
+      {
+        mode: "SaaS",
+        code: "SAAS",
+        apply: (summary, domain) => `${summary} Expose it as a button inside a partner SaaS product where MangoPods handles ${domain.domain.toLowerCase()} jobs, usage records, and webhooks.`
+      },
+      {
+        mode: "Marketplace",
+        code: "MARKET",
+        apply: (summary, domain) => `${summary} Sell it as a fixed-price ${domain.domain.toLowerCase()} product with instant credit estimate, customer-safe status, and automatic fulfilment.`
+      },
+      {
+        mode: "Internal Ops",
+        code: "OPS",
+        apply: (summary, domain) => `${summary} Run it as an internal automation with spend caps, Slack-style status updates, audit logs, and a morning review queue.`
+      },
+      {
+        mode: "Enterprise",
+        code: "ENTERPRISE",
+        apply: (summary, domain) => `${summary} Add enterprise controls for SSO, role-based approvals, consent checks, compliance review, retention rules, and exportable audit history.`
+      }
+    ];
+
+    const lanes = ["All", "Audio", "Video", "Web", "Growth", "Ops", "Developer"];
+    let activeLane = "All";
+    let visibleUseCaseLimit = 240;
+
+    function textMatch(value, needle) {
+      return value.toLowerCase().includes(needle.toLowerCase());
+    }
+
+    function formatNumber(value) {
+      return new Intl.NumberFormat("en-US").format(value);
+    }
+
+    function createToolOptions() {
+      const select = document.getElementById("toolGroup");
+      [...new Set(allToolCatalog().map((item) => item[0]))].forEach((group) => {
+        const option = document.createElement("option");
+        option.value = group;
+        option.textContent = group;
+        select.appendChild(option);
+      });
+    }
+
+    function renderTools() {
+      const grid = document.getElementById("toolGrid");
+      const query = document.getElementById("toolSearch").value.trim();
+      const group = document.getElementById("toolGroup").value;
+      const tools = allToolCatalog();
+      const filtered = tools.filter(([toolGroup, name, scope, summary]) => {
+        const inGroup = group === "all" || group === toolGroup;
+        const inSearch = !query || [toolGroup, name, scope, summary].some((value) => textMatch(value, query));
+        return inGroup && inSearch;
+      });
+      grid.innerHTML = filtered.map(([toolGroup, name, scope, summary]) => `
+        <article class="tool-card">
+          <span class="tag">${toolGroup}</span>
+          <h3><span class="tool-name">${name}</span></h3>
+          <p>${summary}</p>
+          <div class="usecase-meta">
+            <span class="usecase-id">${scope}</span>
+          </div>
+        </article>
+      `).join("");
+      document.getElementById("toolCount").textContent = `${tools.length}+`;
+    }
+
+    function allUseCases() {
+      return useCaseDomains.flatMap((domain) => domain.cases.flatMap((summary, index) => expansionModes.map((mode, modeIndex) => ({
+        lane: domain.lane,
+        domain: domain.domain,
+        mode: mode.mode,
+        summary: mode.apply(summary, domain),
+        id: `${mode.code}-${domain.lane.slice(0, 2).toUpperCase()}-${String(index + 1).padStart(2, "0")}-${String(modeIndex + 1).padStart(2, "0")}-${domain.domain.toUpperCase().replace(/[^A-Z0-9]+/g, "-").slice(0, 14)}`
+      }))));
+    }
+
+    function createUseCaseControls() {
+      const filters = document.getElementById("laneFilters");
+      filters.innerHTML = lanes.map((lane) => `<button class="filter-button ${lane === "All" ? "active" : ""}" type="button" data-lane="${lane}">${lane}</button>`).join("");
+      filters.addEventListener("click", (event) => {
+        const button = event.target.closest("button[data-lane]");
+        if (!button) return;
+        activeLane = button.dataset.lane;
+        visibleUseCaseLimit = 240;
+        filters.querySelectorAll("button").forEach((item) => item.classList.toggle("active", item.dataset.lane === activeLane));
+        renderUseCases();
+      });
+
+      const select = document.getElementById("domainSelect");
+      useCaseDomains.map((item) => item.domain).forEach((domain) => {
+        const option = document.createElement("option");
+        option.value = domain;
+        option.textContent = domain;
+        select.appendChild(option);
+      });
+    }
+
+    function renderUseCases() {
+      const query = document.getElementById("usecaseSearch").value.trim();
+      const selectedDomain = document.getElementById("domainSelect").value;
+      const cases = allUseCases().filter((item) => {
+        const inLane = activeLane === "All" || item.lane === activeLane;
+        const inDomain = selectedDomain === "all" || item.domain === selectedDomain;
+        const inSearch = !query || [item.lane, item.domain, item.mode, item.summary, item.id].some((value) => textMatch(value, query));
+        return inLane && inDomain && inSearch;
+      });
+      const shownCases = cases.slice(0, visibleUseCaseLimit);
+
+      document.getElementById("usecaseGrid").innerHTML = shownCases.map((item) => `
+        <article class="usecase-card">
+          <div>
+            <span class="tag">${item.lane}</span>
+            <span class="tag">${item.mode}</span>
+            <h3>${item.domain}.</h3>
+            <p>${item.summary}</p>
+          </div>
+          <div class="usecase-meta">
+            <span class="usecase-id">${item.id}</span>
+          </div>
+        </article>
+      `).join("");
+      document.getElementById("visibleCaseCount").textContent = formatNumber(cases.length);
+      document.getElementById("caseCount").textContent = formatNumber(allUseCases().length);
+      document.getElementById("caseDisplayNote").textContent = `Showing ${formatNumber(shownCases.length)} of ${formatNumber(cases.length)} matched scenarios.`;
+      document.getElementById("loadMoreCases").style.display = shownCases.length < cases.length ? "inline-flex" : "none";
+    }
+
+    function renderRecipes() {
+      const shelf = document.getElementById("recipeCatalog");
+      shelf.innerHTML = recipeCatalog.map(([family, slug, summary]) => `
+        <article class="recipe">
+          <span class="tag">${family}</span>
+          <h3>${slug.replaceAll("_", " ")}.</h3>
+          <p>${summary}</p>
+          <div class="usecase-meta">
+            <span class="usecase-id">recipe.${slug}</span>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    function wireCopyButtons() {
+      document.querySelectorAll(".copy-button").forEach((button) => {
+        button.addEventListener("click", async () => {
+          const code = button.parentElement.querySelector("code").innerText;
+          try {
+            await navigator.clipboard.writeText(code);
+            button.textContent = "Copied";
+            setTimeout(() => button.textContent = "Copy", 1200);
+          } catch {
+            button.textContent = "Select";
+            setTimeout(() => button.textContent = "Copy", 1200);
+          }
+        });
+      });
+    }
+
+    function wireWaitlistLinks() {
+      document.querySelectorAll(".waitlist-link").forEach((link) => {
+        link.href = WAITLIST_URL;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      createToolOptions();
+      createUseCaseControls();
+      renderTools();
+      renderUseCases();
+      renderRecipes();
+      wireCopyButtons();
+      wireWaitlistLinks();
+      document.getElementById("toolSearch").addEventListener("input", renderTools);
+      document.getElementById("toolGroup").addEventListener("change", renderTools);
+      document.getElementById("usecaseSearch").addEventListener("input", () => {
+        visibleUseCaseLimit = 240;
+        renderUseCases();
+      });
+      document.getElementById("domainSelect").addEventListener("change", () => {
+        visibleUseCaseLimit = 240;
+        renderUseCases();
+      });
+      document.getElementById("loadMoreCases").addEventListener("click", () => {
+        visibleUseCaseLimit += 240;
+        renderUseCases();
+      });
+    });
+  </script>
+</body>
+</html>
