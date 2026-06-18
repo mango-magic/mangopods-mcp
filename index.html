@@ -348,6 +348,67 @@
       font-size: 16px;
     }
 
+    .operator-proof {
+      max-width: var(--max);
+      margin: 0 auto 22px;
+      padding: 0 22px 44px;
+    }
+
+    .operator-proof-body {
+      border-top: 1px solid var(--sand);
+      border-bottom: 1px solid var(--sand);
+      display: grid;
+      grid-template-columns: minmax(0, 0.78fr) minmax(320px, 1.22fr);
+      gap: 26px;
+      padding: 26px 0 28px;
+      align-items: start;
+    }
+
+    .operator-proof h2 {
+      margin: 0;
+      color: var(--navy);
+      font-style: normal;
+      font-size: clamp(30px, 4vw, 56px);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .operator-proof p {
+      margin: 16px 0 0;
+      font-size: 19px;
+    }
+
+    .proof-note {
+      font-family: "Montserrat", Arial, sans-serif;
+      font-style: normal;
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--navy);
+    }
+
+    .proof-name-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      border-top: 1px solid var(--sand);
+      border-left: 1px solid var(--sand);
+    }
+
+    .proof-name-grid span {
+      min-height: 46px;
+      border-right: 1px solid var(--sand);
+      border-bottom: 1px solid var(--sand);
+      display: flex;
+      align-items: center;
+      padding: 10px 12px;
+      color: var(--navy);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-style: normal;
+      font-weight: 800;
+      font-size: 11px;
+      line-height: 1.2;
+    }
+
     .broadcast-grid {
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
@@ -1192,6 +1253,14 @@
         grid-template-columns: 1fr;
       }
 
+      .operator-proof-body {
+        grid-template-columns: 1fr;
+      }
+
+      .proof-name-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
       .flow-step {
         border-right: 0;
         border-bottom: 1px solid var(--sand);
@@ -1236,6 +1305,10 @@
       .stats,
       .searchbar {
         grid-template-columns: 1fr;
+      }
+
+      .proof-name-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .spec-row {
@@ -1356,6 +1429,44 @@
           <p>Estimate creation and boost spend, reserve with a cap, approve the job, settle real usage, and report outcomes.</p>
         </div>
       </div>
+
+      <section class="operator-proof" aria-labelledby="operator-proof-title">
+        <div class="operator-proof-body">
+          <div>
+            <span class="label">O P E R A T O R   P R O O F   &middot;   B U I L T   F R O M   S E R V I C E   D E L I V E R Y</span>
+            <h2 id="operator-proof-title">Not a lab demo. A production engine.</h2>
+            <p>MangoPods comes from a service business already running podcast and media-tech programmes for teams across global cloud, cyber, channel, and enterprise software brands.</p>
+            <p>MCP is how that operating muscle becomes available to vibe coders, agencies, partner apps, and internal teams.</p>
+            <p class="proof-note">Names shown as operator context. No endorsement implied.</p>
+          </div>
+          <div class="proof-name-grid" aria-label="Enterprise technology operator context">
+            <span>Nextgen</span>
+            <span>Exclusive Networks</span>
+            <span>SAP</span>
+            <span>AWS</span>
+            <span>Fortinet</span>
+            <span>Gigamon</span>
+            <span>Arista</span>
+            <span>Barracuda</span>
+            <span>Cloudera</span>
+            <span>CrowdStrike</span>
+            <span>Infoblox</span>
+            <span>Netskope</span>
+            <span>Okta</span>
+            <span>OpenText</span>
+            <span>Palo Alto Networks</span>
+            <span>Proofpoint</span>
+            <span>Rubrik</span>
+            <span>SentinelOne</span>
+            <span>Zero Networks</span>
+            <span>Darktrace</span>
+            <span>ExtraHop</span>
+            <span>Illumio</span>
+            <span>Oracle</span>
+            <span>Saviynt</span>
+          </div>
+        </div>
+      </section>
 
       <section class="section" id="why">
         <div class="section-head">

@@ -26,6 +26,14 @@ This is not a video editing API.
 
 This is a creative operating system exposed through MCP.
 
+## Operator Proof.
+
+MangoPods is not a lab demo. It comes from a service business already running podcast and media-tech programmes for enterprise technology teams.
+
+Operator context includes teams across Nextgen, Exclusive Networks, SAP, AWS, Fortinet, Gigamon, Arista, Barracuda, Cloudera, CrowdStrike, Infoblox, Netskope, Okta, OpenText, Palo Alto Networks, Proofpoint, Rubrik, SentinelOne, Zero Networks, Darktrace, ExtraHop, Illumio, Oracle, and Saviynt.
+
+Names are shown as operating context, not endorsement.
+
 ## The Category.
 
 Most AI apps can write a caption. MangoPods is for the thing after the caption:
