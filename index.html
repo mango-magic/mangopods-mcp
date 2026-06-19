@@ -169,7 +169,7 @@
       display: grid;
       grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
       gap: 48px;
-      align-items: end;
+      align-items: center;
     }
 
     .hero h1,
@@ -191,6 +191,48 @@
       font-size: clamp(20px, 2.1vw, 31px);
       margin: 26px 0 0;
       max-width: 760px;
+    }
+
+    .hero-proofline {
+      margin-top: 18px;
+      border-left: 6px solid var(--gold);
+      padding: 12px 0 12px 16px;
+      max-width: 720px;
+      font-size: 18px;
+    }
+
+    .launch-ribbon {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      margin-top: 28px;
+      border-top: 1px solid var(--sand);
+      border-bottom: 1px solid var(--sand);
+    }
+
+    .launch-ribbon div {
+      min-height: 108px;
+      padding: 16px 14px 14px 0;
+      border-right: 1px solid var(--sand);
+    }
+
+    .launch-ribbon div:last-child {
+      border-right: 0;
+    }
+
+    .launch-ribbon strong {
+      display: block;
+      color: var(--navy);
+      font-size: clamp(28px, 3.6vw, 48px);
+      line-height: 0.95;
+      font-style: normal;
+    }
+
+    .launch-ribbon span {
+      display: block;
+      margin-top: 8px;
+      color: var(--navy);
+      font-size: 11px;
     }
 
     .hero-actions {
@@ -310,6 +352,7 @@
       display: block;
       font-size: 10px;
       margin-top: 8px;
+      white-space: pre-wrap;
     }
 
     .section {
@@ -347,6 +390,190 @@
     .promise-item p {
       margin: 0;
       font-size: 16px;
+    }
+
+    .launch-console {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 22px 22px 64px;
+      border-top: 1px solid var(--sand);
+    }
+
+    .launch-console-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.86fr) minmax(280px, 1fr);
+      gap: 34px;
+      align-items: end;
+      margin-bottom: 28px;
+    }
+
+    .launch-console-head h2 {
+      margin: 0;
+      color: var(--navy);
+      font-style: normal;
+      font-size: clamp(36px, 5.8vw, 84px);
+      line-height: 0.95;
+    }
+
+    .launch-console-head p {
+      margin: 0;
+      font-size: 21px;
+    }
+
+    .launch-console-shell {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.72fr) minmax(0, 1.28fr);
+      gap: 0;
+      border: 1px solid var(--sand);
+      border-left: 8px solid var(--gold);
+    }
+
+    .demo-tabs {
+      padding: 18px;
+      display: grid;
+      gap: 10px;
+      align-content: start;
+      border-right: 1px solid var(--sand);
+    }
+
+    .demo-tab {
+      width: 100%;
+      min-height: 76px;
+      padding: 12px;
+      border: 1px solid var(--sand);
+      border-radius: var(--radius);
+      background: var(--cream);
+      color: var(--navy);
+      text-align: left;
+      cursor: pointer;
+      font-family: "Montserrat", Arial, sans-serif;
+      font-style: normal;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .demo-tab span {
+      display: block;
+      margin-top: 6px;
+      font-family: "Playfair Display", Georgia, serif;
+      font-style: italic;
+      font-weight: 600;
+      text-transform: none;
+      font-size: 17px;
+      line-height: 1.2;
+    }
+
+    .demo-tab.active {
+      background: var(--navy);
+      border-color: var(--navy);
+      color: var(--white);
+    }
+
+    .demo-output {
+      background: var(--navy);
+      color: var(--white);
+      padding: 26px;
+    }
+
+    .demo-output .label,
+    .demo-output .tag {
+      color: var(--gold);
+    }
+
+    .demo-output h3 {
+      margin: 0;
+      color: var(--white);
+      font-style: normal;
+      font-size: clamp(32px, 4vw, 60px);
+      line-height: 0.98;
+    }
+
+    .demo-output p {
+      color: var(--white);
+      font-size: 19px;
+    }
+
+    .demo-command {
+      margin: 20px 0;
+      padding: 16px;
+      border-top: 1px solid var(--sand);
+      border-bottom: 1px solid var(--sand);
+      color: var(--white);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-style: normal;
+      font-size: 13px;
+      line-height: 1.55;
+      overflow-wrap: anywhere;
+    }
+
+    .demo-pack {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .demo-pack article {
+      border: 1px solid var(--sand);
+      border-radius: var(--radius);
+      padding: 16px;
+      min-height: 150px;
+    }
+
+    .demo-pack h4 {
+      margin: 0;
+      color: var(--white);
+      font-style: normal;
+      font-size: 22px;
+      line-height: 1.05;
+    }
+
+    .demo-pack ul {
+      margin: 12px 0 0;
+      padding-left: 18px;
+    }
+
+    .demo-pack li {
+      color: var(--white);
+      font-size: 15px;
+      margin: 6px 0;
+    }
+
+    .demo-proof {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      border-top: 1px solid var(--sand);
+      margin-top: 22px;
+      padding-top: 16px;
+    }
+
+    .demo-proof div {
+      border-right: 1px solid var(--sand);
+      padding-right: 12px;
+    }
+
+    .demo-proof div:last-child {
+      border-right: 0;
+    }
+
+    .demo-proof strong {
+      display: block;
+      color: var(--white);
+      font-style: normal;
+      font-size: 30px;
+      line-height: 1;
+    }
+
+    .demo-proof span {
+      display: block;
+      margin-top: 8px;
+      color: var(--gold);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-style: normal;
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
     }
 
     .operator-proof {
@@ -558,6 +785,10 @@
       align-items: end;
     }
 
+    .waitlist-panel.hot {
+      grid-template-columns: minmax(0, 1.12fr) minmax(280px, 0.88fr);
+    }
+
     .waitlist-panel h3 {
       margin: 0;
       color: var(--white);
@@ -585,6 +816,10 @@
       align-items: stretch;
     }
 
+    .waitlist-actions.followup {
+      margin-top: 14px;
+    }
+
     .waitlist-actions .button {
       width: 100%;
       border-color: var(--gold);
@@ -600,6 +835,47 @@
       text-transform: uppercase;
       letter-spacing: 0;
       color: var(--sand);
+    }
+
+    .waitlist-scoreboard {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1px;
+      border: 1px solid var(--sand);
+    }
+
+    .waitlist-scoreboard div {
+      min-height: 120px;
+      padding: 16px;
+      border-right: 1px solid var(--sand);
+      border-bottom: 1px solid var(--sand);
+    }
+
+    .waitlist-scoreboard div:nth-child(2n) {
+      border-right: 0;
+    }
+
+    .waitlist-scoreboard div:nth-last-child(-n + 2) {
+      border-bottom: 0;
+    }
+
+    .waitlist-scoreboard strong {
+      display: block;
+      color: var(--white);
+      font-style: normal;
+      font-size: 26px;
+      line-height: 1;
+    }
+
+    .waitlist-scoreboard span {
+      display: block;
+      margin-top: 10px;
+      color: var(--gold);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-style: normal;
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
     }
 
     .waitlist-grid {
@@ -647,10 +923,11 @@
     }
 
     .label {
-      color: var(--navy);
+      color: var(--gold);
       font-size: 11px;
       margin-bottom: 12px;
       display: block;
+      white-space: pre-wrap;
     }
 
     .grid {
@@ -665,6 +942,10 @@
 
     .grid.four {
       grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .grid.with-top-gap {
+      margin-top: 28px;
     }
 
     .card,
@@ -1214,12 +1495,15 @@
     .footer-label {
       color: var(--navy);
       font-size: 11px;
+      white-space: pre-wrap;
     }
 
     @media (max-width: 980px) {
       .hero,
       .section-head,
-      .docs-grid {
+      .docs-grid,
+      .launch-console-head,
+      .launch-console-shell {
         grid-template-columns: 1fr;
       }
 
@@ -1258,6 +1542,11 @@
         grid-template-columns: 1fr;
       }
 
+      .demo-tabs {
+        border-right: 0;
+        border-bottom: 1px solid var(--sand);
+      }
+
       .proof-name-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
       }
@@ -1289,6 +1578,7 @@
       .grid,
       .grid.two,
       .grid.four,
+      .launch-ribbon,
       .promise-strip,
       .broadcast-grid,
       .ship-grid,
@@ -1303,6 +1593,9 @@
       .waitlist-grid,
       .hero-signal-grid,
       .usecase-grid,
+      .demo-pack,
+      .demo-proof,
+      .waitlist-scoreboard,
       .stats,
       .searchbar {
         grid-template-columns: 1fr;
@@ -1323,6 +1616,21 @@
       }
 
       .stat:last-child {
+        border-bottom: 0;
+      }
+
+      .launch-ribbon div,
+      .demo-proof div,
+      .waitlist-scoreboard div,
+      .waitlist-scoreboard div:nth-child(2n),
+      .waitlist-scoreboard div:nth-last-child(-n + 2) {
+        border-right: 0;
+        border-bottom: 1px solid var(--sand);
+      }
+
+      .launch-ribbon div:last-child,
+      .demo-proof div:last-child,
+      .waitlist-scoreboard div:last-child {
         border-bottom: 0;
       }
 
@@ -1348,13 +1656,14 @@
           <span class="brand-mark" style="display:none;">M</span>
         </a>
         <nav class="nav" aria-label="Primary">
+          <a href="#demo">Demo</a>
           <a href="#why">Why</a>
           <a href="#ship">Ship</a>
           <a href="#quickstart">Install</a>
           <a href="#blueprints">Build</a>
           <a href="#sdk">Monetise</a>
           <a href="#usecases">Atlas</a>
-          <a href="#waitlist">Waitlist</a>
+          <a href="#waitlist">Apply</a>
           <a href="#faq">FAQ</a>
         </nav>
       </div>
@@ -1363,39 +1672,58 @@
     <main id="top">
       <section class="hero" aria-labelledby="hero-title">
         <div>
-          <span class="label">V I B E   B R O A D C A S T I N G   &middot;   M C P   F O R   V I B E   C O D E R S</span>
-          <h1 id="hero-title">Vibe broadcasting for vibe coders.</h1>
-          <p>Connect your agent to MangoMagic and turn one idea, podcast, meeting, or demo into the whole broadcast: pod ideas, carousels, teleprompter guides, edited episodes, clips, websites, LinkedIn posts, targeted demographic boosts, reports, and credit-backed delivery from any app.</p>
+          <span class="label">J U L Y   1   P R I V A T E   B E T A   &middot;   V I B E   B R O A D C A S T I N G</span>
+          <h1 id="hero-title">Give your agent a production department.</h1>
+          <p>MangoPods MCP turns one idea, podcast, webinar, meeting, or demo into the full broadcast: edited media, clips, carousels, teleprompter guides, landing pages, LinkedIn posts, targeted boosts, approvals, credit caps, publishing, analytics, and reports.</p>
+          <p class="hero-proofline">This is not another caption tool. It is the creative operating system behind an agent command.</p>
           <div class="hero-actions">
-            <a class="button waitlist-link" href="#waitlist">Join the private waitlist</a>
-            <a class="button secondary" href="#ship">See what you can ship</a>
+            <a class="button waitlist-link" href="#waitlist">Apply for founder access</a>
+            <a class="button secondary" href="#demo">Try demo mode</a>
+          </div>
+          <div class="launch-ribbon" aria-label="Private beta signal">
+            <div>
+              <strong>July 1</strong>
+              <span class="stat-label">Private beta</span>
+            </div>
+            <div>
+              <strong>1 source</strong>
+              <span class="stat-label">Whole broadcast</span>
+            </div>
+            <div>
+              <strong>Credits</strong>
+              <span class="stat-label">Capped by design</span>
+            </div>
           </div>
           <div class="hero-signal-grid" aria-label="First screen value">
             <div class="hero-signal">
-              <strong>Ideas before uploads.</strong>
+              <strong>Before recording.</strong>
               <span>Generate podcast angles, carousel concepts, teleprompter guides, hooks, scripts, and guest-ready briefs.</span>
             </div>
             <div class="hero-signal">
-              <strong>Assets after recordings.</strong>
+              <strong>After recording.</strong>
               <span>Upload a show, call, webinar, or demo and get clips, captions, pages, posts, emails, and share kits.</span>
             </div>
             <div class="hero-signal">
-              <strong>LinkedIn boosts built in.</strong>
+              <strong>Distribution included.</strong>
               <span>Turn finished posts and clips into targeted campaigns by role, industry, company size, region, and audience intent.</span>
             </div>
             <div class="hero-signal">
-              <strong>Spend stays visible.</strong>
+              <strong>Spend controlled.</strong>
               <span>Estimate media jobs, reserve credits, cap boosts, approve drafts, publish, and report what actually moved.</span>
             </div>
           </div>
         </div>
         <aside class="hero-panel" aria-label="Platform identity">
           <div>
-            <span class="label">I D   B L O C K   &middot;   C R E A T I V E   B R O A D C A S T   P L A N E</span>
-            <h2>One agent command. Content, audience, and boost after it.</h2>
-            <p>Agents do not need render farms, ad ops, storage buckets, social APIs, calendar logic, or credit settlement. They ask for the idea, asset, audience, budget, and review gate - MangoMagic runs the loop.</p>
+            <span class="label">I D   B L O C K   &middot;   T H E   P R O D U C T   P R O M I S E</span>
+            <h2>One prompt becomes the campaign, the page, the clips, and the boost.</h2>
+            <p>Agents do not need render farms, ad ops, storage buckets, social APIs, calendar logic, or credit settlement. They ask for the source, audience, budget, and review gate - MangoMagic runs the loop.</p>
           </div>
           <div class="stats">
+            <div class="stat">
+              <strong>Beta</strong>
+              <span class="stat-label">J U L Y   1</span>
+            </div>
             <div class="stat">
               <strong id="toolCount">153+</strong>
               <span class="stat-label">M C P   T O O L S</span>
@@ -1404,12 +1732,61 @@
               <strong id="caseCount">2,880</strong>
               <span class="stat-label">U S E   C A S E S</span>
             </div>
-            <div class="stat">
-              <strong>Ads</strong>
-              <span class="stat-label">L I N K E D I N   B O O S T S</span>
-            </div>
           </div>
         </aside>
+      </section>
+
+      <section class="launch-console" id="demo" aria-labelledby="demo-title">
+        <div class="launch-console-head">
+          <div>
+            <span class="label">P U B L I C   D E M O   M O D E   &middot;   B E T A   A C C E S S   I S   G A T E D</span>
+            <h2 id="demo-title">Try the shape before applying for the beta.</h2>
+          </div>
+          <p>Launch communities can inspect the workflow without a login. Real MCP access, credits, API keys, partner scopes, and production usage are granted through the beta application.</p>
+        </div>
+
+        <div class="launch-console-shell">
+          <div class="demo-tabs" aria-label="Launch pack source examples">
+            <button class="demo-tab active" type="button" data-demo="podcast">
+              Podcast recording
+              <span>One messy founder interview becomes the launch.</span>
+            </button>
+            <button class="demo-tab" type="button" data-demo="webinar">
+              Webinar replay
+              <span>Ninety minutes becomes pipeline fuel.</span>
+            </button>
+            <button class="demo-tab" type="button" data-demo="customer">
+              Customer call
+              <span>Proof becomes sales material.</span>
+            </button>
+            <button class="demo-tab" type="button" data-demo="idea">
+              Pod idea
+              <span>No upload required. Start with a thought.</span>
+            </button>
+          </div>
+
+          <div class="demo-output" aria-live="polite">
+            <span class="label">A G E N T   R E Q U E S T</span>
+            <h3 id="demoTitle">Episode launch pack.</h3>
+            <p id="demoSummary">A raw founder interview becomes a publish-ready episode and a distribution system around it.</p>
+            <div class="demo-command" id="demoCommand">Run recipe episode_launch_pack. Estimate first, cap at 120 credits, create drafts, wait for approval, then publish and report.</div>
+            <div class="demo-pack" id="demoPack"></div>
+            <div class="demo-proof">
+              <div>
+                <strong id="demoCredit">120</strong>
+                <span>Credit cap</span>
+              </div>
+              <div>
+                <strong id="demoGate">Review</strong>
+                <span>Approval gate</span>
+              </div>
+              <div>
+                <strong id="demoChannel">LinkedIn</strong>
+                <span>Growth loop</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       <div class="promise-strip" aria-label="Vibe broadcasting promise">
@@ -2538,7 +2915,7 @@ Optimise for: strong hooks, clear captions, natural edits, and assets I can reus
         <div class="band-inner">
           <span class="label">S E C T I O N   1 1   &middot;   M A X   V A L U E   P L A Y B O O K</span>
           <h2>How developers squeeze the most out of MangoPods MCP.</h2>
-          <div class="grid four" style="margin-top:28px;">
+          <div class="grid four with-top-gap">
             <article class="card">
               <h3>Ask for outcomes.</h3>
               <p>Use tools like <code>recipe.run</code>, <code>video.generate_clips</code>, and <code>website.generate</code> instead of micromanaging every low-level edit.</p>
@@ -2578,36 +2955,56 @@ Optimise for: strong hooks, clear captions, natural edits, and assets I can reus
       <section class="section" id="waitlist">
         <div class="section-head">
           <div>
-            <span class="label">W A I T L I S T   &middot;   P R I V A T E   A C C E S S</span>
-            <h2 class="section-title">Get early access before MangoPods goes public.</h2>
+            <span class="label">J U L Y   1   &middot;   F O U N D E R   B E T A   A P P L I C A T I O N</span>
+            <h2 class="section-title">Apply with the workflow you want to ship.</h2>
           </div>
-          <p>MangoPods is still private. The waitlist is for vibe coders, agencies, studios, creator tools, AI app builders, and internal teams who want a credit-backed creative backend behind their own agent workflows.</p>
+          <p>MangoPods is still private. Public demo mode shows the shape. Founder beta access is for people with real reach, strong use cases, and the ability to test in July.</p>
         </div>
 
-        <div class="waitlist-panel">
+        <div class="waitlist-panel hot">
           <div>
-            <span class="label">B U I L D E R   S I G N A L</span>
-            <h3>Tell us who you are. We will prioritize the people ready to ship.</h3>
-            <p>The form asks for name, email, and LinkedIn only. No essay gate. No fake enterprise maze. Just enough to route serious builders toward the first MCP access cohorts.</p>
+            <span class="label">B U I L D E R   S I G N A L   &middot;   H O W   W E   P R I O R I T I S E</span>
+            <h3>Tell us what you will build, who it reaches, and why it should go first.</h3>
+            <p>We will prioritise applicants with high-reach workflows: partner apps, agencies with clients, creator tools, studios with back catalogues, SaaS teams with webinars and demos, and builders who can prove MangoPods creates a public case study.</p>
           </div>
-          <div class="waitlist-actions">
-            <a class="button waitlist-link" href="https://docs.google.com/forms/d/e/1FAIpQLSckGZ6LHc7MkKo8aSdLpC1REH-2IxNgN4kgV8uus97JBy6GvQ/viewform?usp=publish-editor">Join the waitlist</a>
-            <span class="waitlist-note">Name, email, LinkedIn. That is it.</span>
+          <div>
+            <div class="waitlist-scoreboard" aria-label="Founder beta scoring">
+              <div>
+                <strong>Reach</strong>
+                <span>Audience, users, clients</span>
+              </div>
+              <div>
+                <strong>Use case</strong>
+                <span>Workflow clarity</span>
+              </div>
+              <div>
+                <strong>Ship speed</strong>
+                <span>Can test in July</span>
+              </div>
+              <div>
+                <strong>Credit loop</strong>
+                <span>Spend, resale, margin</span>
+              </div>
+            </div>
+            <div class="waitlist-actions followup">
+              <a class="button waitlist-link" href="https://docs.google.com/forms/d/e/1FAIpQLSckGZ6LHc7MkKo8aSdLpC1REH-2IxNgN4kgV8uus97JBy6GvQ/viewform?usp=publish-editor">Apply for founder beta access</a>
+              <span class="waitlist-note">Application asks for use case, reach, timeline, and credit model.</span>
+            </div>
           </div>
         </div>
 
-        <div class="waitlist-grid" aria-label="Waitlist routing">
+        <div class="waitlist-grid" aria-label="Founder beta routing">
           <article class="waitlist-card">
-            <h3>For vibe coders</h3>
-            <p>Connect Cursor, Claude, ChatGPT, or your own agent to a media and website backend that can actually render, publish, remix, and report.</p>
+            <h3>Tier 1 - founder access</h3>
+            <p>High reach, clear workflow, July testing capacity, and strong case-study potential.</p>
           </article>
           <article class="waitlist-card">
-            <h3>For teams with demand</h3>
-            <p>Bring real workflows: podcast ops, webinar repurposing, client launch packs, AI website creation, creator monetisation, or internal content systems.</p>
+            <h3>Tier 2 - builder access</h3>
+            <p>Strong technical use case for Cursor, Claude, ChatGPT, internal agents, or SaaS embeds.</p>
           </article>
           <article class="waitlist-card">
-            <h3>For partners</h3>
-            <p>Explore credit resale, bundled workflows, white-label studios, client workspaces, approval queues, and margin-aware creative automation.</p>
+            <h3>Tier 3 - partner access</h3>
+            <p>Agencies, studios, and partner apps exploring credit resale, bundled workflows, or white-label creative jobs.</p>
           </article>
         </div>
       </section>
@@ -2680,12 +3077,71 @@ Optimise for: strong hooks, clear captions, natural edits, and assets I can reus
         <h2>Ship the broadcast, not just the edit.</h2>
         <p>Give vibe coders a real creative backend: media, credits, publishing, audience growth, approvals, and operational muscle behind one agent-friendly interface.</p>
       </div>
-      <a class="button secondary waitlist-link" href="https://docs.google.com/forms/d/e/1FAIpQLSckGZ6LHc7MkKo8aSdLpC1REH-2IxNgN4kgV8uus97JBy6GvQ/viewform?usp=publish-editor">Join waitlist</a>
+      <a class="button secondary waitlist-link" href="https://docs.google.com/forms/d/e/1FAIpQLSckGZ6LHc7MkKo8aSdLpC1REH-2IxNgN4kgV8uus97JBy6GvQ/viewform?usp=publish-editor">Apply for beta</a>
     </footer>
   </div>
 
   <script>
     const WAITLIST_URL = "https://docs.google.com/forms/d/e/1FAIpQLSckGZ6LHc7MkKo8aSdLpC1REH-2IxNgN4kgV8uus97JBy6GvQ/viewform?usp=publish-editor";
+
+    const launchDemos = {
+      podcast: {
+        title: "Episode launch pack.",
+        summary: "A raw founder interview becomes a publish-ready episode and a distribution system around it.",
+        command: "Run recipe episode_launch_pack. Estimate first, cap at 120 credits, create drafts, wait for approval, then publish and report.",
+        credit: "120",
+        gate: "Review",
+        channel: "LinkedIn",
+        pack: [
+          ["Media", ["Full episode mix", "12 vertical clips", "Caption files", "Thumbnail set"]],
+          ["Content", ["Show notes", "Guest share kit", "LinkedIn post pack", "Newsletter draft"]],
+          ["Web", ["Episode page", "Clip embed section", "Booking CTA", "SEO metadata"]],
+          ["Ops", ["Credit estimate", "Approval board", "Publish schedule", "Spend report"]]
+        ]
+      },
+      webinar: {
+        title: "Webinar to pipeline.",
+        summary: "A long replay becomes sales material, retargeting creative, and a conversion page.",
+        command: "Run recipe webinar_pipeline_pack. Extract proof, create clips, build landing page, draft follow-up, forecast LinkedIn boost spend.",
+        credit: "180",
+        gate: "Legal",
+        channel: "Retarget",
+        pack: [
+          ["Media", ["20 short clips", "Speaker highlight reel", "Slide-safe captions", "Replay trailer"]],
+          ["Sales", ["Objection clips", "Follow-up emails", "Account notes", "Demo CTA copy"]],
+          ["Web", ["Replay page", "Topic sections", "Proof modules", "Form handoff"]],
+          ["Growth", ["LinkedIn boost audience", "Retargeting plan", "UTM map", "Campaign report"]]
+        ]
+      },
+      customer: {
+        title: "Customer proof engine.",
+        summary: "A customer conversation becomes proof your sales team can reuse without digging through recordings.",
+        command: "Run recipe proof_library_builder. Redact sensitive claims, extract quotes, generate approved clips, create sales proof page.",
+        credit: "90",
+        gate: "Consent",
+        channel: "Sales",
+        pack: [
+          ["Proof", ["Approved quotes", "Timestamped clips", "Outcome cards", "Objection answers"]],
+          ["Sales", ["Deal room section", "Follow-up copy", "Use-case snippets", "CRM task notes"]],
+          ["Safety", ["Redaction queue", "Claim review", "Consent status", "Retention note"]],
+          ["Library", ["Tagged proof assets", "Search index", "Persona map", "Reuse report"]]
+        ]
+      },
+      idea: {
+        title: "Pod idea generator.",
+        summary: "No upload required. The agent turns a rough thought into the plan for a show, carousel, script, and first campaign.",
+        command: "Run recipe pod_idea_to_campaign. Generate angles, score business value, create teleprompter guide, carousel, guest brief, and first boost plan.",
+        credit: "45",
+        gate: "Draft",
+        channel: "Organic",
+        pack: [
+          ["Idea", ["Episode angles", "Hook options", "Guest targets", "Business value score"]],
+          ["Creator", ["Teleprompter guide", "Carousel outline", "Short script", "Recording brief"]],
+          ["Launch", ["LinkedIn posts", "Newsletter angle", "Landing page skeleton", "Booking CTA"]],
+          ["Learning", ["Credit estimate", "Test plan", "Success metric", "Next episode prompt"]]
+        ]
+      }
+    };
 
     const toolCatalog = [
       ["Workspace", "workspace.get_profile", "workspace:read", "Read plan, limits, connected apps, defaults, and workspace identity."],
@@ -3834,6 +4290,35 @@ Optimise for: strong hooks, clear captions, natural edits, and assets I can reus
       });
     }
 
+    function renderLaunchDemo(key) {
+      const demo = launchDemos[key] || launchDemos.podcast;
+      document.getElementById("demoTitle").textContent = demo.title;
+      document.getElementById("demoSummary").textContent = demo.summary;
+      document.getElementById("demoCommand").textContent = demo.command;
+      document.getElementById("demoCredit").textContent = demo.credit;
+      document.getElementById("demoGate").textContent = demo.gate;
+      document.getElementById("demoChannel").textContent = demo.channel;
+      document.getElementById("demoPack").innerHTML = demo.pack.map(([title, items]) => `
+        <article>
+          <span class="tag">${title}</span>
+          <h4>${title} pack.</h4>
+          <ul>${items.map((item) => `<li>${item}</li>`).join("")}</ul>
+        </article>
+      `).join("");
+    }
+
+    function wireLaunchDemo() {
+      const tabs = document.querySelectorAll(".demo-tab");
+      if (!tabs.length) return;
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          tabs.forEach((item) => item.classList.toggle("active", item === tab));
+          renderLaunchDemo(tab.dataset.demo);
+        });
+      });
+      renderLaunchDemo("podcast");
+    }
+
     function wireWaitlistLinks() {
       document.querySelectorAll(".waitlist-link").forEach((link) => {
         link.href = WAITLIST_URL;
@@ -3848,6 +4333,7 @@ Optimise for: strong hooks, clear captions, natural edits, and assets I can reus
       renderTools();
       renderUseCases();
       renderRecipes();
+      wireLaunchDemo();
       wireCopyButtons();
       wireWaitlistLinks();
       document.getElementById("toolSearch").addEventListener("input", renderTools);

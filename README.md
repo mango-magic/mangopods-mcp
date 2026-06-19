@@ -5,7 +5,7 @@
 <p align="center">
   <a href="https://mangomagic.live/api">Developer portal</a>
   ·
-  <a href="https://docs.google.com/forms/d/e/1FAIpQLSckGZ6LHc7MkKo8aSdLpC1REH-2IxNgN4kgV8uus97JBy6GvQ/viewform?usp=publish-editor">Join the waitlist</a>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSckGZ6LHc7MkKo8aSdLpC1REH-2IxNgN4kgV8uus97JBy6GvQ/viewform?usp=publish-editor">Apply for founder beta</a>
   ·
   <a href="https://mango-magic.github.io/mangopods-mcp/power-moves.html">Power moves</a>
   ·
@@ -93,6 +93,20 @@ The simple demo is savage:
 }
 ```
 
+## Public Demo, Private Beta.
+
+The public page gives launch visitors a no-login demo mode so they can inspect the workflow shape before applying. That matters for technical communities: people should be able to understand the product, click through source examples, and see the output model without handing over an email.
+
+Real MCP access stays gated. API keys, credits, partner scopes, production workflows, and resale conversations go through the founder beta application.
+
+The beta application should filter for:
+
+- reach - audience, users, customers, clients, or community size
+- use-case quality - the specific workflow they want to ship first
+- ability to test - whether they can implement in July
+- credit potential - spend, resale, bundled credits, or agency margin
+- proof value - whether the use case would make a strong public story
+
 ## Things People Should Build With This.
 
 | If you are building | MangoPods becomes |
@@ -119,9 +133,9 @@ The simple demo is savage:
 
 See the bigger list in [Power Moves](https://mango-magic.github.io/mangopods-mcp/power-moves.html).
 
-## The Waitlist Is For Builders Who Already See It.
+## Founder Beta Access.
 
-MangoPods is not public yet. Early access should go to people with real workflows:
+MangoPods is not public yet. Founder beta access should go to people with real workflows and real distribution:
 
 - vibe coders building products around agents
 - agencies packaging repeatable client outcomes
@@ -130,7 +144,7 @@ MangoPods is not public yet. Early access should go to people with real workflow
 - internal teams tired of losing value inside recordings
 - partner apps that want to resell creative work without building the factory
 
-Join here: https://docs.google.com/forms/d/e/1FAIpQLSckGZ6LHc7MkKo8aSdLpC1REH-2IxNgN4kgV8uus97JBy6GvQ/viewform?usp=publish-editor
+Apply here: https://docs.google.com/forms/d/e/1FAIpQLSckGZ6LHc7MkKo8aSdLpC1REH-2IxNgN4kgV8uus97JBy6GvQ/viewform?usp=publish-editor
 
 ## What Is In This Repo.
 
@@ -141,8 +155,9 @@ Join here: https://docs.google.com/forms/d/e/1FAIpQLSckGZ6LHc7MkKo8aSdLpC1REH-2I
 - `assets/mangomagic_wide_dark.svg` - MangoMagic logo.
 - `docs/power-moves.md` - high-value product and partner use cases.
 - `docs/agent-demo-prompts.md` - copy-paste prompts for vibe coding demos.
-- `docs/waitlist-form.md` - live waitlist fields and routing notes.
-- `scripts/create-google-form.gs` - Apps Script helper for recreating the waitlist form.
+- `docs/waitlist-form.md` - founder beta application fields, scoring, and routing notes.
+- `docs/launch-channel-fit.md` - launch-channel rules for public demo mode versus gated beta access.
+- `scripts/create-google-form.gs` - Apps Script helper for recreating the founder beta application form.
 
 ## Live Portal.
 
