@@ -5,11 +5,11 @@
 <p align="center">
   <a href="https://mangomagic.live/api">Developer portal</a>
   ·
-  <a href="https://docs.google.com/forms/d/e/1FAIpQLSckGZ6LHc7MkKo8aSdLpC1REH-2IxNgN4kgV8uus97JBy6GvQ/viewform?usp=publish-editor">Apply for founder beta</a>
+  <a href="https://mangomagic.live/waitlist?ref=github">Apply for founder beta</a>
   ·
-  <a href="https://mango-magic.github.io/mangopods-mcp/power-moves.html">Power moves</a>
+  <a href="https://mangomagic.live/api#power">Power moves</a>
   ·
-  <a href="https://mango-magic.github.io/mangopods-mcp/agent-prompts.html">Agent prompts</a>
+  <a href="https://mangomagic.live/api#recipes">Agent prompts</a>
 </p>
 
 <p align="center">
@@ -131,7 +131,7 @@ The beta application should filter for:
 - Ask an internal agent to scan a meeting folder and build a searchable library of reusable proof, quotes, objections, and customer language.
 - Ask a client portal to estimate credits, reserve spend, render drafts, collect approval, publish, and report margin.
 
-See the bigger list in [Power Moves](https://mango-magic.github.io/mangopods-mcp/power-moves.html).
+See the bigger list in [Power Moves](https://mangomagic.live/api#power).
 
 ## Founder Beta Access.
 
@@ -144,7 +144,7 @@ MangoPods is not public yet. Founder beta access should go to people with real w
 - internal teams tired of losing value inside recordings
 - partner apps that want to resell creative work without building the factory
 
-Apply here: https://docs.google.com/forms/d/e/1FAIpQLSckGZ6LHc7MkKo8aSdLpC1REH-2IxNgN4kgV8uus97JBy6GvQ/viewform?usp=publish-editor
+Apply here: https://mangomagic.live/waitlist?ref=github
 
 ## What Is In This Repo.
 
@@ -165,7 +165,13 @@ The branded API front door is the URL builders should remember and share:
 
 https://mangomagic.live/api
 
-It is the public path for the developer docs, tool catalogue, schemas, recipes, use-case atlas, and signup flow. GitHub Pages remains the live docs mirror for deep pages during private beta.
+It is the public path for the developer docs, tool catalogue, schemas, recipes, use-case atlas, and signup flow.
+
+Before pushing launch copy, run:
+
+```bash
+node scripts/check-launch-links.mjs
+```
 
 ## Private Beta.
 

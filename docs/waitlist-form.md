@@ -2,11 +2,9 @@
 
 Live form:
 
-https://docs.google.com/forms/d/e/1FAIpQLSckGZ6LHc7MkKo8aSdLpC1REH-2IxNgN4kgV8uus97JBy6GvQ/viewform?usp=publish-editor
+https://mangomagic.live/waitlist?ref=github
 
-Response sheet:
-
-https://docs.google.com/spreadsheets/d/1eF3B6TazCnOnDOiuzhZrQix69-RrqypUmSVYkC06NI8/edit
+Applications now flow through the in-app private beta workflow and the admin beta applications view. Do not publish legacy form or sheet URLs in public repo docs.
 
 The public page should include a no-login demo mode. Real MCP access should be gated through this application.
 
