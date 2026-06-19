@@ -4,6 +4,10 @@ Live form:
 
 https://docs.google.com/forms/d/e/1FAIpQLSckGZ6LHc7MkKo8aSdLpC1REH-2IxNgN4kgV8uus97JBy6GvQ/viewform?usp=publish-editor
 
+Response sheet:
+
+https://docs.google.com/spreadsheets/d/1eF3B6TazCnOnDOiuzhZrQix69-RrqypUmSVYkC06NI8/edit
+
 The public page should include a no-login demo mode. Real MCP access should be gated through this application.
 
 ## Positioning
@@ -20,45 +24,88 @@ Required:
 - Full name
 - Email address
 - LinkedIn profile URL
-- Company, product, or project name
+- Company, product, community, or project name
 - Which best describes you?
-  - Vibe coder / builder
+  - Vibe coder / independent builder
   - Agency / studio
   - Creator / podcast operator
   - SaaS / product team
-  - Internal team
+  - Internal marketing or enablement team
   - Partner app / marketplace
+  - Enterprise media or demand team
   - Other
 - What do you want to build with MangoPods MCP?
 - Which first workflow would you test?
   - Podcast episode launch pack
+  - Pod idea generator to carousel and teleprompter guide
   - Webinar to pipeline pack
   - Customer call to proof page
-  - Pod idea to carousel and teleprompter
   - Video clip farm
   - Website or landing page generation
-  - LinkedIn content and boost workflow
+  - LinkedIn content and targeted boost workflow
   - Agency client content sprint
   - Partner app / credit resale workflow
+  - White-label creative job workflow
   - Other
+- Which MangoPods capabilities do you need first?
+  - Podcast idea generation
+  - Podcast or video editing
+  - Short-form clips and captions
+  - Carousels and social creative
+  - Teleprompter guides and scripts
+  - Website or landing page creation
+  - LinkedIn posts and targeted boosts
+  - Approval workflows
+  - Credit caps and usage reporting
+  - White-label or resale workflows
+- Write one prompt you would want your agent to run on day one
 - Who would this reach?
 - How many users, clients, subscribers, followers, or internal teammates could this reach in the next 90 days?
+- Where could you share or ship the beta story if it works?
+  - LinkedIn
+  - Product Hunt
+  - Hacker News / Show HN
+  - Reddit
+  - Indie Hackers
+  - Newsletter
+  - Client base
+  - Internal company rollout
+  - App marketplace
+  - I would rather stay private
 - Can you test in July?
+- Do you already have a source asset or workflow ready to test?
 - How do you expect to use credits?
   - Use MangoPods credits directly
   - Bring my own MangoPods workspace
   - Bundle credits inside my product
   - Resell fixed creative jobs
   - Agency or studio margin model
+  - Internal team usage
   - Not sure yet
+- What monthly usage feels realistic if the beta works?
+  - A few test jobs per month
+  - 10-50 creative jobs per month
+  - 51-250 creative jobs per month
+  - 251-1,000 creative jobs per month
+  - 1,000+ creative jobs per month
+  - Not sure yet
+- Are you interested in embedding, reselling, or white-labelling MangoPods workflows?
 - Would you be open to sharing a public case study if it works?
+- Beta access acknowledgement
 
 Optional:
 
-- Website or product URL
+- Website, product, or community URL
 - Current tools you use for podcast, video, website, content, or campaign production
-- Example source asset or workflow description
+- Optional source asset, demo, podcast, website, or example URL
 - Anything else we should know
+
+## Live Setup Notes
+
+- The old basic waitlist form has been rebuilt in place as the founder beta application, so the public URL did not change.
+- The response spreadsheet has a `Triage Rubric` tab with the 100-point scoring model below.
+- Old Google Forms response columns from the previous basic waitlist cannot be deleted because Google locks linked form columns. They are hidden in the live response sheet so the visible intake table starts with the current beta fields.
+- `scripts/create-google-form.gs` now targets the existing live form ID. It should only be run when intentionally rebuilding the live application.
 
 ## Scoring Rubric
 
