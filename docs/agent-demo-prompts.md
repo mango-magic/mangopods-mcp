@@ -1,6 +1,6 @@
 # Agent Demo Prompts.
 
-Designed version: https://mango-magic.github.io/mangopods-mcp/agent-prompts.html
+Designed version: https://mangomagic.live/api#recipes
 
 Copy these into Cursor, Claude, ChatGPT, or an internal agent once MangoPods MCP is connected.
 

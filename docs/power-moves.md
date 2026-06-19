@@ -1,6 +1,6 @@
 # MangoPods MCP Power Moves.
 
-Designed version: https://mango-magic.github.io/mangopods-mcp/power-moves.html
+Designed version: https://mangomagic.live/api#power
 
 MangoPods is most interesting when it stops feeling like a tool and starts feeling like a production department behind an agent.
 
